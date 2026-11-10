@@ -41,7 +41,7 @@ try {
     if (width === 1440 || width === 390) {
       const prefix = width === 1440 ? 'desktop' : 'mobile';
       await page.screenshot({ path: path.join(output, `${prefix}-hero.png`) });
-      for (const section of ['offerings', 'our-farm', 'questions', 'enquire']) await page.locator(`#${section}`).screenshot({ path: path.join(output, `${prefix}-${section}.png`) });
+      for (const section of ['offerings', 'our-farm', 'questions', 'enquire', 'footer']) await page.locator(`#${section}`).screenshot({ path: path.join(output, `${prefix}-${section}.png`) });
     }
     await context.close();
   }
@@ -87,10 +87,10 @@ try {
   assert.equal(await page.evaluate(() => document.activeElement.id), 'enquiry-message');
   report.interactions.push('Editing invalidates the prepared message; clipboard failure exposes manual-copy instructions.');
   assert.equal(await page.locator('a[href^="https://wa.me"]').count(), 0);
-  assert.ok(await page.locator('#whatsapp-pending').isVisible());
+  assert.equal(await page.locator('#whatsapp-pending').count(), 0);
   await page.getByText('Can I arrange collection or delivery?', { exact: false }).click();
   assert.ok(await page.getByText('Include your location when you enquire.', { exact: false }).isVisible());
-  report.interactions.push('WhatsApp has no dummy outbound link; FAQ disclosure opens.');
+  report.interactions.push('Removed WhatsApp notice stays absent, with no dummy outbound link; FAQ disclosure opens.');
   await context.close();
 
   const noJs = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });

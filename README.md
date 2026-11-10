@@ -2,7 +2,7 @@
 
 A self-contained, responsive website for exploring the farm and making product enquiries. Implemented and locally reviewed on 10 November 2026. HTML, CSS and browser JavaScript, with no runtime packages, web fonts or external asset requests.
 
-**Status:** local preview ready. Nothing has been published or deployed; no GitHub remote is configured. WhatsApp displays **Coming soon** until the owner supplies a number. Instagram is the contact-profile link used in this preview. Visitors prepare an enquiry locally, copy it, and send it themselves.
+**Status:** local preview ready. Nothing has been published or deployed; no GitHub remote is configured. The owner's annotated copy removals have been applied and reviewed on desktop/mobile. WhatsApp stays hidden until a number is supplied. Instagram is linked in the remaining enquiry steps and footer. Visitors prepare an enquiry locally, copy it, and send it themselves. Adding Facebook to the footer is pending the exact page URL from the owner; the records currently contain only its page name.
 
 ## Open the preview
 

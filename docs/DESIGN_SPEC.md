@@ -4,6 +4,8 @@ Build specification, 10 November 2026. Uses the requested MotionSites specificat
 
 Final review adjustments: the heading has a 90px maximum; the desktop mascot is 330px wide with 35px bottom space; the decorative label behind its head is hidden; the mobile roots title stacks Osun and State. These final values supersede the initial dimensions below where different. See QA.md.
 
+The owner's later annotated review removes the circled hero/farm/enquiry copy, including the hero location strip, repeated positioning/address, form headings, WhatsApp notice and separate Instagram block. The remaining Instagram instruction links directly to the profile. This approved simplification supersedes the original section-copy specification below. The Facebook footer link awaits the exact URL.
+
 ## Purpose and scope
 
 A complete farm introduction and product-enquiry website for end consumers across Nigeria. The owner confirmed the purpose on 10 November 2026. WhatsApp is not ready; placeholders are expressly authorised. Show an honest coming-soon state instead of an invented number. Keep a contact configuration file ready for the real number. The supplied Instagram identity provides a profile link for the preview; do not invent an email or Facebook URL.

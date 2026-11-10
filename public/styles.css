@@ -87,6 +87,7 @@ h1 em { color:var(--highlight); font-weight:400; }
 address { display:flex; align-items:flex-start; gap:12px; font-style:normal; margin:28px 0 12px; font-size:14px; line-height:1.7; }
 address .icon { margin-top:2px; }
 .dark-link { font-weight:600; font-size:13px; }
+.farm-copy .dark-link { margin-top:20px; }
 .questions-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:100px; }
 details { border-top:1px solid var(--line); }
 details:last-child { border-bottom:1px solid var(--line); }
@@ -102,7 +103,8 @@ details p { color:var(--muted); font-size:14px; padding:0 36px 25px 0; }
 .enquiry-copy>p:not(.eyebrow):not(.channel-status) { margin-top:27px; color:var(--muted-light); max-width:370px; }
 .enquiry-steps { list-style:none; padding:0; margin:34px 0 35px; font-size:14px; }
 .enquiry-steps li { display:flex; align-items:baseline; gap:18px; margin:15px 0; }
-.enquiry-steps span { font-size:10px; color:var(--highlight); }
+.enquiry-steps>li>span:first-child { font-size:10px; color:var(--highlight); }
+.step-copy a { text-decoration:underline; text-underline-offset:4px; }
 .channel-status { border-block:1px solid #fef8ec24; padding:18px 0; display:flex; align-items:center; gap:10px; font-size:14px; max-width:370px; }
 .channel-status>span:first-child { width:6px; height:6px; border-radius:50%; background:var(--highlight); }
 .status-label { color:var(--muted-light); margin-left:auto; font-size:11px; }
@@ -128,7 +130,7 @@ input::placeholder,textarea::placeholder { color:#67705F; opacity:1; font-size:1
 .site-footer { background:var(--forest); color:var(--cream); }
 .footer-top { border-top:1px solid #fef8ec24; padding-block:44px; display:flex; align-items:center; justify-content:space-between; gap:28px; }
 .footer-top>p { font-family:Georgia,serif; font-size:20px; line-height:1.4; color:var(--muted-light); }
-.social-links { display:flex; gap:22px; font-size:12px; }
+.social-links { display:flex; flex-wrap:wrap; gap:22px; font-size:12px; }
 .social-links a { display:flex; align-items:center; gap:7px; min-height:44px; }
 .social-links .icon { width:17px; height:17px; }
 .social-links a:hover { text-decoration:underline; }

@@ -83,7 +83,7 @@
     "Mobile menu opens, closes on Escape with focus returned, and closes on navigation.",
     "All four category links preselect their product; enquiry text and clipboard output match.",
     "Editing invalidates the prepared message; clipboard failure exposes manual-copy instructions.",
-    "WhatsApp has no dummy outbound link; FAQ disclosure opens.",
+    "Removed WhatsApp notice stays absent, with no dummy outbound link; FAQ disclosure opens.",
     "Navigation, native FAQ, contact link and explanatory fallback remain available without JavaScript.",
     "Direct file opening also loads the page and prepares an enquiry."
   ],

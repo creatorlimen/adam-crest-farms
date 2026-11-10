@@ -11,7 +11,7 @@ Reviewed 10 November 2026 with Microsoft Edge 157.0.4341.42 via local Playwright
 - Keyboard Tab reveals the skip link; Enter moves focus to main. The mobile menu closes with Escape, returns focus and closes after navigation.
 - All four category links preselect the product. Enquiries include optional details, and editing invalidates stale prepared text.
 - Copy works with clipboard permission. With a simulated clipboard failure, the text is selected and manual-copy instructions appear. Windows line endings are normalised only in the test comparison.
-- WhatsApp has no dummy-number link. Its status is Coming soon.
+- WhatsApp has no dummy-number link. Its coming-soon notice was removed following the owner's annotated review; the unconfigured link stays hidden.
 - FAQ disclosures work. Navigation, FAQ and Instagram remain available without JavaScript, with a composer explanation.
 - Reduced-motion mode removes entrance animation. Early and settled desktop screenshots were inspected.
 - Opening public/index.html directly loads the site and prepares an enquiry without a server.
@@ -19,6 +19,14 @@ Reviewed 10 November 2026 with Microsoft Edge 157.0.4341.42 via local Playwright
 Evidence: [review/report.json](review/report.json).
 
 ## Visual review
+
+### Annotated revision, 10 November 2026
+
+Removed every blue-circled element in the supplied hero, farm and enquiry screenshots. Retained the uncircled content, including footer positioning/address and the optional marker on the enquiry-details field. Added spacing before the farm section's remaining contact action. The remaining step-3 Instagram instruction is clickable; the removed contact block has not been reintroduced. Facebook is pending the owner's exact page URL.
+
+The existing five-width browser review passed again, including the enquiry interactions, reduced motion, no-JavaScript fallback and zero common WCAG A/AA findings. Visually inspected the revised desktop hero, farm and enquiry sections, mobile enquiry, and both footer layouts. Updated screenshots are in review/. Earlier screenshots are retained in Git history.
+
+### Initial implementation
 
 Inspected the desktop/mobile opening, full pages, product list, farm section and enquiry section. The supplied logo remains unmodified; the full-body mascot retains its silhouette, aspect ratio and transparency.
 

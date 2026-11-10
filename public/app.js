@@ -32,7 +32,6 @@
   const whatsappLink = document.querySelector('#whatsapp-link');
   document.querySelector('#composer-fields').hidden = false;
   if (whatsappReady) {
-    document.querySelector('#whatsapp-pending').hidden = true;
     whatsappLink.hidden = false;
     whatsappLink.href = `https://wa.me/${whatsappNumber}`;
   }

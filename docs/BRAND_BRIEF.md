@@ -37,9 +37,15 @@ Do not invent missing details, prices, opening hours, certifications, testimonia
 
 - Primary purpose: explore the farm and enquire about products. The site is not an online checkout.
 - The owner said the WhatsApp number is not ready and expressly authorised placeholders for this local build.
-- Implementation uses “WhatsApp — Coming soon”, with no fake number or active WhatsApp link. `public/site-config.js` holds a null value until the owner supplies a real number.
+- The initial preview used “WhatsApp — Coming soon”. The owner subsequently marked that notice for removal; WhatsApp now stays hidden. `public/site-config.js` holds a null value until the owner supplies a real number.
 - The supplied Instagram profile is the available link in the local preview. A visitor can prepare and copy an enquiry, then open the profile. Instagram response times, account availability and ordering policy have not been confirmed. No message is sent by the website.
 - Local development and preview only. GitHub publishing and deployment remain separate.
+
+## Annotated copy review
+
+On 10 November 2026, the owner requested removal of the blue-circled labels, repeated location/positioning text, secondary hero enquiry link, form headings, location optional marker, WhatsApp notice, form explanation and separate Instagram contact block. Only the location field's visible optional marker was removed; its input remains optional. The remaining step-3 Instagram text links to the supplied profile so the enquiry flow still works.
+
+The owner also requested Facebook in the footer. The exact Facebook page URL is still required; the saved records contain only the page name, and a public search did not establish a reliable match. Do not guess the address from the other social handles.
 
 ## Source context
 

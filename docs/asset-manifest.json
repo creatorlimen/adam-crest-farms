@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "prepared_on": "2026-11-08",
+  "source_workspace_label": "Adam Crest Farms",
+  "note": "Source paths are provenance only. The website uses these local copies and does not depend on parent files. Option C is selected; kit variants are production-checked and the name remains provisional.",
+  "assets": [
+    {
+      "file": "public/assets/brand/adam-crest-farms-logo.jpeg",
+      "source_workspace_relative": "03_Brand/Logos/Adam Crest Farms Logo.jpeg",
+      "provenance": "Owner-supplied brand logo",
+      "intended_use": "Website brand identification",
+      "placement_status": "not_implemented",
+      "sha256": "5f6b277abe3b2c023ef0bfc681cee651c2c4833505e6d84d2a33ff32741c86fb",
+      "bytes": 139699,
+      "width": 1080,
+      "height": 1080,
+      "mode": "RGB",
+      "alpha_range": null,
+      "copied_unchanged": true
+    },
+    {
+      "file": "public/assets/mascot/ostrich-greeting.png",
+      "source_workspace_relative": "02_Projects/Carousels/Mascot_Kit/v01/assets/poses/greeting.png",
+      "provenance": "Generated mascot art from Option C character kit v01",
+      "intended_use": "Welcoming mascot placement",
+      "placement_status": "not_implemented",
+      "sha256": "072c0b94063472d07f9c0bb12d84d9993f198b52c4165867c56355638fa24fd6",
+      "bytes": 1470982,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        254
+      ],
+      "copied_unchanged": true
+    }
+  ]
+}

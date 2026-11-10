@@ -1,0 +1,77 @@
+# Dependencies and package-manager caches
+node_modules/
+.pnp.*
+.npm/
+.yarn/cache/
+.yarn/unplugged/
+.yarn/install-state.gz
+.pnpm-store/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Build output and framework caches
+/dist/
+/build/
+/out/
+.next/
+.nuxt/
+.output/
+.svelte-kit/
+.astro/
+.cache/
+.turbo/
+*.tsbuildinfo
+
+# Local hosting state, test reports and logs
+.vercel/
+.netlify/
+coverage/
+playwright-report/
+test-results/
+*.log
+logs/
+
+# Local environment and credentials; commit sanitised templates only
+.env
+.env.*
+.envrc
+.direnv/
+.npmrc
+.netrc
+_netrc
+!.env.example
+!.env.*.example
+.secrets/
+secrets/
+credentials/
+.aws/
+.ssh/
+*.pem
+*.key
+*.p12
+*.pfx
+service-account*.json
+
+# Editor/OS files and local scratch work
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo
+.local/
+/tmp/
+/temp/
+
+# Do not import the surrounding content library into this repository
+/01_Ready_to_Post/
+/02_Projects/
+/03_Brand/
+/04_Templates_and_Skills/
+/05_References/
+/99_Archive/
+
+# Keep application source, package manifests, lockfiles and website assets tracked.

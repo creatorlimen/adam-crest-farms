@@ -29,9 +29,17 @@ The owner describes quality products and healthy, well-fed livestock. These are 
 
 ## Details still to establish during the website build
 
-Website scope and primary call to action; sales/enquiry process; current products and availability; phone/WhatsApp or email; exact Facebook page URL; delivery/collection arrangements; owner-approved farm photographs; hosting and domain access.
+Current products and availability; final phone/WhatsApp or email; exact Facebook page URL; delivery/collection arrangements; owner-approved farm photographs; hosting and domain access.
 
 Do not invent missing details, prices, opening hours, certifications, testimonials, awards or fulfilment promises. Domain and social identities above were supplied by the owner; this repository setup did not verify live accounts, domain control or website availability.
+
+## Website decisions confirmed 10 November 2026
+
+- Primary purpose: explore the farm and enquire about products. The site is not an online checkout.
+- The owner said the WhatsApp number is not ready and expressly authorised placeholders for this local build.
+- Implementation uses “WhatsApp — Coming soon”, with no fake number or active WhatsApp link. `public/site-config.js` holds a null value until the owner supplies a real number.
+- The supplied Instagram profile is the available link in the local preview. A visitor can prepare and copy an enquiry, then open the profile. Instagram response times, account availability and ordering policy have not been confirmed. No message is sent by the website.
+- Local development and preview only. GitHub publishing and deployment remain separate.
 
 ## Source context
 

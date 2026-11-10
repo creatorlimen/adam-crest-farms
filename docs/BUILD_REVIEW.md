@@ -32,16 +32,16 @@ Use the unchanged owner logo with clear space and the transparent Option C masco
 
 For an enquiry-led website, the proposed progression is: introduction, ostriches/sheep/goats/crops, the farm's Osun location and positioning, then a clear contact route. Final architecture and button copy depend on the owner's answers below. Do not invent stock lists, prices, product specifications, delivery terms, testimonials or certifications.
 
-## Essential decisions requested
+## Essential decisions resolved
 
-1. Main purpose: farm/product enquiries, online ordering, or education/following.
-2. Preferred contact or ordering route, including a confirmed WhatsApp/phone number, email address, or approval to use Instagram DM at `@adamcrestfarms`. If online ordering is selected, establish the actual order process before building it.
+1. The owner chose exploring the farm and enquiring about products.
+2. The WhatsApp number is not ready; the owner authorised placeholders. The site shows Coming soon without a number and uses the supplied Instagram profile as the available link in this local preview.
 
-These are content and functional requirements, not a routine design approval checkpoint. No answer has been assumed.
+These answers were received on 10 November 2026. No checkout or automated submission was requested.
 
-## Next implementation steps
+## Implementation outcome
 
-After the essential decisions are supplied:
+The site, local preview, design specification and browser tests are complete. See README.md and QA.md for commands and evidence. The following original implementation plan has been completed except for automatic opening in Firefox, which platform browser-policy support blocked; the working HTML file can be opened manually. No publication or remote Git operation occurred.
 
 1. Record the confirmed purpose/contact process in BRAND_BRIEF.md and choose a suitable stack. A small enquiry site can use semantic HTML, CSS and minimal JavaScript with local assets; an actual checkout needs a separately defined order/payment process.
 2. Create a precise design specification using the requested skill's method. Establish local Git history without publishing.

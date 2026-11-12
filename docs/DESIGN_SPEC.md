@@ -4,7 +4,7 @@ Build specification, 10 November 2026. Uses the requested MotionSites specificat
 
 Final review adjustments: the heading has a 90px maximum; the desktop mascot is 330px wide with 35px bottom space; the decorative label behind its head is hidden; the mobile roots title stacks Osun and State. These final values supersede the initial dimensions below where different. See QA.md.
 
-The owner's later annotated review removes the circled hero/farm/enquiry copy, including the hero location strip, repeated positioning/address, form headings, WhatsApp notice and separate Instagram block. The remaining Instagram instruction links directly to the profile. This approved simplification supersedes the original section-copy specification below. The Facebook footer link awaits the exact URL.
+The owner's later annotated review removes the circled hero/farm/enquiry copy, including the hero location strip, repeated positioning/address, form headings, WhatsApp notice and separate Instagram block. The remaining Instagram instruction links directly to the profile. This approved simplification supersedes the original section-copy specification below. The footer includes the exact Facebook page URL supplied by the owner on 12 November 2026.
 
 ## Purpose and scope
 
@@ -42,7 +42,7 @@ Georgia handles all display text, with Times New Roman and serif fallbacks. Aria
 3. Our farm: two columns on a slightly darker cream surface. One typography-led forest panel displays “Osun State / Our roots. Your connection.” with simple decorative field lines. The other contains the supplied positioning and location. Copy describes the four areas of the farm and invites conversation; it makes no unsupported farming-method claims. The address is text, with no fabricated map coordinates or visiting hours.
 4. Questions: three native details disclosures covering availability, collection/delivery and visiting. Answers tell visitors what to confirm with the farm. They do not establish policies or promises.
 5. Enquiries: forest-green section, 96px padding. Left column explains the three steps: choose a category, prepare/copy the enquiry, open Instagram to send it. Show “WhatsApp · Coming soon” as an informational status. Right column is a cream form with a category select, optional location field and optional detail textarea. A submit button prepares a message in a labelled read-only textarea; a copy button copies it with an honest status announcement. An Instagram link remains available even before composing. No remote request occurs on form submission. An empty optional field does not become a placeholder in the finished enquiry.
-6. Footer: logo, name, short positioning, Instagram/TikTok links, local address and return-to-top link. No fabricated contact details or unverified Facebook link.
+6. Footer: logo, name, short positioning, Instagram/TikTok/Facebook links, local address and return-to-top link. Use only owner-supplied social addresses.
 
 ## Motion and responsive behaviour
 

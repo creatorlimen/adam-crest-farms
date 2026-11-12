@@ -1,0 +1,116 @@
+{
+  "date": "2026-11-12",
+  "scope": "Facebook footer addition",
+  "browser": "157.0.4341.46",
+  "checks": [
+    {
+      "width": 1440,
+      "passed": true,
+      "noJavaScript": true,
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "links": [
+        {
+          "label": "Instagram",
+          "left": 1083.703125,
+          "right": 1161.0625,
+          "height": 44
+        },
+        {
+          "label": "TikTok",
+          "left": 1183.0625,
+          "right": 1241.296875,
+          "height": 44
+        },
+        {
+          "label": "Facebook",
+          "left": 1263.296875,
+          "right": 1340,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "passed": true,
+      "noJavaScript": true,
+      "viewport": 768,
+      "scrollWidth": 768,
+      "links": [
+        {
+          "label": "Instagram",
+          "left": 473.296875,
+          "right": 550.65625,
+          "height": 44
+        },
+        {
+          "label": "TikTok",
+          "left": 572.65625,
+          "right": 630.890625,
+          "height": 44
+        },
+        {
+          "label": "Facebook",
+          "left": 652.890625,
+          "right": 729.59375,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "passed": true,
+      "noJavaScript": true,
+      "viewport": 390,
+      "scrollWidth": 390,
+      "links": [
+        {
+          "label": "Instagram",
+          "left": 22,
+          "right": 99.359375,
+          "height": 44
+        },
+        {
+          "label": "TikTok",
+          "left": 115.359375,
+          "right": 173.59375,
+          "height": 44
+        },
+        {
+          "label": "Facebook",
+          "left": 189.59375,
+          "right": 266.296875,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "width": 320,
+      "passed": true,
+      "noJavaScript": true,
+      "viewport": 320,
+      "scrollWidth": 320,
+      "links": [
+        {
+          "label": "Instagram",
+          "left": 22,
+          "right": 99.359375,
+          "height": 44
+        },
+        {
+          "label": "TikTok",
+          "left": 115.359375,
+          "right": 173.59375,
+          "height": 44
+        },
+        {
+          "label": "Facebook",
+          "left": 189.59375,
+          "right": 266.296875,
+          "height": 44
+        }
+      ]
+    }
+  ],
+  "passed": true
+}

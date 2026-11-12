@@ -2,7 +2,7 @@
 
 A self-contained, responsive website for exploring the farm and making product enquiries. Implemented and locally reviewed on 10 November 2026. HTML, CSS and browser JavaScript, with no runtime packages, web fonts or external asset requests.
 
-**Status:** local preview ready. Nothing has been published or deployed; no GitHub remote is configured. The owner's annotated copy removals have been applied and reviewed on desktop/mobile. WhatsApp stays hidden until a number is supplied. Instagram is linked in the remaining enquiry steps and footer. Visitors prepare an enquiry locally, copy it, and send it themselves. Adding Facebook to the footer is pending the exact page URL from the owner; the records currently contain only its page name.
+**Status:** local preview ready. Nothing has been published or deployed; no GitHub remote is configured. The owner's annotated copy removals have been applied and reviewed on desktop/mobile. WhatsApp stays hidden until a number is supplied. Instagram is linked in the remaining enquiry steps and footer. Visitors prepare an enquiry locally, copy it, and send it themselves. The footer includes Instagram, TikTok and the Facebook page supplied by the owner on 12 November 2026.
 
 ## Open the preview
 
@@ -18,7 +18,7 @@ npm test           # Four enquiry-formatting tests using Node's built-in runner
 
 No package installation is needed for these three commands. The server binds only to this computer; stop it with Ctrl+C. Optional PORT changes the server port. No secrets, services or parent-workspace files are required.
 
-The preview does not submit or store enquiries, process orders/payments, or include analytics. External Instagram and TikTok links open only when a visitor follows them.
+The preview does not submit or store enquiries, process orders/payments, or include analytics. External Instagram, TikTok and Facebook links open only when a visitor follows them.
 
 ## Browser and accessibility review
 

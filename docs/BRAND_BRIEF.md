@@ -14,6 +14,7 @@ Prepared 8 November 2026 from the owner's supplied business details, approved co
 | Instagram | @adamcrestfarms |
 | TikTok | @adamcrestfarms |
 | Facebook page name | Adam Crest Farms |
+| Facebook page URL | https://www.facebook.com/profile.php?id=61596237654943 (owner-supplied, 12 November 2026) |
 
 Preferred positioning: **“Rooted in Osun State, but growing for Nigeria.”**
 
@@ -29,7 +30,7 @@ The owner describes quality products and healthy, well-fed livestock. These are 
 
 ## Details still to establish during the website build
 
-Current products and availability; final phone/WhatsApp or email; exact Facebook page URL; delivery/collection arrangements; owner-approved farm photographs; hosting and domain access.
+Current products and availability; final phone/WhatsApp or email; delivery/collection arrangements; owner-approved farm photographs; hosting and domain access.
 
 Do not invent missing details, prices, opening hours, certifications, testimonials, awards or fulfilment promises. Domain and social identities above were supplied by the owner; this repository setup did not verify live accounts, domain control or website availability.
 
@@ -45,7 +46,7 @@ Do not invent missing details, prices, opening hours, certifications, testimonia
 
 On 10 November 2026, the owner requested removal of the blue-circled labels, repeated location/positioning text, secondary hero enquiry link, form headings, location optional marker, WhatsApp notice, form explanation and separate Instagram contact block. Only the location field's visible optional marker was removed; its input remains optional. The remaining step-3 Instagram text links to the supplied profile so the enquiry flow still works.
 
-The owner also requested Facebook in the footer. The exact Facebook page URL is still required; the saved records contain only the page name, and a public search did not establish a reliable match. Do not guess the address from the other social handles.
+The owner also requested Facebook in the footer and supplied the exact page URL on 12 November 2026: https://www.facebook.com/profile.php?id=61596237654943. It is now included beside Instagram and TikTok.
 
 ## Source context
 

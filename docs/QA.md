@@ -20,9 +20,17 @@ Evidence: [review/report.json](review/report.json).
 
 ## Visual review
 
+### Facebook footer, 12 November 2026
+
+Added the owner's exact Facebook page URL beside Instagram and TikTok. Checked the footer at 1440, 768, 390 and 320 CSS pixels with Microsoft Edge 157.0.4341.46, including direct file opening with JavaScript disabled. All three links remain visible without horizontal overflow and retain 44px-high targets. The Facebook link is keyboard-focusable and has the supplied URL, new-tab target and noopener/noreferrer attributes. No external account was opened.
+
+Visually inspected all four footer captures. The static build and Git whitespace check passed. Earlier full-page and interaction results below remain from 10 November; this bounded link change received a targeted footer review.
+
+Evidence: [footer report](review/facebook-footer-report.json), [desktop footer](review/desktop-footer.png), [mobile footer](review/mobile-footer.png), [768px footer](review/width-768-footer.png), [320px footer](review/width-320-footer.png).
+
 ### Annotated revision, 10 November 2026
 
-Removed every blue-circled element in the supplied hero, farm and enquiry screenshots. Retained the uncircled content, including footer positioning/address and the optional marker on the enquiry-details field. Added spacing before the farm section's remaining contact action. The remaining step-3 Instagram instruction is clickable; the removed contact block has not been reintroduced. Facebook is pending the owner's exact page URL.
+Removed every blue-circled element in the supplied hero, farm and enquiry screenshots. Retained the uncircled content, including footer positioning/address and the optional marker on the enquiry-details field. Added spacing before the farm section's remaining contact action. The remaining step-3 Instagram instruction is clickable; the removed contact block has not been reintroduced. The owner supplied the Facebook page URL on 12 November 2026; see the footer review above.
 
 The existing five-width browser review passed again, including the enquiry interactions, reduced motion, no-JavaScript fallback and zero common WCAG A/AA findings. Visually inspected the revised desktop hero, farm and enquiry sections, mobile enquiry, and both footer layouts. Updated screenshots are in review/. Earlier screenshots are retained in Git history.
 

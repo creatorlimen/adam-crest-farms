@@ -15,3 +15,5 @@ Do not import the full mascot kit, unused photography, source archives or video 
 
 The decorative arch, rings and field lines are CSS shapes created for this website. Navigation symbols are small inline SVG paths. They do not depict the real farm. No stock media, remote fonts or external image requests are used.
 
+On 12 November 2026 the unchanged greeting mascot was also selected for the journal's first article/card and its sharing metadata. Its caption identifies it as an illustration; it is not an anatomical diagram or farm photograph. No additional media was imported. Article metadata records native dimensions and alternative text.
+

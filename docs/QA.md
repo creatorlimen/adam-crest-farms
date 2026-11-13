@@ -1,10 +1,10 @@
 # Local website verification
 
-Reviewed 10 November 2026 with Microsoft Edge 157.0.4341.42 via local Playwright tests. The website remains local and unpublished.
+Latest complete review: 13 November 2026 with Microsoft Edge 157.0.4341.46 via local Playwright tests. The website and the new journal remain local and unpublished. Earlier review notes are retained below.
 
 ## Results
 
-- Four Node enquiry-formatting tests passed.
+- Eight Node tests passed: enquiry formatting, article eligibility, sitemap filtering, relative links and structured-data escaping.
 - Browser checks passed at 1440, 1024, 768, 390 and 320 CSS pixels, with 900px viewport height.
 - No document overflow, broken images, page/console errors, failed resources or external runtime requests were found.
 - Axe scans using WCAG 2 A, 2 AA and 2.1 AA tags reported zero violations at all five widths. Automated results are not a complete accessibility audit or certification.
@@ -14,9 +14,23 @@ Reviewed 10 November 2026 with Microsoft Edge 157.0.4341.42 via local Playwright
 - WhatsApp has no dummy-number link. Its coming-soon notice was removed following the owner's annotated review; the unconfigured link stays hidden.
 - FAQ disclosures work. Navigation, FAQ and Instagram remain available without JavaScript, with a composer explanation.
 - Reduced-motion mode removes entrance animation. Early and settled desktop screenshots were inspected.
-- Opening public/index.html directly loads the site and prepares an enquiry without a server.
+- Opening the generated dist/index.html directly loads the site and prepares an enquiry without a server.
 
 Evidence: [review/report.json](review/report.json).
+
+## Blog foundation, 13 November 2026
+
+- Astro 6.4.8 builds the preserved home page plus journal, topic, article, editorial-policy and 404 pages into static HTML. The approved draft and its four sources are included in the local preview.
+- Production lifecycle tests passed: preview stays noindex; production excludes drafts/future articles and their empty categories; canonical URLs and sitemap use the configured origin; valid published content gets its genuine date. A published article with no publication date fails. A clean rebuild removes a previously generated article. The test fixture was removed and the normal draft preview restored.
+- Journal index, category, article and editorial-policy pages passed at 1440, 1024, 768, 390 and 320px: zero overflow, broken images, console/page errors, external runtime requests or axe WCAG A/AA findings. All generated internal links/resources resolved.
+- Keyboard skip/menu, contents anchors and the article-to-home enquiry journey passed. Article JSON-LD has BlogPosting/breadcrumb data and no fabricated publication date. Reading and navigation work without JavaScript and directly from file URLs. Nested missing URLs return a styled HTTP 404 with a working home link.
+- The test harness now waits for network idle before checking lazy images. The initial immediate image check ran before loading completed; no broken image URL was found.
+- Visually inspected full desktop/mobile journal and article pages, their opening views, and the shared header/footer. The mascot keeps its native proportions. No changes were needed to the approved home copy.
+- MotionSites rubric, subjective review: first glance 8, signature 8, typography 9, composition 8, colour 9, media 8, motion 8, mobile 8, copy 8, polish 8 (average 8.2; none below 7).
+
+Evidence: [build lifecycle report](review/blog-build-report.json), [blog browser report](review/blog-browser-report.json), [desktop journal](review/desktop-journal-opening.png), [mobile journal](review/mobile-journal.png), [desktop article](review/desktop-article.png), [mobile article](review/mobile-article.png).
+
+Tooling note: the installed Node 22.14 runtime completed all builds and tests. The locked, unused font-fetching dependency undici declares Node >=22.19, so that is the documented minimum for fresh installs. No global Node upgrade was performed. Dependency transfers initially reset; the final cached install completed. No runtime font download is used by the website.
 
 ## Visual review
 
@@ -50,6 +64,6 @@ MotionSites rubric, final subjective review: first glance 8; signature 8; typogr
 
 ## Limits and handoff
 
-Automatic opening in Firefox was blocked by Computer Use because URL-policy enforcement is unsupported for the current Windows browser. Native browser control stopped there. Local automated Edge checks and screenshots completed independently. Open public/index.html manually or run npm start and visit the loopback address.
+During the initial build, automatic opening in Firefox was blocked by Computer Use because URL-policy enforcement is unsupported for the current Windows browser. Native browser control stopped there. Local automated Edge checks and screenshots completed independently. Open the built dist/index.html manually or run npm start and visit the loopback address.
 
 External accounts were not logged into, and no enquiry was sent. Social-account availability and responses remain unverified. Other browser engines and real mobile devices were not tested. The absent WhatsApp number is intentional and authorised. There is no inventory system, checkout or submission backend.

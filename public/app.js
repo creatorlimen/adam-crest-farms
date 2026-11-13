@@ -21,7 +21,9 @@
   });
   mobile.addEventListener('change', () => closeMenu());
 
+  for (const link of document.querySelectorAll('[data-instagram]')) link.href = window.FARM_CONFIG.instagramUrl;
   const form = document.querySelector('#enquiry-form');
+  if (!form) return;
   const product = document.querySelector('#product');
   const result = document.querySelector('#enquiry-result');
   const message = document.querySelector('#enquiry-message');

@@ -1,77 +1,87 @@
-﻿# Adam Crest Farms website
+# Adam Crest Farms website
 
-A self-contained, responsive website for exploring the farm and making product enquiries. Implemented and locally reviewed on 10 November 2026. HTML, CSS and browser JavaScript, with no runtime packages, web fonts or external asset requests.
+A self-contained Astro website with a Markdown farm journal, responsive farm introduction and product-enquiry composer. The supplied logo, Option C mascot and reviewed home-page design are retained.
 
-**Status:** local preview ready. Nothing has been published or deployed; no GitHub remote is configured. The owner's annotated copy removals have been applied and reviewed on desktop/mobile. WhatsApp stays hidden until a number is supplied. Instagram is linked in the remaining enquiry steps and footer. Visitors prepare an enquiry locally, copy it, and send it themselves. The footer includes Instagram, TikTok and the Facebook page supplied by the owner on 12 November 2026.
+**Status, 13 November 2026:** local preview only. One researched journal draft is available for review. Nothing is published or deployed, no remote is configured, and WhatsApp remains hidden until an owner-confirmed number is supplied. The footer includes Instagram, TikTok and the confirmed Facebook page.
 
-## Open the preview
+## Setup and preview
 
-Open [public/index.html](public/index.html) in a browser. Navigation, the enquiry composer and FAQ work directly from the file. If clipboard permission is unavailable, the copy control selects the message and explains how to copy it manually.
-
-For local HTTP development, install Node.js 22 or later and run these commands from this repository:
-
-```sh
-npm start          # Serve public/ on http://127.0.0.1:4173
-npm run build      # Copy the static site into ignored dist/
-npm test           # Four enquiry-formatting tests using Node's built-in runner
-```
-
-No package installation is needed for these three commands. The server binds only to this computer; stop it with Ctrl+C. Optional PORT changes the server port. No secrets, services or parent-workspace files are required.
-
-The preview does not submit or store enquiries, process orders/payments, or include analytics. External Instagram, TikTok and Facebook links open only when a visitor follows them.
-
-## Browser and accessibility review
-
-Development-only packages are pinned in package-lock.json: Playwright Test 1.65.0 and axe-core's Playwright integration 4.14.0.
+Run all commands from this Website repository. For new installs, use Node.js 22.19 or later and npm 9.6.5 or later. Astro 6.4.8 is pinned. The complete local build and tests also passed on this computer's Node 22.14 runtime; npm reports an engine warning for an unused font-fetching dependency. No system runtime was replaced.
 
 ```sh
 npm ci
-npx playwright install chromium
+npm start
 ```
 
-With npm start running in another terminal:
+Open http://127.0.0.1:4173. The server binds only to this computer. Stop it with Ctrl+C. npm start builds the default local preview before serving it. After source edits, run npm run build again and refresh. No cloud account, credentials or parent-workspace files are required.
 
 ```sh
-npm run test:browser
+npm run build          # Generate the local preview in dist/
+npm run serve          # Serve an already-built dist/ without rebuilding
+npm test               # Content eligibility, links, escaping and enquiry tests
+npm run test:build     # Publication lifecycle checks; restores the local preview
 ```
 
-On Windows with Microsoft Edge already installed, use it without downloading Chromium:
+The built preview also opens directly: [Home](dist/index.html), [Farm journal](dist/blog/index.html), [Example article](dist/blog/why-do-ostriches-eat-stones/index.html). Links/assets in preview builds are relative and work from disk. dist/ is generated and ignored by Git; build it after cloning. The old public/index.html has moved to src/pages/index.astro.
+
+## Blog editing
+
+Read [BLOG_WORKFLOW.md](docs/BLOG_WORKFLOW.md) for research, drafting and updates. Copy the [post template](docs/templates/blog-post.md) into src/content/blog/<slug>.md and replace every example value. The filename determines the stable URL /blog/<slug>/.
+
+The schema validates metadata, category, dates, sources and image information. Each post has its own HTML page, search title/description, canonical and sharing metadata, BlogPosting/breadcrumb JSON-LD, contents links and source list. Categories, related posts and the sitemap derive from eligible articles. Full article text and navigation work without JavaScript.
+
+Default local builds show labelled drafts and carry noindex/nofollow plus a blocking robots.txt and empty sitemap. Published posts need a genuine publishedAt date. Future-dated posts are omitted from production builds. There is no automatic publishing scheduler. Research dates and substantive update dates have separate meanings.
+
+The sample, [Why do ostriches eat stones?](src/content/blog/why-do-ostriches-eat-stones.md), is a draft with [four checked sources](docs/research/why-do-ostriches-eat-stones.md). It has no invented publication date or specialist byline. The journal's about page explains AI-assisted preparation. No research notes or Markdown sources are copied into the public output.
+
+## Browser review
+
+Playwright and axe are development dependencies. With npm run serve running in another terminal, Windows users with Microsoft Edge can run:
 
 ```powershell
 $env:BROWSER_CHANNEL = 'msedge'
 npm run test:browser
 ```
 
-Optional PREVIEW_URL selects a different local preview address. The script writes screenshots and a JSON report to docs/review/. It checks five widths from 320 to 1440 pixels, resources, common WCAG A/AA issues, keyboard skip navigation, mobile navigation, enquiry preparation/copying, clipboard failure, reduced motion, no-JavaScript use and direct file opening. Automated checks supplement visual review; they are not accessibility certification.
+On other platforms, install the Playwright Chromium browser with npx playwright install chromium and omit BROWSER_CHANNEL. Optional PREVIEW_URL changes the local address used by checks; optional PORT changes the server port. Screenshots and reports are written to docs/review/. Browser checks cover 320 to 1440px layouts, keyboard navigation, no-JavaScript reading, enquiry/copy behaviour, internal links, 404 recovery and common WCAG A/AA issues. Automated scans are not accessibility certification.
 
-See [QA.md](docs/QA.md), the [desktop preview](docs/review/desktop-hero.png), [mobile preview](docs/review/mobile-hero.png) and [automated results](docs/review/report.json).
+See [QA.md](docs/QA.md), [journal screenshot](docs/review/desktop-journal-opening.png) and [article screenshot](docs/review/mobile-article-opening.png).
 
-## Editing
+## Repository map
 
-| File | Purpose |
+| Path | Purpose |
 |---|---|
-| public/index.html | Page structure and copy |
-| public/styles.css | Brand tokens, responsive layouts and motion |
+| src/pages/index.astro | Existing farm home page |
+| src/pages/blog/ | Journal index, topic, article and editorial-policy pages |
+| src/content/blog/ | Markdown articles and metadata |
+| src/content.config.ts | Article schema |
+| src/layouts/ and src/components/ | Shared head, header, footer and article cards |
+| src/lib/ | Build mode, routes, date/eligibility and sitemap helpers |
+| public/styles.css and public/journal.css | Home and journal presentation |
+| public/app.js and public/enquiry.js | Navigation and local enquiry composer |
 | public/site-config.js | Public contact configuration |
-| public/enquiry.js | Plain-text enquiry formatting |
-| public/app.js | Navigation, category links and enquiry interaction |
-| public/assets/ | Unchanged supplied logo and selected Option C mascot |
-| scripts/serve.mjs | Loopback-only static server |
-| scripts/build.mjs | Copy website to dist/ |
-| scripts/review.mjs | Browser checks and screenshot capture |
-| tests/enquiry.test.cjs | Enquiry unit tests |
-| docs/ | Business brief, design spec, asset provenance and QA evidence |
+| public/assets/ | Selected site media, copied unchanged |
+| scripts/ | Build, loopback server and verification |
+| docs/ | Brief, provenance, research, workflow and review evidence |
 
-Keep all required site media in public/assets/ and use relative paths. Read [AGENTS.md](AGENTS.md), [BRAND_BRIEF.md](docs/BRAND_BRIEF.md), [ASSETS.md](docs/ASSETS.md) and [MASCOT_GUIDE.md](docs/MASCOT_GUIDE.md) before changing claims or visuals. The original images' SHA-256 hashes are retained in the manifest. Parent-workspace paths are provenance only, never runtime dependencies. Internal docs and screenshots are not served to site visitors.
+Dependencies are pinned in package-lock.json. Astro is used at build time; the result is static HTML/CSS/JavaScript. There are no runtime CDNs, remote fonts, analytics, databases or server submissions. Visitors prepare an enquiry locally and send it themselves through Instagram. Social/source links only open when followed.
 
-To add WhatsApp, put the **owner-confirmed international digits-only number** in whatsappNumber in public/site-config.js. The script then exposes the WhatsApp link and can attach the prepared enquiry. Also review Instagram-first instructions in index.html and app.js when choosing the final contact journey. Never insert an invented or example number into a live link. No private credentials belong in public configuration.
+To enable WhatsApp later, put the owner-confirmed international digits-only number in public/site-config.js and review the Instagram-first instructions. Never use a made-up number or put credentials in public files.
 
-## Before a later launch
+## Later production build and launch
 
-- Confirm the final contact method/number and check the supplied social accounts.
-- Confirm any added product, price, availability, collection or delivery statements.
-- Add owner-approved photographs only if desired, with provenance. Current artwork is illustrative.
-- Choose hosting and verify domain access. Publication, remote configuration and pushing need their own instruction.
-- Remove the preview's noindex, nofollow directive and add canonical/social metadata during the authorised launch.
+Publication remains a separate instruction. First confirm domain access, the final HTTPS origin and contact journey, and which drafts are approved. On the actual publication date, set approved articles to published with that genuine date. Then, for example in PowerShell:
 
-Git operations belong in this repository. Local history preserves the supplied starting files and implemented site. Dependencies, build output, local caches and environment files are ignored. No vNN copies are used.
+```powershell
+$env:SITE_ENV = 'production'
+$env:SITE_URL = 'https://adamcrestfarms.com' # Only after this origin is confirmed
+npm run build
+Remove-Item Env:SITE_ENV
+Remove-Item Env:SITE_URL
+```
+
+This creates production files only. It does not deploy. Production requires an explicit HTTPS origin; it emits clean URLs, indexable metadata, a sitemap and robots.txt while excluding drafts/future posts and empty categories. Serve dist/ with directory-index support and the generated 404.html. Confirm hosting behaviour before deployment, then connect Search Console and submit the sitemap separately if authorised.
+
+After inspecting a production build, run npm run build with those variables cleared to restore the draft preview. npm run test:build uses a temporary fixture and example.test origin only for verification, then restores the normal preview automatically.
+
+Git operations belong here. Use Git history for revisions; do not create vNN directories. Required source/assets stay in Website. Read AGENTS.md and the brand/asset/mascot guides before changing claims or visuals.

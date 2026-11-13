@@ -20,7 +20,7 @@ This directory is an independent Git repository. Read README.md, docs/BRAND_BRIE
 
 ## Development
 
-- Choose the framework and hosting approach when the website build is requested; this repository is currently framework-neutral.
+- The site uses Astro to generate static HTML, with file-based Markdown articles. Read docs/BLOG_WORKFLOW.md for research, drafts, dates, publication filtering and article updates. Hosting remains unselected.
 - Preserve .gitignore coverage for dependencies, generated output, local environment files and credentials. Commit sanitised examples and lockfiles as appropriate.
 - Use relative or application-root paths to copied assets, never machine-specific C: paths.
 - Document any new dependency, media source and required environment variable.

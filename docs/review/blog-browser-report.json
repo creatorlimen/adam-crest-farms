@@ -1,0 +1,149 @@
+{
+  "date": "2026-11-13",
+  "browser": "157.0.4341.46",
+  "checks": [
+    {
+      "route": "/blog/",
+      "width": 1440,
+      "overflow": false,
+      "violations": 0,
+      "errors": 0
+    },
+    {
+      "route": "/blog/why-do-ostriches-eat-stones/",
+      "width": 1440,
+      "overflow": false,
+      "violations": 0,
+      "errors": 0
+    },
+    {
+      "route": "/blog/topics/ostriches/",
+      "width": 1440,
+      "overflow": false,
+      "violations": 0,
+      "errors": 0
+    },
+    {
+      "route": "/blog/about/",
+      "width": 1440,
+      "overflow": false,
+      "violations": 0,
+      "errors": 0
+    },
+    {
+      "route": "/blog/",
+      "width": 1024,
+      "overflow": false,
+      "violations": 0,
+      "errors": 0
+    },
+    {
+      "route": "/blog/why-do-ostriches-eat-stones/",
+      "width": 1024,
+      "overflow": false,
+      "violations": 0,
+      "errors": 0
+    },
+    {
+      "route": "/blog/topics/ostriches/",
+      "width": 1024,
+      "overflow": false,
+      "violations": 0,
+      "errors": 0
+    },
+    {
+      "route": "/blog/about/",
+      "width": 1024,
+      "overflow": false,
+      "violations": 0,
+      "errors": 0
+    },
+    {
+      "route": "/blog/",
+      "width": 768,
+      "overflow": false,
+      "violations": 0,
+      "errors": 0
+    },
+    {
+      "route": "/blog/why-do-ostriches-eat-stones/",
+      "width": 768,
+      "overflow": false,
+      "violations": 0,
+      "errors": 0
+    },
+    {
+      "route": "/blog/topics/ostriches/",
+      "width": 768,
+      "overflow": false,
+      "violations": 0,
+      "errors": 0
+    },
+    {
+      "route": "/blog/about/",
+      "width": 768,
+      "overflow": false,
+      "violations": 0,
+      "errors": 0
+    },
+    {
+      "route": "/blog/",
+      "width": 390,
+      "overflow": false,
+      "violations": 0,
+      "errors": 0
+    },
+    {
+      "route": "/blog/why-do-ostriches-eat-stones/",
+      "width": 390,
+      "overflow": false,
+      "violations": 0,
+      "errors": 0
+    },
+    {
+      "route": "/blog/topics/ostriches/",
+      "width": 390,
+      "overflow": false,
+      "violations": 0,
+      "errors": 0
+    },
+    {
+      "route": "/blog/about/",
+      "width": 390,
+      "overflow": false,
+      "violations": 0,
+      "errors": 0
+    },
+    {
+      "route": "/blog/",
+      "width": 320,
+      "overflow": false,
+      "violations": 0,
+      "errors": 0
+    },
+    {
+      "route": "/blog/why-do-ostriches-eat-stones/",
+      "width": 320,
+      "overflow": false,
+      "violations": 0,
+      "errors": 0
+    },
+    {
+      "route": "/blog/topics/ostriches/",
+      "width": 320,
+      "overflow": false,
+      "violations": 0,
+      "errors": 0
+    },
+    {
+      "route": "/blog/about/",
+      "width": 320,
+      "overflow": false,
+      "violations": 0,
+      "errors": 0
+    },
+    "Keyboard skip/menu, contents anchors, article schema and article-to-enquiry journey passed.",
+    "No-JavaScript reading/navigation, direct file links/images and nested 404 recovery passed."
+  ],
+  "passed": true
+}

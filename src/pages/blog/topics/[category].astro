@@ -1,0 +1,20 @@
+---
+import Base from '../../../layouts/Base.astro';
+import PostCard from '../../../components/PostCard.astro';
+import { getPosts } from '../../../lib/posts';
+import { href, categories, categoryRoute } from '../../../lib/site.mjs';
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return [...new Set(posts.map(post => post.data.category))].map(category => ({ params: { category }, props: { category, posts: posts.filter(post => post.data.category === category) } }));
+}
+const { category, posts } = Astro.props;
+const route = categoryRoute(category);
+---
+<Base route={route} title={`${categories[category]} stories | Adam Crest Farms`} description={`Explore researched ${categories[category].toLowerCase()} stories in the Adam Crest Farms journal, with clear explanations and links to the original sources.`}>
+  <div class="journal wrap">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href={href(route, '/')}>Home</a><span aria-hidden="true">/</span><a href={href(route, '/blog/')}>Farm journal</a><span aria-hidden="true">/</span><span aria-current="page">{categories[category]}</span></nav>
+    <header class="journal-heading"><p class="eyebrow">EXPLORE THE JOURNAL</p><h1>{categories[category]}<em>.</em></h1><p>A closer look, one question at a time.</p></header>
+    <div class="post-list">{posts.map(post => <PostCard route={route} post={post} />)}</div>
+    <a class="text-link" href={href(route, '/blog/')}>Explore all stories <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></a>
+  </div>
+</Base>

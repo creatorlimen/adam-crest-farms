@@ -1,35 +1,15 @@
-<!doctype html>
-<html lang="en-NG">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0C230F">
-  <meta name="description" content="Meet Adam Crest Farms in Ologobi Village, Osun State. Explore our ostriches, sheep, goats and crops, and start a product enquiry.">
-  <meta name="robots" content="noindex, nofollow">
-  <title>Adam Crest Farms — Rooted in Osun. Growing for Nigeria.</title>
-  <link rel="icon" type="image/jpeg" href="assets/brand/adam-crest-farms-logo.jpeg">
-  <link rel="stylesheet" href="styles.css">
-  <script src="site-config.js" defer></script>
-  <script src="enquiry.js" defer></script>
-  <script src="app.js" defer></script>
-</head>
-<body id="top">
-  <a class="skip-link" href="#main">Skip to content</a>
-  <svg class="svg-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><symbol id="arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol><symbol id="external" viewBox="0 0 24 24"><path d="M6 18 18 6M6 6h12v12"/></symbol><symbol id="pin" viewBox="0 0 24 24"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.4"/></symbol></defs></svg>
-  <div class="opening">
-    <header class="site-header wrap">
-      <a class="brand" href="#top" aria-label="Adam Crest Farms home">
-        <img src="assets/brand/adam-crest-farms-logo.jpeg" width="70" height="70" alt="Adam Crest Farms logo">
-        <span aria-hidden="true">ADAM CREST<span class="brand-small">F A R M S</span></span>
-      </a>
-      <button class="menu-toggle" aria-expanded="false" aria-controls="navigation" hidden><span>Menu</span><span class="menu-bars" aria-hidden="true"></span></button>
-      <nav id="navigation" aria-label="Main navigation">
-        <a href="#offerings">What we offer</a><a href="#our-farm">Our farm</a><a href="#questions">Good to know</a>
-        <a class="button button-small button-light" href="#enquire">Make an enquiry <svg class="icon" aria-hidden="true" focusable="false"><use href="#external"/></svg></a>
-      </nav>
-    </header>
-  </div>
-    <main id="main" tabindex="-1">
+---
+import Base from "../layouts/Base.astro";
+import { absolute } from '../lib/site.mjs';
+const schema = {
+  '@context': 'https://schema.org', '@type': 'Organization', name: 'Adam Crest Farms',
+  url: absolute('/'), logo: absolute('/assets/brand/adam-crest-farms-logo.jpeg'),
+  address: { '@type': 'PostalAddress', streetAddress: 'Ologobi Village', addressLocality: 'Ede South', addressRegion: 'Osun State', addressCountry: 'NG' },
+  sameAs: ['https://www.instagram.com/adamcrestfarms/', 'https://www.tiktok.com/@adamcrestfarms', 'https://www.facebook.com/profile.php?id=61596237654943']
+};
+---
+<Base route="/" title="Adam Crest Farms — Rooted in Osun. Growing for Nigeria." description="Meet Adam Crest Farms in Ologobi Village, Osun State. Explore our ostriches, sheep, goats and crops, and start a product enquiry." schema={schema}>
+
       <div class="opening">
       <section class="hero wrap" aria-labelledby="hero-title">
         <div class="hero-copy">
@@ -78,7 +58,5 @@
           <div id="enquiry-result" hidden><label for="enquiry-message">Your prepared message</label><textarea id="enquiry-message" rows="7" readonly></textarea><button id="copy-enquiry" class="button button-forest" type="button">Copy enquiry <svg class="icon" aria-hidden="true" focusable="false"><use href="#arrow"/></svg></button></div><p id="copy-status" class="copy-status" role="status" aria-live="polite"></p>
         </div>
       </div></section>
-    </main>
-    <footer id="footer" class="site-footer"><div class="wrap"><div class="footer-top"><a class="brand" href="#top" aria-label="Adam Crest Farms home"><img src="assets/brand/adam-crest-farms-logo.jpeg" width="64" height="64" alt="Adam Crest Farms logo"><span aria-hidden="true">ADAM CREST<span class="brand-small">F A R M S</span></span></a><p>Rooted in Osun State.<br>Growing for Nigeria.</p><div class="social-links"><a data-instagram href="https://www.instagram.com/adamcrestfarms/" target="_blank" rel="noopener noreferrer">Instagram <svg class="icon" aria-hidden="true" focusable="false"><use href="#external"/></svg></a><a href="https://www.tiktok.com/@adamcrestfarms" target="_blank" rel="noopener noreferrer">TikTok <svg class="icon" aria-hidden="true" focusable="false"><use href="#external"/></svg></a><a href="https://www.facebook.com/profile.php?id=61596237654943" target="_blank" rel="noopener noreferrer">Facebook <svg class="icon" aria-hidden="true" focusable="false"><use href="#external"/></svg></a></div></div><div class="footer-base"><span>© 2026 Adam Crest Farms</span><span>Ologobi Village, Ede South, Osun State</span><a href="#top">Back to top ↑</a></div></div></footer>
-</body>
-</html>
+
+</Base>

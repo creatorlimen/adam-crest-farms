@@ -4,16 +4,19 @@
   "private": true,
   "description": "Self-contained Adam Crest Farms website and local preview",
   "engines": {
-    "node": ">=22"
+    "node": ">=22.19.0"
   },
   "scripts": {
-    "start": "node scripts/serve.mjs",
-    "dev": "node scripts/serve.mjs",
+    "start": "node scripts/start.mjs",
+    "dev": "node scripts/start.mjs",
+    "serve": "node scripts/serve.mjs",
     "build": "node scripts/build.mjs",
     "test": "node --test tests/*.test.cjs",
-    "test:browser": "node scripts/review.mjs"
+    "test:build": "node scripts/test-blog-build.mjs",
+    "test:browser": "node scripts/review.mjs && node scripts/review-blog.mjs"
   },
   "devDependencies": {
+    "astro": "6.4.8",
     "@axe-core/playwright": "4.14.0",
     "@playwright/test": "1.65.0"
   }

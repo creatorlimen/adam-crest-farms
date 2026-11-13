@@ -1,0 +1,10 @@
+{
+  "date": "2026-11-13",
+  "checks": [
+    "Preview includes the labelled draft with noindex and an empty sitemap.",
+    "Production has clean canonical URLs, published dates, eligible category/article sitemap entries, and no draft output.",
+    "A future-dated article is excluded; a clean rebuild removes its previously generated page.",
+    "A published article without a genuine publication date fails validation."
+  ],
+  "passed": true
+}

@@ -48,6 +48,13 @@ On 10 November 2026, the owner requested removal of the blue-circled labels, rep
 
 The owner also requested Facebook in the footer and supplied the exact page URL on 12 November 2026: https://www.facebook.com/profile.php?id=61596237654943. It is now included beside Instagram and TikTok.
 
+## Blog decisions confirmed 12 November 2026
+
+- The owner delegated blog research, writing and updates to Codex and approved a file-based Markdown/Astro blog for discovery.
+- Preserve the established website design; add journal/category/article templates, metadata, structured data and sitemap support.
+- The first researched example is a local draft about why ostriches eat stones. No article has been published. Publication dates remain unset until actual publication is authorised.
+- The blog workflow is request-driven unless a schedule is separately configured. No background automation or public deployment is implied.
+
 ## Source context
 
 Business details came from the owner's intake answers retained in the farm workspace's launch-video brief. Instagram was supplied separately in chat. Visual preferences came from the approved carousel SOP. The current mascot selection and kit records were read on 8 November 2026; see MASCOT_GUIDE.md and asset-manifest.json.

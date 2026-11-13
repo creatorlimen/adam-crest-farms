@@ -1,0 +1,8 @@
+---
+import Base from '../layouts/Base.astro';
+import { href } from '../lib/site.mjs';
+const route = '/';
+---
+<Base route={route} title="Page not found | Adam Crest Farms" description="This page could not be found. Return to Adam Crest Farms or explore the farm journal." noindex>
+  <div class="journal wrap"><header class="journal-heading"><p class="eyebrow">404</p><h1>A little off<br /><em>the path.</em></h1><p>We couldn’t find that page.</p></header><a class="button button-forest" href={href(route, '/')}>Return to the farm</a> <a class="text-link" href={href(route, '/blog/')}>Explore the journal</a></div>
+</Base>

@@ -1,0 +1,47 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Icons from '../components/Icons.astro';
+import { href, absolute, production, serializeJson } from '../lib/site.mjs';
+const { title, description, route, image = '/assets/brand/adam-crest-farms-logo.jpeg', imageAlt = 'Adam Crest Farms logo', article = false, schema, noindex = false } = Astro.props;
+const canonical = absolute(route);
+---
+<!doctype html>
+<html lang="en-NG">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0C230F" />
+    <meta name="description" content={description} />
+    <meta name="robots" content={production && !noindex ? 'index, follow, max-image-preview:large' : 'noindex, nofollow'} />
+    <title>{title}</title>
+    {!noindex && <link rel="canonical" href={canonical} />}
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+    <meta property="og:site_name" content="Adam Crest Farms" />
+    <meta property="og:locale" content="en_NG" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={absolute(image)} />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={absolute(image)} />
+    <meta name="twitter:image:alt" content={imageAlt} />
+    <link rel="icon" type="image/jpeg" href={href(route, '/assets/brand/adam-crest-farms-logo.jpeg')} />
+    <link rel="stylesheet" href={href(route, '/styles.css')} />
+    <link rel="stylesheet" href={href(route, '/journal.css')} />
+    {schema && <script type="application/ld+json" set:html={serializeJson(schema)} />}
+    <script is:inline src={href(route, '/site-config.js')} defer></script>
+    <script is:inline src={href(route, '/enquiry.js')} defer></script>
+    <script is:inline src={href(route, '/app.js')} defer></script>
+  </head>
+  <body id="top">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Icons />
+    <Header route={route} />
+    <main id="main" tabindex="-1"><slot /></main>
+    <Footer route={route} />
+  </body>
+</html>

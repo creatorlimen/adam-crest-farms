@@ -2,6 +2,8 @@
 
 Build specification, 10 November 2026. Uses the requested MotionSites specification and screenshot-review method. See BUILD_REVIEW.md for reference provenance.
 
+The 12 November blog extension moves the page into Astro shared templates and adds Farm journal to navigation. See BLOG_SPEC.md for the article/index layouts and BLOG_WORKFLOW.md for research and publishing rules. Those documents supersede the original single-file build approach below; the reviewed home-page visual design is retained.
+
 Final review adjustments: the heading has a 90px maximum; the desktop mascot is 330px wide with 35px bottom space; the decorative label behind its head is hidden; the mobile roots title stacks Osun and State. These final values supersede the initial dimensions below where different. See QA.md.
 
 The owner's later annotated review removes the circled hero/farm/enquiry copy, including the hero location strip, repeated positioning/address, form headings, WhatsApp notice and separate Instagram block. The remaining Instagram instruction links directly to the profile. This approved simplification supersedes the original section-copy specification below. The footer includes the exact Facebook page URL supplied by the owner on 12 November 2026.

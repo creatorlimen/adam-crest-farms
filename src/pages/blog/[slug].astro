@@ -1,0 +1,60 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getPosts } from '../../lib/posts';
+import { href, absolute, articleRoute, categoryRoute, categories, formatDate, readingMinutes } from '../../lib/site.mjs';
+export async function getStaticPaths() {
+  return (await getPosts()).map(post => ({ params: { slug: post.id }, props: { post } }));
+}
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+const data = post.data;
+const route = articleRoute(post);
+const related = (await getPosts()).filter(p => p.id !== post.id && p.data.category === data.category).slice(0, 2);
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [{
+    '@type': 'BlogPosting', headline: data.title, description: data.description,
+    mainEntityOfPage: absolute(route), url: absolute(route), image: [absolute(data.image)],
+    author: { '@type': 'Organization', name: data.author, url: absolute('/blog/about/') },
+    publisher: { '@type': 'Organization', name: 'Adam Crest Farms', url: absolute('/'), logo: { '@type': 'ImageObject', url: absolute('/assets/brand/adam-crest-farms-logo.jpeg') } },
+    ...(data.publishedAt ? { datePublished: data.publishedAt } : {}),
+    ...(data.updatedAt ? { dateModified: data.updatedAt } : {}),
+    articleSection: categories[data.category], inLanguage: 'en-NG', citation: data.sources.map(source => source.url)
+  }, {
+    '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: absolute('/') },
+      { '@type': 'ListItem', position: 2, name: 'Farm journal', item: absolute('/blog/') },
+      { '@type': 'ListItem', position: 3, name: categories[data.category], item: absolute(categoryRoute(data.category)) },
+      { '@type': 'ListItem', position: 4, name: data.title, item: absolute(route) }
+    ]
+  }]
+};
+---
+<Base route={route} title={data.seoTitle} description={data.description} image={data.image} imageAlt={data.imageAlt} article schema={schema}>
+  <article class="article wrap">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href={href(route, '/')}>Home</a><span aria-hidden="true">/</span><a href={href(route, '/blog/')}>Farm journal</a><span aria-hidden="true">/</span><a href={href(route, categoryRoute(data.category))}>{categories[data.category]}</a></nav>
+    <header class="article-heading">
+      <div>
+        <p class="post-kicker">{categories[data.category]} <span>·</span> {readingMinutes(post.body)} min read</p>
+        <h1>{data.title}</h1>
+        <p class="article-deck">{data.description}</p>
+        <p class="article-byline">By <a href={href(route, '/blog/about/')}>{data.author}</a></p>
+        <p class="post-date">{data.publishedAt ? <>Published <time datetime={data.publishedAt}>{formatDate(data.publishedAt)}</time></> : <>Research checked <time datetime={data.researchedAt}>{formatDate(data.researchedAt)}</time></>}{data.updatedAt && <> · Updated <time datetime={data.updatedAt}>{formatDate(data.updatedAt)}</time></>}</p>
+        {data.status === 'draft' && <p class="draft-label">Draft · Local preview</p>}
+      </div>
+      <figure class="article-art"><img src={href(route, data.image)} alt={data.imageAlt} width={data.imageWidth} height={data.imageHeight} /><figcaption>{data.imageCaption}</figcaption></figure>
+    </header>
+    <div class="reading-layout">
+      <aside class="contents"><p class="eyebrow">IN THIS STORY</p><nav aria-label="Article contents">{headings.filter(h => h.depth === 2).map(h => <a href={`#${h.slug}`}>{h.text}</a>)}<a href="#sources">Sources</a></nav></aside>
+      <div>
+        <div class="prose"><Content /></div>
+        <section class="article-sources" id="sources" aria-labelledby="sources-title"><h2 id="sources-title">Sources &amp; further reading</h2><ol>{data.sources.map(source => <li><a href={source.url}>{source.title}</a><span>Checked {formatDate(source.accessed)}</span></li>)}</ol></section>
+        <aside class="article-enquiry"><p class="eyebrow">CURIOUS ABOUT THE FARM?</p><h2>Let’s talk farm.</h2><p>Explore what we offer, or ask us about current options.</p><a class="button button-forest" href={href(route, '/#enquire')}>Make an enquiry <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></a></aside>
+      </div>
+    </div>
+    {related.length > 0 && <section class="related-posts" aria-labelledby="related-title"><h2 id="related-title">Keep exploring.</h2>{related.map(p => <PostCard route={route} post={p} />)}</section>}
+    <a class="text-link journal-return" href={href(route, '/blog/')}>Back to the farm journal <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></a>
+  </article>
+</Base>

@@ -10,7 +10,7 @@ const output = path.join(root, 'docs/review');
 await mkdir(output, { recursive: true });
 const browser = await chromium.launch({ channel: process.env.BROWSER_CHANNEL || undefined });
 const base = process.env.PREVIEW_URL || 'http://127.0.0.1:4173';
-const report = { date: '2026-11-10', browser: await browser.version(), viewports: [], interactions: [] };
+const report = { date: '2026-11-13', browser: await browser.version(), viewports: [], interactions: [] };
 const failures = [];
 
 try {
@@ -104,7 +104,7 @@ try {
 
   const fileContext = await browser.newContext();
   const filePage = await fileContext.newPage();
-  await filePage.goto(pathToFileURL(path.join(root, 'public/index.html')).href);
+  await filePage.goto(pathToFileURL(path.join(root, 'dist/index.html')).href);
   await filePage.getByRole('button', { name: 'Prepare my enquiry', exact: true }).click();
   assert.ok((await filePage.locator('#enquiry-message').inputValue()).includes('Hello Adam Crest Farms'));
   await fileContext.close();

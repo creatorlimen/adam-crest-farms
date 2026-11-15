@@ -4,15 +4,17 @@ const { post, route } = Astro.props;
 const data = post.data;
 ---
 <article class="post-card">
-  <a class="post-art" href={href(route, articleRoute(post))} tabindex="-1" aria-hidden="true">
-    <span class="post-art-ring"></span>
-    <img src={href(route, data.image)} width={data.imageWidth} height={data.imageHeight} alt="" loading="lazy" />
-  </a>
+  <div class:list={['post-art', { 'post-art-illustration': data.image.startsWith('/assets/mascot/') }]}>
+    <a class="post-image-link" href={href(route, articleRoute(post))} tabindex="-1" aria-hidden="true">
+      <img src={href(route, data.image)} width={data.imageWidth} height={data.imageHeight} alt="" loading="lazy" />
+    </a>
+    <span class="post-category">{categories[data.category]}</span>
+  </div>
   <div class="post-card-copy">
-    <p class="post-kicker">{categories[data.category]} <span>·</span> {readingMinutes(post.body)} min read</p>
     <h2><a href={href(route, articleRoute(post))}>{data.title}</a></h2>
-    <p>{data.description}</p>
-    <p class="post-date">{data.status === 'draft' ? 'Draft · ' : ''}{data.publishedAt ? 'Published ' + formatDate(data.publishedAt) : 'Research checked ' + formatDate(data.researchedAt)}</p>
-    <a class="text-link dark-link" href={href(route, articleRoute(post))}>Read the story <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></a>
+    <p class="post-excerpt">{data.description}</p>
+    <p class="post-date">{data.publishedAt ? 'Published ' : 'Research checked '}<time datetime={data.publishedAt || data.researchedAt}>{formatDate(data.publishedAt || data.researchedAt)}</time></p>
+    <div class="post-card-details"><span>{readingMinutes(post.body)} min read</span>{data.status === 'draft' && <span>Draft</span>}</div>
+    <a class="button button-forest post-read-link" href={href(route, articleRoute(post))} aria-label={`Read article: ${data.title}`}>Read article <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></a>
   </div>
 </article>

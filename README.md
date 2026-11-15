@@ -2,7 +2,7 @@
 
 A self-contained Astro website with a Markdown farm journal, responsive farm introduction and product-enquiry composer. The supplied logo, Option C mascot and reviewed home-page design are retained.
 
-**Status, 13 November 2026:** local preview only. One researched journal draft is available for review. Nothing is published or deployed, no remote is configured, and WhatsApp remains hidden until an owner-confirmed number is supplied. The footer includes Instagram, TikTok and the confirmed Facebook page.
+**Status, 15 November 2026:** local preview only. One researched journal draft is available for review. Post previews now follow the owner's rounded image-card reference, with four columns on desktop, two on tablet and one on mobile. Nothing is published or deployed, no remote is configured, and WhatsApp remains hidden until an owner-confirmed number is supplied. The footer includes Instagram, TikTok and the confirmed Facebook page.
 
 ## Setup and preview
 
@@ -29,6 +29,8 @@ The built preview also opens directly: [Home](dist/index.html), [Farm journal](d
 Read [BLOG_WORKFLOW.md](docs/BLOG_WORKFLOW.md) for research, drafting and updates. Copy the [post template](docs/templates/blog-post.md) into src/content/blog/<slug>.md and replace every example value. The filename determines the stable URL /blog/<slug>/.
 
 The schema validates metadata, category, dates, sources and image information. Each post has its own HTML page, search title/description, canonical and sharing metadata, BlogPosting/breadcrumb JSON-LD, contents links and source list. Categories, related posts and the sitemap derive from eligible articles. Full article text and navigation work without JavaScript.
+
+The journal index at /blog/ previews all eligible posts as cards with an image, category, title, excerpt, date and reading time. Images, titles and the Read article buttons open the full post. Topic archives and related posts reuse the same card design. New eligible Markdown articles populate the grid automatically.
 
 Default local builds show labelled drafts and carry noindex/nofollow plus a blocking robots.txt and empty sitemap. Published posts need a genuine publishedAt date. Future-dated posts are omitted from production builds. There is no automatic publishing scheduler. Research dates and substantive update dates have separate meanings.
 

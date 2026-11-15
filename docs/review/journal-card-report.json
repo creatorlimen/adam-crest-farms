@@ -1,0 +1,78 @@
+{
+  "date": "2026-11-15",
+  "browser": "157.0.4341.60",
+  "passed": true,
+  "checks": [
+    {
+      "width": 1440,
+      "columns": 4,
+      "overflow": false,
+      "cardCount": 1
+    },
+    {
+      "width": 1200,
+      "columns": 4,
+      "overflow": false,
+      "cardCount": 1
+    },
+    {
+      "width": 1199,
+      "columns": 2,
+      "overflow": false,
+      "cardCount": 1
+    },
+    {
+      "width": 768,
+      "columns": 2,
+      "overflow": false,
+      "cardCount": 1
+    },
+    {
+      "width": 640,
+      "columns": 2,
+      "overflow": false,
+      "cardCount": 1
+    },
+    {
+      "width": 639,
+      "columns": 1,
+      "overflow": false,
+      "cardCount": 1
+    },
+    {
+      "width": 390,
+      "columns": 1,
+      "overflow": false,
+      "cardCount": 1
+    },
+    {
+      "width": 320,
+      "columns": 1,
+      "overflow": false,
+      "cardCount": 1
+    },
+    {
+      "selector": ".post-image-link",
+      "opensArticle": true
+    },
+    {
+      "selector": ".post-card h2 a",
+      "opensArticle": true
+    },
+    {
+      "selector": ".post-read-link",
+      "opensArticle": true
+    },
+    {
+      "keyboardArticleLink": true,
+      "focus": {
+        "visible": true,
+        "style": "solid",
+        "width": "3px"
+      }
+    },
+    {
+      "browserOnlyFourCardFixture": "Equal card heights and aligned buttons passed; no fixture content saved to site."
+    }
+  ]
+}

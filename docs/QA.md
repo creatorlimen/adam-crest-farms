@@ -1,6 +1,17 @@
 # Local website verification
 
-Latest complete review: 13 November 2026 with Microsoft Edge 157.0.4341.46 via local Playwright tests. The website and the new journal remain local and unpublished. Earlier review notes are retained below.
+Latest journal review: 15 November 2026 with Microsoft Edge 157.0.4341.60 via local Playwright. The complete home-page and publication-lifecycle review remains dated 13 November 2026. The website and journal remain local and unpublished. Earlier review notes are retained below.
+
+## Journal preview cards, 15 November 2026
+
+- Replaced the horizontal editorial row with the owner's reference-inspired rounded card: image, overlaid category badge, bold title, excerpt, date, reading-time/draft pills and full-width Read article button. The shared component covers the journal, topic archives and related posts.
+- The local preview build succeeded. All four journal routes passed the existing browser review at 1440, 1024, 768, 390 and 320px: no overflow, broken images, console/page errors, external runtime requests or axe WCAG A/AA findings. Internal links, keyboard navigation, no-JavaScript reading, direct-file navigation, article schema and the enquiry journey passed.
+- Targeted layout checks confirmed four columns at 1200px and above, two at 640-1199px and one below 640px. Tested both sides of each breakpoint plus 320px and 390px. The actual preview contains only the existing researched draft.
+- Image, title and button each opened the correct full article. Keyboard Tab reached the button, its gold focus outline remained visible, and Enter opened the article. The initial keyboard check read the URL before navigation completed; waiting for navigation resolved that test timing issue without a site change.
+- A temporary browser-only four-card fixture with varied excerpt lengths confirmed equal card heights and aligned buttons. No fixture posts were written to content or output. Visually inspected desktop/mobile previews, the focused card and the fixture layout; the mascot retains its proportions.
+- The browser report now records the actual run date instead of a fixed historical date. Existing publication filtering and article content were unchanged, so the publication-lifecycle checks were not repeated for this presentation change.
+
+Evidence: [card layout and navigation report](review/journal-card-report.json), [journal browser report](review/blog-browser-report.json), [desktop journal](review/desktop-journal.png), [mobile journal](review/mobile-journal.png), [keyboard focus](review/journal-card-focus.png).
 
 ## Results
 

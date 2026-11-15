@@ -54,7 +54,7 @@ const schema = {
         <aside class="article-enquiry"><p class="eyebrow">CURIOUS ABOUT THE FARM?</p><h2>Let’s talk farm.</h2><p>Explore what we offer, or ask us about current options.</p><a class="button button-forest" href={href(route, '/#enquire')}>Make an enquiry <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></a></aside>
       </div>
     </div>
-    {related.length > 0 && <section class="related-posts" aria-labelledby="related-title"><h2 id="related-title">Keep exploring.</h2>{related.map(p => <PostCard route={route} post={p} />)}</section>}
+    {related.length > 0 && <section class="related-posts" aria-labelledby="related-title"><h2 id="related-title">Keep exploring.</h2><div class="post-list">{related.map(p => <PostCard route={route} post={p} />)}</div></section>}
     <a class="text-link journal-return" href={href(route, '/blog/')}>Back to the farm journal <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></a>
   </article>
 </Base>

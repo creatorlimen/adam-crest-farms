@@ -8,7 +8,7 @@ import path from 'node:path';
 const base = process.env.PREVIEW_URL || 'http://127.0.0.1:4173';
 const routes = ['/blog/', '/blog/why-do-ostriches-eat-stones/', '/blog/topics/ostriches/', '/blog/about/'];
 const browser = await chromium.launch({ channel: process.env.BROWSER_CHANNEL || undefined });
-const report = { date: '2026-11-13', browser: browser.version(), checks: [], passed: false };
+const report = { date: new Date().toISOString().slice(0, 10), browser: browser.version(), checks: [], passed: false };
 try {
   for (const width of [1440, 1024, 768, 390, 320]) {
     const context = await browser.newContext({ viewport: { width, height: 900 }, reducedMotion: 'reduce' });

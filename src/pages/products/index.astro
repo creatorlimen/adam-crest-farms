@@ -1,17 +1,11 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { href } from '../../lib/site.mjs';
-import { products, productRoute } from '../../lib/products.mjs';
+import ProductGrid from '../../components/ProductGrid.astro';
 const route = '/products/';
 ---
 <Base route={route} title="Farm products | Adam Crest Farms" description="Browse crops, ostrich eggs and chicks, sheep and goats at Adam Crest Farms in Osun State. Select a product for details and a quotation.">
   <div class="wrap catalogue">
     <header class="catalogue-heading"><h1>Our <em>products.</em></h1><p>Prices are available by quotation.<br />Bulk supply enquiries are welcome.</p></header>
-    <div class="catalogue-grid">
-      {products.map(product => <a class:list={['catalogue-entry', !product.image && 'type-only']} href={href(route, productRoute(product))}>
-        {product.image && <div class={'catalogue-photo ' + product.slug}><img src={href(route, product.image)} width={product.width} height={product.height} alt={product.alt} /></div>}
-        <div class="entry-caption"><div><h2>{product.name}</h2><p>{product.teaser}</p></div><span class="circle-arrow"><svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></span></div>
-      </a>)}
-    </div>
+    <ProductGrid route={route} />
   </div>
 </Base>

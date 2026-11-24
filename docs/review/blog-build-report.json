@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-24",
+  "date": "2026-11-25",
   "checks": [
     "Preview includes the labelled draft with noindex and an empty sitemap.",
     "Production has clean canonical URLs, published dates, eligible category/article sitemap entries, and no draft output.",

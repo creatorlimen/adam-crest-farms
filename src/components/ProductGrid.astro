@@ -1,0 +1,18 @@
+---
+import { href } from '../lib/site.mjs';
+import { products, productRoute } from '../lib/products.mjs';
+const { route, heading: Heading = 'h2' } = Astro.props;
+---
+<div class="catalogue-grid">
+  {products.map(product => (
+    <a class:list={['catalogue-entry', !product.image && 'type-only']} href={href(route, productRoute(product))}>
+      {product.image && <div class={'catalogue-photo ' + product.slug}>
+        <img src={href(route, product.image)} width={product.width} height={product.height} alt={product.alt} loading={route === '/' ? 'lazy' : 'eager'} />
+      </div>}
+      <div class="entry-caption">
+        <div><Heading>{product.name}</Heading><p>{product.teaser}</p></div>
+        <span class="circle-arrow" aria-hidden="true"><svg class="icon"><use href="#arrow" /></svg></span>
+      </div>
+    </a>
+  ))}
+</div>

@@ -42,7 +42,11 @@ try {
   build(true);
   assert.equal(await exists(path.join(root, 'dist/blog/seo-lifecycle-fixture/index.html')), false);
   assert.doesNotMatch(await read('sitemap.xml'), /seo-lifecycle-fixture/);
-  assert.doesNotMatch(await read('index.html'), /seo-lifecycle-fixture|why-do-ostriches-eat-stones|id="journal"/);
+  const homeWithoutPost = await read('index.html');
+  assert.doesNotMatch(homeWithoutPost, /seo-lifecycle-fixture|why-do-ostriches-eat-stones|id="journal"/);
+  for (const section of ['offerings', 'our-farm', 'enquire', 'enquiry-form']) {
+    assert.ok(homeWithoutPost.includes(`id="${section}"`), 'Missing homepage content: ' + section);
+  }
   assert.match(await read('about/index.html'), /class="mascot story-mascot"/);
   report.checks.push('Homepage journal shares publication filtering: eligible article only, no draft/future links, and the empty feature is omitted while the mascot remains.');
   report.checks.push('A future-dated article is excluded; a clean rebuild removes its previously generated page.');

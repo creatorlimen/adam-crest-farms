@@ -1,13 +1,13 @@
 export const products = [
   {
-    slug: 'crops', name: 'Crops', teaser: 'Fresh vegetables',
+    slug: 'crops', name: 'Crops', teaser: 'Cucumbers, tomatoes and bell peppers',
     image: '/assets/farm/cucumbers.webp', alt: 'Bags of harvested cucumbers at the farm', width: 1280, height: 720,
     intro: 'We grow vegetables for households, market traders, restaurants and bulk buyers. What is ready depends on the harvest.',
     listTitle: 'What we grow', items: ['Cucumbers', 'Tomatoes', 'Green and coloured bell peppers'],
     enquiry: 'Tell us which vegetables you need, the quantity and your preferred date.',
   },
   {
-    slug: 'ostriches', name: 'Ostriches', teaser: 'Fertilised eggs and young chicks',
+    slug: 'ostriches', name: 'Ostriches', teaser: 'Fertilised eggs and chicks aged 4–8 weeks',
     image: '/assets/farm/ostrich-paddock.webp', alt: 'Adult ostriches in the farm paddock', width: 720, height: 1280,
     intro: 'The adult flock pictured here lives in our paddock in Ede South. Please enquire about availability for your preferred date.',
     listTitle: 'Ostrich products', items: ['Fertilised ostrich eggs', 'Chicks aged 4–8 weeks'],

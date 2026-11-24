@@ -98,11 +98,33 @@ try {
   assert.equal(await page.locator('a[href^="https://wa.me"]').count(), 0);
   assert.equal(await page.locator('#whatsapp-pending').count(), 0);
   assert.ok(await page.locator('.arrangements-pending').isVisible());
-  for (const [hash, destination] of [['enquire','contact'], ['our-farm','about'], ['offerings','products']]) {
+  for (const hash of ['enquire', 'our-farm', 'offerings']) {
     await page.goto(base + '/#' + hash);
-    await page.waitForURL('**/' + destination + '/index.html');
+    assert.equal(await page.locator('section:target').getAttribute('id'), hash);
   }
-  report.interactions.push('Legacy homepage bookmarks reach the dedicated pages.');
+  report.interactions.push('All three historic homepage bookmarks land on their restored sections.');
+  await page.goto(base);
+  await page.getByRole('link', { name: 'Explore our products' }).click();
+  assert.equal(new URL(page.url()).hash, '#offerings');
+  for (const name of ['Crops', 'Ostriches', 'Sheep', 'Goats']) {
+    await page.locator('#offerings a').filter({ has: page.getByRole('heading', { name, exact: true }) }).click();
+    assert.equal(await page.locator('h1').innerText(), name);
+    await page.goBack();
+  }
+  await page.locator('#our-farm').getByRole('link', { name: 'About the farm' }).click();
+  assert.ok(new URL(page.url()).pathname.startsWith('/about/'));
+  await page.goBack();
+  await page.locator('#product').selectOption('Ostriches');
+  await page.locator('#details').fill('Please quote for four chicks.');
+  await page.getByRole('button', { name: 'Prepare my enquiry' }).click();
+  const homeMessage = await page.locator('#enquiry-message').inputValue();
+  assert.match(homeMessage, /your ostriches/);
+  assert.match(homeMessage, /four chicks/);
+  await page.getByRole('button', { name: 'Copy enquiry' }).click();
+  await page.getByRole('status').filter({ hasText: 'Enquiry copied' }).waitFor();
+  assert.equal((await page.evaluate(() => navigator.clipboard.readText())).replace(/\r\n/g, '\n'), homeMessage);
+  assert.equal(await page.locator('#enquiry-result a').getAttribute('href'), 'https://www.instagram.com/adamcrestfarms/');
+  report.interactions.push('Home opens all four detail pages and About. Its quote form prepares and copies an Instagram enquiry in place.');
   await page.goto(base);
   await page.locator('#journal').getByRole('link', { name: 'View all articles' }).click();
   assert.equal(await page.locator('h1').innerText(), 'Farm journal.');
@@ -117,6 +139,11 @@ try {
   assert.ok(await fallback.locator('#navigation').isVisible());
   assert.ok(await fallback.locator('noscript').isVisible());
   assert.equal(await fallback.locator('#composer-fields').isVisible(), false);
+  await fallback.goto(base);
+  await fallback.getByRole('link', { name: 'Explore our products' }).click();
+  assert.equal(await fallback.locator('section:target').getAttribute('id'), 'offerings');
+  assert.equal(await fallback.locator('#offerings .catalogue-entry').count(), 4);
+  assert.ok(await fallback.locator('#enquire noscript').getByRole('link', { name: 'Message us on Instagram' }).isVisible());
   await noJs.close();
   report.interactions.push('Navigation, product details, contact link and fallback remain available without JavaScript.');
 

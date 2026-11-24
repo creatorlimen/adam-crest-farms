@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-24",
+  "date": "2026-11-25",
   "browser": "158.0.4370.33",
   "viewports": [
     {
@@ -488,7 +488,8 @@
     "Mobile menu opens, closes on Escape with focus returned, and closes on navigation.",
     "All four category links preselect their product; enquiry text and clipboard output match.",
     "Editing invalidates the prepared message; clipboard failure exposes manual-copy instructions.",
-    "Legacy homepage bookmarks reach the dedicated pages.",
+    "All three historic homepage bookmarks land on their restored sections.",
+    "Home opens all four detail pages and About. Its quote form prepares and copies an Instagram enquiry in place.",
     "Homepage journal link opens the card index, and its Read article link opens the full post.",
     "Navigation, product details, contact link and fallback remain available without JavaScript.",
     "Direct file opening also loads the page and prepares an enquiry."

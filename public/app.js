@@ -23,12 +23,7 @@
 
   for (const link of document.querySelectorAll('[data-instagram]')) link.href = window.FARM_CONFIG.instagramUrl;
   const form = document.querySelector('#enquiry-form');
-  if (!form) {
-    const moved = { '#enquire': 'enquire', '#offerings': 'offerings', '#our-farm': 'our-farm' };
-    const previousDestination = document.getElementById(moved[window.location.hash]);
-    if (previousDestination instanceof HTMLAnchorElement) window.location.replace(previousDestination.href);
-    return;
-  }
+  if (!form) return;
   const product = document.querySelector('#product');
   const result = document.querySelector('#enquiry-result');
   const message = document.querySelector('#enquiry-message');
@@ -47,6 +42,7 @@
   form.addEventListener('input', () => {
     result.hidden = true;
     status.textContent = '';
+    if (whatsappReady) whatsappLink.href = `https://wa.me/${whatsappNumber}`;
   });
   form.addEventListener('submit', event => {
     event.preventDefault();

@@ -1,5 +1,11 @@
 # Local website verification
 
+## Homepage restoration, 25 November 2026
+
+The hero now jumps to four product entries. The nursery photograph and founding story link to About. Home and Contact share the enquiry form. The three original homepage bookmarks now land directly on their sections.
+
+The local review followed all four homepage product links, prepared and copied an ostrich enquiry on Home, and followed a product-specific quote request through Contact. Checks covered five widths from 320 to 1440 pixels, keyboard navigation, JavaScript-disabled fallbacks and opening the site directly from disk. Review images show the full page at [desktop](review/multipage/desktop-home.png) and [phone](review/multipage/mobile-home.png) sizes.
+
 ## Multipage redesign, 24 November 2026
 
 The main navigation now opens Home, Products, About, Farm journal and Contact. The catalogue has four dedicated product pages. Product enquiries pass the selected category to Contact through the URL, including in the direct-file preview.

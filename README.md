@@ -2,7 +2,7 @@
 
 A self-contained Astro website with a Markdown farm journal, a photograph-led farm introduction and a product-enquiry composer. The supplied logo, Option C mascot and established forest/cream/gold palette are retained.
 
-**Local redesign, 24 November 2026.** Home introduces the farm. [Products](dist/products/index.html) opens a catalogue with individual crop, ostrich, sheep and goat pages. Each category links to [Contact](dist/contact/index.html) with that category selected for the enquiry. [About](dist/about/index.html) covers the founding story, location and team. Previous homepage bookmarks lead to the corresponding pages.
+**Local homepage revision, 25 November 2026.** Home introduces the farm, links directly to all four product groups, tells the founding story beside the nursery photograph and lets visitors prepare a quote request. The historical `#offerings`, `#our-farm` and `#enquire` bookmarks open those sections. [Products](dist/products/index.html) shares the homepage product entries. Each detail page links to [Contact](dist/contact/index.html) with the product preselected. [About](dist/about/index.html) covers the founding story, location and team.
 
 The Farm Journal retains its article cards, topic archives and full articles. The homepage features the latest eligible post. The preview includes one labelled draft. Instagram is the available contact channel, and WhatsApp is hidden pending a confirmed number. Everything is local.
 
@@ -55,7 +55,7 @@ npm run test:browser
 
 On other platforms, install the Playwright Chromium browser with npx playwright install chromium and omit BROWSER_CHANNEL. Optional PREVIEW_URL changes the local address used by checks; optional PORT changes the server port. Screenshots and reports are written to docs/review/. Browser checks cover 320 to 1440px layouts, keyboard navigation, no-JavaScript reading, enquiry/copy behaviour, internal links, 404 recovery and common WCAG A/AA issues. Automated scans are not accessibility certification.
 
-The redesign's [desktop homepage](docs/review/multipage/desktop-home.png) and [mobile contact page](docs/review/multipage/mobile-contact.png) show the current layout. See [QA.md](docs/QA.md), [journal screenshot](docs/review/desktop-journal-opening.png) and [article screenshot](docs/review/mobile-article-opening.png).
+The [desktop homepage](docs/review/multipage/desktop-home.png) and [mobile homepage](docs/review/multipage/mobile-home.png) show the current layout. See [QA.md](docs/QA.md), [journal screenshot](docs/review/desktop-journal-opening.png) and [article screenshot](docs/review/mobile-article-opening.png).
 
 ## Repository map
 

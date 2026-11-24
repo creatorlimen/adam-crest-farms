@@ -10,9 +10,8 @@ const topics = [...new Set(posts.map(post => post.data.category))];
 <Base route={route} title="Farm journal | Adam Crest Farms" description="A closer look at ostriches, sheep, goats and crops. Explore researched stories and practical questions from the Adam Crest Farms journal.">
   <div class="journal wrap">
     <header class="journal-heading">
-      <p class="eyebrow">FARM JOURNAL</p>
-      <h1>Small discoveries.<br /><em>A closer look.</em></h1>
-      <p>Curious about the animals and crops around us? Start here.</p>
+      <h1>Farm journal.</h1>
+      <p>Researched articles on crops, livestock and the questions behind farming.</p>
     </header>
     <nav class="topic-links" aria-label="Journal topics">
       <a href={href(route, '/blog/')} aria-current="page">All stories</a>
@@ -22,6 +21,6 @@ const topics = [...new Set(posts.map(post => post.data.category))];
       {posts.map(post => <PostCard post={post} route={route} />)}
       {!posts.length && <p class="empty-journal">Our first stories are being prepared. In the meantime, <a href={href(route, '/#offerings')}>explore the farm</a>.</p>}
     </div>
-    <div class="journal-note"><p>Good questions deserve well-sourced answers.</p><a href={href(route, '/blog/about/')} class="text-link">How we put our stories together <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></a></div>
+    <div class="journal-note"><a href={href(route, '/blog/about/')} class="text-link">Our editorial approach <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></a></div>
   </div>
 </Base>

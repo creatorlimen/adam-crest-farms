@@ -9,7 +9,7 @@ const sample = await readFile(path.join(root, 'src/content/blog/why-do-ostriches
 const fixture = path.join(root, 'src/content/blog/seo-lifecycle-fixture.md');
 const exists = async p => access(p).then(() => true, () => false);
 if (await exists(fixture)) throw new Error('Test fixture already exists; refusing to replace it');
-const report = { date: '2026-11-13', checks: [], passed: false };
+const report = { date: new Intl.DateTimeFormat('en-CA', { timeZone: 'Africa/Lagos' }).format(new Date()), checks: [], passed: false };
 function build(live = false, succeeds = true) {
   const run = spawnSync(process.execPath, ['scripts/build.mjs'], { cwd: root, encoding: 'utf8', env: { ...process.env, SITE_ENV: live ? 'production' : 'preview', SITE_URL: 'https://example.test', BUILD_DATE: '2026-11-12', ASTRO_TELEMETRY_DISABLED: '1' } });
   if (succeeds && run.status !== 0) throw new Error(run.stdout + run.stderr);
@@ -20,6 +20,8 @@ const read = file => readFile(path.join(root, 'dist', file), 'utf8');
 try {
   build();
   assert.match(await read('blog/why-do-ostriches-eat-stones/index.html'), /noindex, nofollow/);
+  assert.match(await read('index.html'), /Draft preview/);
+  assert.match(await read('index.html'), /blog\/why-do-ostriches-eat-stones\/index.html/);
   assert.doesNotMatch(await read('sitemap.xml'), /<loc>/);
   report.checks.push('Preview includes the labelled draft with noindex and an empty sitemap.');
   await writeFile(fixture, sample.replace('status: draft', 'status: published\npublishedAt: "2026-11-01"').replace('category: ostriches', 'category: crops'));
@@ -32,12 +34,17 @@ try {
   assert.match(await read('sitemap.xml'), /topics\/crops/);
   assert.doesNotMatch(await read('sitemap.xml'), /ostriches/);
   assert.equal(await exists(path.join(root, 'dist/blog/why-do-ostriches-eat-stones/index.html')), false);
+  assert.match(await read('index.html'), /\/blog\/seo-lifecycle-fixture\//);
+  assert.doesNotMatch(await read('index.html'), /why-do-ostriches-eat-stones|Draft preview/);
   assert.match(await read('robots.txt'), /Sitemap: https:\/\/example.test\/sitemap.xml/);
   report.checks.push('Production has clean canonical URLs, published dates, eligible category/article sitemap entries, and no draft output.');
   await writeFile(fixture, sample.replace('status: draft', 'status: published\npublishedAt: "2999-01-01"'));
   build(true);
   assert.equal(await exists(path.join(root, 'dist/blog/seo-lifecycle-fixture/index.html')), false);
   assert.doesNotMatch(await read('sitemap.xml'), /seo-lifecycle-fixture/);
+  assert.doesNotMatch(await read('index.html'), /seo-lifecycle-fixture|why-do-ostriches-eat-stones|id="journal"/);
+  assert.match(await read('index.html'), /class="mascot"/);
+  report.checks.push('Homepage journal shares publication filtering: eligible article only, no draft/future links, and the empty feature is omitted while the mascot remains.');
   report.checks.push('A future-dated article is excluded; a clean rebuild removes its previously generated page.');
   await writeFile(fixture, sample.replace('status: draft', 'status: published'));
   assert.match(build(true, false), /Published articles need/);

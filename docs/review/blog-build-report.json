@@ -1,8 +1,9 @@
 {
-  "date": "2026-11-13",
+  "date": "2026-11-24",
   "checks": [
     "Preview includes the labelled draft with noindex and an empty sitemap.",
     "Production has clean canonical URLs, published dates, eligible category/article sitemap entries, and no draft output.",
+    "Homepage journal shares publication filtering: eligible article only, no draft/future links, and the empty feature is omitted while the mascot remains.",
     "A future-dated article is excluded; a clean rebuild removes its previously generated page.",
     "A published article without a genuine publication date fails validation."
   ],

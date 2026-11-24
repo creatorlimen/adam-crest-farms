@@ -1,6 +1,6 @@
 # Adam Crest Farms — website brand brief
 
-Prepared 8 November 2026 from the owner's supplied business details, approved content preferences and current local brand records. This is the repository's standalone context.
+Prepared 8 November 2026; updated 24 November 2026 from the returned owner questionnaire and supplied farm photographs. This is the repository's standalone context.
 
 ## Business facts
 
@@ -8,7 +8,13 @@ Prepared 8 November 2026 from the owner's supplied business details, approved co
 |---|---|
 | Name | Adam Crest Farms |
 | Offer | Ostriches, sheep, goats and crops |
-| Audience | End consumers across Nigeria |
+| Founded | 2026 |
+| Audience | Individuals, households, retailers, market traders, wholesalers, restaurants and other businesses; local and wider markets |
+| Named crops | Cucumbers, tomatoes, green and coloured bell peppers |
+| Ostrich products | Fertilised eggs; chicks aged 4–8 weeks |
+| Sheep names supplied | Balami, Saudanis, Koroji, Huda |
+| Goat details | Breeds and sale options not yet supplied |
+| Pricing | Request a quote; bulk orders and supply enquiries welcome |
 | Farm address | Ologobi Village, Ede South, Osun State, Nigeria |
 | Domain | adamcrestfarms.com |
 | Instagram | @adamcrestfarms |
@@ -28,9 +34,19 @@ The owner describes quality products and healthy, well-fed livestock. These are 
 - Preserve the supplied logo. Use the expressive ostrich mascot as a supporting personality; its working name, Crestie, is unapproved.
 - Use the supplied artwork without stretching or presenting illustrations as real farm photography.
 
-## Details still to establish during the website build
+## Owner questionnaire received 24 November 2026
 
-Current products and availability; final phone/WhatsApp or email; delivery/collection arrangements; owner-approved farm photographs; hosting and domain access.
+The farm started in 2026. Its founding aims include contributing to food production, creating employment and building an agricultural business for future generations. The owner describes a team of farm managers, agronomists and farm staff; no names were supplied. These aims are not evidence of measured impact or certification.
+
+Availability follows stock and harvest cycles. The owner mentions unspecified fruits alongside the named vegetables, so no fruit varieties are advertised. Sheep names retain the owner's spelling; the ambiguous parenthetical “Malian, Chadian, Nigeria” is not used as an origin/import claim. The adult ostriches in the supplied photograph do not establish adult birds for sale.
+
+The owner's generic statements about quality, modern techniques and sustainability do not establish particular farming practices, organic status, veterinary standards or independently verified credentials. Prefer specific confirmed facts in public copy.
+
+The completed `Adam Crest Farms Questionnaire.docx` remains outside the website repository and public output. See [CONTENT_REBUILD.md](CONTENT_REBUILD.md) for the content decisions and outstanding gaps.
+
+## Details still to establish
+
+Current stock/harvest availability; goat breeds and sale options; sheep/goat photographs; unspecified fruit varieties; final phone/WhatsApp or email; ordering, delivery, collection and visit arrangements; hosting and domain access. Four owner-supplied farm photographs are now used, with provenance in the asset manifest.
 
 Do not invent missing details, prices, opening hours, certifications, testimonials, awards or fulfilment promises. Domain and social identities above were supplied by the owner; this repository setup did not verify live accounts, domain control or website availability.
 
@@ -47,6 +63,8 @@ Do not invent missing details, prices, opening hours, certifications, testimonia
 On 10 November 2026, the owner requested removal of the blue-circled labels, repeated location/positioning text, secondary hero enquiry link, form headings, location optional marker, WhatsApp notice, form explanation and separate Instagram contact block. Only the location field's visible optional marker was removed; its input remains optional. The remaining step-3 Instagram text links to the supplied profile so the enquiry flow still works.
 
 The owner also requested Facebook in the footer and supplied the exact page URL on 12 November 2026: https://www.facebook.com/profile.php?id=61596237654943. It is now included beside Instagram and TikTok.
+
+The 24 November rebuild replaces the generic farm/product copy and repetitive FAQ with questionnaire-based content and real photographs. The enquiry instructions are one sentence; an Instagram action appears after preparing a message to make the handoff usable. Placeholders identify missing photographs, goat details and collection/delivery/visit arrangements. The WhatsApp notice remains removed.
 
 ## Blog decisions confirmed 12 November 2026
 

@@ -35,8 +35,68 @@
         254
       ],
       "copied_unchanged": true,
-      "placement": "Hero welcome illustration, journal card/article illustration and article sharing metadata; full-body and proportional"
+      "placement": "Small farm-story illustration, homepage journal feature, journal card/article and article sharing metadata; proportional and explicitly illustrative"
+    },
+    {
+      "file": "public/assets/farm/greenhouses.webp",
+      "source_workspace_relative": "03_Brand/Images/WhatsApp Image 2026-11-19 at 20.15.35.jpeg",
+      "provenance": "Owner-supplied farm photograph, selected for local website rebuild on 2026-11-24",
+      "source_sha256": "df59b657374531005084e153750bdfaeacfa84e3090e408567d31175de5944ec",
+      "sha256": "d0782579b225409771fba8ddbb8d494e66771649e0713164c133f6cf2747716a",
+      "bytes": 190300,
+      "width": 1280,
+      "height": 720,
+      "mode": "RGB",
+      "copied_unchanged": false,
+      "processing": "WebP quality 84, maximum 1280px, EXIF orientation applied; no retouching or generative edits. Layout uses object-fit cropping.",
+      "placement_status": "implemented",
+      "placement": "Homepage lead photograph"
+    },
+    {
+      "file": "public/assets/farm/cucumbers.webp",
+      "source_workspace_relative": "03_Brand/Images/WhatsApp Image 2026-11-17 at 20.04.43.jpeg",
+      "provenance": "Owner-supplied farm photograph, selected for local website rebuild on 2026-11-24",
+      "source_sha256": "9e1a4787ab82c5e280de69454d789bd3777212730420fbf53ff97825ae222cd9",
+      "sha256": "10810c8f8346649cb483b0993e276e7ded759fb1c136ec1b8a4cc9384df11b37",
+      "bytes": 247784,
+      "width": 1280,
+      "height": 720,
+      "mode": "RGB",
+      "copied_unchanged": false,
+      "processing": "WebP quality 84, maximum 1280px, EXIF orientation applied; no retouching or generative edits. Layout uses object-fit cropping.",
+      "placement_status": "implemented",
+      "placement": "Crops product card"
+    },
+    {
+      "file": "public/assets/farm/ostrich-paddock.webp",
+      "source_workspace_relative": "03_Brand/Images/WhatsApp Image 2026-11-19 at 20.15.32.jpeg",
+      "provenance": "Owner-supplied farm photograph, selected for local website rebuild on 2026-11-24",
+      "source_sha256": "71818f0009eed5e66bc0a9eb7df5dbd5273ed246a01a86cb8e58ad53405e4acc",
+      "sha256": "011ddcc2c8ff0114eca74164a22131b21d72ede8699e9470765d691e6a0a2008",
+      "bytes": 271478,
+      "width": 720,
+      "height": 1280,
+      "mode": "RGB",
+      "copied_unchanged": false,
+      "processing": "WebP quality 84, maximum 1280px, EXIF orientation applied; no retouching or generative edits. Layout uses object-fit cropping.",
+      "placement_status": "implemented",
+      "placement": "Ostrich product card; adult birds pictured, not a claim of adult stock for sale"
+    },
+    {
+      "file": "public/assets/farm/nursery.webp",
+      "source_workspace_relative": "03_Brand/Images/WhatsApp Image 2026-11-19 at 20.15.33.jpeg",
+      "provenance": "Owner-supplied farm photograph, selected for local website rebuild on 2026-11-24",
+      "source_sha256": "557130f7fe692e979074d628cc2daddc3a70672f43328b7509ad3b4651616cdc",
+      "sha256": "727a676c9f8660260e450dff0f28946cb82173daa57515f39026fe2061f7f4c9",
+      "bytes": 160322,
+      "width": 960,
+      "height": 1280,
+      "mode": "RGB",
+      "copied_unchanged": false,
+      "processing": "WebP quality 84, maximum 1280px, EXIF orientation applied; no retouching or generative edits. Layout uses object-fit cropping.",
+      "placement_status": "implemented",
+      "placement": "Farm story photograph"
     }
   ],
-  "updated_on": "2026-11-12"
+  "updated_on": "2026-11-24"
 }

@@ -61,7 +61,7 @@ try {
   assert.equal(graph[0].datePublished, undefined);
   assert.equal(graph[0].citation.length, 4);
   assert.equal(graph[1]['@type'], 'BreadcrumbList');
-  await page.locator('.article-enquiry').getByRole('link', { name: 'Make an enquiry' }).click();
+  await page.locator('.article-enquiry').getByRole('link', { name: 'Request a quote' }).click();
   await page.getByRole('button', { name: 'Prepare my enquiry', exact: true }).click();
   assert.match(await page.locator('#enquiry-message').inputValue(), /Hello Adam Crest Farms/);
   await context.close();
@@ -71,7 +71,7 @@ try {
   await fallback.goto(base + routes[1]);
   assert.ok((await fallback.locator('.prose').innerText()).includes('gastroliths'));
   await fallback.locator('.journal-return').click();
-  assert.ok((await fallback.locator('h1').innerText()).includes('Small discoveries'));
+  assert.ok((await fallback.locator('h1').innerText()).includes('Farm journal'));
   await fallback.goto(pathToFileURL(path.resolve('dist/blog/why-do-ostriches-eat-stones/index.html')).href);
   await fallback.locator('.journal-return').click();
   assert.ok(fallback.url().endsWith('/blog/index.html'));

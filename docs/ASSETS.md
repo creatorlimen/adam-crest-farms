@@ -1,19 +1,23 @@
 # Website asset guide
 
-The website uses the two supplied images. Both originals remain unchanged. Placements were implemented and visually reviewed on 10 November 2026.
+Updated 24 November 2026. The site uses the unchanged supplied logo and Option C mascot, plus four owner-supplied farm photographs encoded as WebP. Originals remain untouched.
 
-| Local file | Intended use | Provenance |
+| Local file | Placement | Provenance |
 |---|---|---|
 | [adam-crest-farms-logo.jpeg](../public/assets/brand/adam-crest-farms-logo.jpeg) | Header, footer and favicon | Unchanged owner-supplied logo |
-| [ostrich-greeting.png](../public/assets/mascot/ostrich-greeting.png) | Full-body hero welcome illustration | Production-checked Option C character kit v01; generated artwork |
+| [ostrich-greeting.png](../public/assets/mascot/ostrich-greeting.png) | Small farm-story illustration, homepage journal feature and journal cards/articles | Unchanged Option C greeting artwork; illustrative, not a farm photograph |
+| [greenhouses.webp](../public/assets/farm/greenhouses.webp) | Homepage lead and sharing image | Owner's greenhouse photograph |
+| [cucumbers.webp](../public/assets/farm/cucumbers.webp) | Crops card | Owner's bagged-cucumber photograph |
+| [ostrich-paddock.webp](../public/assets/farm/ostrich-paddock.webp) | Ostrich card | Owner's photograph of adult ostriches; not evidence of adult birds for sale |
+| [nursery.webp](../public/assets/farm/nursery.webp) | Farm story | Owner's nursery exterior photograph |
 
-[asset-manifest.json](asset-manifest.json) records original workspace paths, dimensions, bytes and SHA-256 hashes. Those paths are provenance notes, not runtime links. Both files were copied unchanged and verified against their originals.
+[asset-manifest.json](asset-manifest.json) records original workspace paths, native derivative dimensions, byte sizes and SHA-256 hashes. Photograph entries also record source hashes and processing. These paths are provenance only, never build/runtime links.
 
-The logo is JPEG with its existing background. The mascot is RGBA PNG with transparency. Keep originals intact; add separately named, optimised derivatives when layout and performance requirements are known, and record them in the manifest.
+Photo processing applies EXIF orientation, limits the longest side to 1280px and encodes WebP at quality 84. It does not retouch or generate image content. CSS crops the visible image for each layout; original supplied files remain in the brand library. The selected photographs contain physical farm signs as photographed. They do not replace the approved header/footer logo.
 
-Do not import the full mascot kit, unused photography, source archives or video render caches. Add only assets chosen for the website. Keep this guide and provenance outside public so the asset directory contains only media intended for visitors.
+The optional maintenance script, scripts/prepare-farm-photos.py, requires Python/Pillow and an explicit source-image directory. Website setup/build only uses the committed derivatives and needs neither that directory nor Pillow.
 
-The decorative arch, rings and field lines are CSS shapes created for this website. Navigation symbols are small inline SVG paths. They do not depict the real farm. No stock media, remote fonts or external image requests are used.
+Excluded from the supplied image folder: the sign-design contact sheet, redundant close nursery doorway and loose signage photograph. No sheep/goat photograph was supplied, so the product cards use explicit neutral placeholders. Do not substitute stock animals as farm photographs.
 
-On 12 November 2026 the unchanged greeting mascot was also selected for the journal's first article/card and its sharing metadata. Its caption identifies it as an illustration; it is not an anatomical diagram or farm photograph. No additional media was imported. Article metadata records native dimensions and alternative text.
+Keep the mascot's transparency and aspect ratio. The name remains unapproved. Journal captions distinguish it as an illustration, not an anatomical diagram. Do not import the full mascot kit, unused media, private questionnaire responses, source archives or caches into public. No remote image/font requests are used.
 

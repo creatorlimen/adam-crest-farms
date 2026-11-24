@@ -1,6 +1,6 @@
 {
-  "date": "2026-11-13",
-  "browser": "157.0.4341.46",
+  "date": "2026-11-24",
+  "browser": "158.0.4370.33",
   "viewports": [
     {
       "width": 1440,
@@ -9,8 +9,8 @@
       "brokenImages": [],
       "mainSections": 5,
       "mascot": {
-        "width": 330,
-        "height": 495
+        "width": 80,
+        "height": 120
       },
       "reducedMotion": "none",
       "errors": [],
@@ -24,8 +24,8 @@
       "brokenImages": [],
       "mainSections": 5,
       "mascot": {
-        "width": 285,
-        "height": 428
+        "width": 80,
+        "height": 120
       },
       "reducedMotion": "none",
       "errors": [],
@@ -39,8 +39,8 @@
       "brokenImages": [],
       "mainSections": 5,
       "mascot": {
-        "width": 260,
-        "height": 390
+        "width": 80,
+        "height": 120
       },
       "reducedMotion": "none",
       "errors": [],
@@ -54,8 +54,8 @@
       "brokenImages": [],
       "mainSections": 5,
       "mascot": {
-        "width": 205,
-        "height": 308
+        "width": 64,
+        "height": 96
       },
       "reducedMotion": "none",
       "errors": [],
@@ -69,8 +69,8 @@
       "brokenImages": [],
       "mainSections": 5,
       "mascot": {
-        "width": 205,
-        "height": 308
+        "width": 64,
+        "height": 96
       },
       "reducedMotion": "none",
       "errors": [],
@@ -83,8 +83,9 @@
     "Mobile menu opens, closes on Escape with focus returned, and closes on navigation.",
     "All four category links preselect their product; enquiry text and clipboard output match.",
     "Editing invalidates the prepared message; clipboard failure exposes manual-copy instructions.",
-    "Removed WhatsApp notice stays absent, with no dummy outbound link; FAQ disclosure opens.",
-    "Navigation, native FAQ, contact link and explanatory fallback remain available without JavaScript.",
+    "Confirmed product details render, photo/goat/arrangement gaps are explicit, and no dummy WhatsApp link exists.",
+    "Homepage journal link opens the card index, and its Read article link opens the full post.",
+    "Navigation, product details, contact link and fallback remain available without JavaScript.",
     "Direct file opening also loads the page and prepares an enquiry."
   ],
   "passed": true

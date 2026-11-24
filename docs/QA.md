@@ -1,6 +1,19 @@
 # Local website verification
 
-Latest journal review: 15 November 2026 with Microsoft Edge 157.0.4341.60 via local Playwright. The complete home-page and publication-lifecycle review remains dated 13 November 2026. The website and journal remain local and unpublished. Earlier review notes are retained below.
+Latest complete review: 24 November 2026 with Microsoft Edge 158.0.4370.33 via local Playwright. The website and journal remain local and unpublished. Earlier review notes are retained below; shared screenshot filenames now show the latest rebuild, and earlier versions remain in Git history.
+
+## Owner questionnaire rebuild, 24 November 2026
+
+- Rebuilt the homepage around the owner's actual products, founding year and photographs. Removed the repetitive FAQ, decorative Osun panel and generic product paragraphs. The shared navigation, journal introduction and article enquiry callout are shorter.
+- Selected and inspected four actual farm photographs. Local WebP derivatives preserve the supplied scenes; logo and mascot masters remain unchanged. No stock animals, invented contact details, credentials, testimonials or fulfilment claims were added. Missing sheep/goat photos, goat sale details and fulfilment/visit arrangements remain explicit placeholders.
+- `npm test`: all eight tests passed. `npm run test:build`: all publication-lifecycle checks passed and restored the local preview. Added homepage coverage confirms that only eligible posts appear in production, drafts/future posts do not leak through the feature, and an empty feature is omitted while the supporting mascot stays visible.
+- `npm run test:browser`: homepage and four journal routes passed at 1440, 1024, 768, 390 and 320px. No horizontal overflow, broken images, page/console errors, failed resources, external runtime requests or axe WCAG A/AA findings. Automated checks do not constitute accessibility certification.
+- Product links preselect all four enquiry categories. Preparing, copying, editing and clipboard-failure recovery work; the result provides the supplied Instagram profile in a new tab. The website does not send an enquiry. Confirmed product wording, 2026 structured data, intentional placeholders and absent dummy WhatsApp links were checked.
+- Homepage → journal index → full article and article → enquiry journeys passed. Keyboard skip/menu, article contents, internal links, no-JavaScript reading/navigation, direct-file preview and nested 404 recovery passed. Article research/publication dates and source content were not changed by the layout rebuild.
+- Visually inspected the full desktop page, mobile layout, all homepage sections, narrow 320px layout, early desktop render, journal index and article opening. Fixed joined mobile heading words with real whitespace, reduced mobile photo placeholders to 100px and adjusted the hero's mobile crop to retain more of the physical farm sign. Lazy images are decoded explicitly in the review harness before image checks.
+- MotionSites final subjective rubric: first glance 8, signature 7, typography 8, composition 8, colour 9, media 8, motion 7, mobile 8, copy 9, polish 8; average 8.0. Restrained hover/focus feedback and reduced-motion support suit this content-led layout. Better close-up livestock photographs would improve the product presentation; current photo limitations are not hidden with stock media.
+
+Evidence: [homepage report](review/report.json), [journal report](review/blog-browser-report.json), [publication report](review/blog-build-report.json), [desktop homepage](review/desktop.png), [mobile homepage](review/mobile.png), [homepage journal feature](review/desktop-home-journal.png), [journal index](review/desktop-journal-opening.png).
 
 ## Journal preview cards, 15 November 2026
 
@@ -13,7 +26,7 @@ Latest journal review: 15 November 2026 with Microsoft Edge 157.0.4341.60 via lo
 
 Evidence: [card layout and navigation report](review/journal-card-report.json), [journal browser report](review/blog-browser-report.json), [desktop journal](review/desktop-journal.png), [mobile journal](review/mobile-journal.png), [keyboard focus](review/journal-card-focus.png).
 
-## Results
+## Earlier homepage results, 13 November 2026
 
 - Eight Node tests passed: enquiry formatting, article eligibility, sitemap filtering, relative links and structured-data escaping.
 - Browser checks passed at 1440, 1024, 768, 390 and 320 CSS pixels, with 900px viewport height.

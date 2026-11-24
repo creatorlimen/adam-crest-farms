@@ -10,7 +10,7 @@ const output = path.join(root, 'docs/review');
 await mkdir(output, { recursive: true });
 const browser = await chromium.launch({ channel: process.env.BROWSER_CHANNEL || undefined });
 const base = process.env.PREVIEW_URL || 'http://127.0.0.1:4173';
-const report = { date: '2026-11-13', browser: await browser.version(), viewports: [], interactions: [] };
+const report = { date: new Intl.DateTimeFormat('en-CA', { timeZone: 'Africa/Lagos' }).format(new Date()), browser: await browser.version(), viewports: [], interactions: [] };
 const failures = [];
 
 try {
@@ -25,6 +25,9 @@ try {
     page.on('response', response => { if (response.status() >= 400) errors.push(`${response.url()} ${response.status()}`); });
     page.on('request', request => { if (!request.url().startsWith(base)) remote.push(request.url()); });
     await page.goto(base, { waitUntil: 'networkidle' });
+    await page.evaluate(async () => {
+      await Promise.all([...document.images].map(image => { image.loading = 'eager'; return image.decode(); }));
+    });
     const layout = await page.evaluate(() => ({
       viewport: innerWidth, scrollWidth: document.documentElement.scrollWidth,
       brokenImages: [...document.images].filter(image => !image.complete || !image.naturalWidth).map(image => image.src),
@@ -41,7 +44,7 @@ try {
     if (width === 1440 || width === 390) {
       const prefix = width === 1440 ? 'desktop' : 'mobile';
       await page.screenshot({ path: path.join(output, `${prefix}-hero.png`) });
-      for (const section of ['offerings', 'our-farm', 'questions', 'enquire', 'footer']) await page.locator(`#${section}`).screenshot({ path: path.join(output, `${prefix}-${section}.png`) });
+      for (const section of ['offerings', 'our-farm', 'journal', 'enquire', 'footer']) await page.locator(`#${section}`).screenshot({ path: path.join(output, `${prefix}-${section === 'journal' ? 'home-journal' : section}.png`) });
     }
     await context.close();
   }
@@ -76,6 +79,8 @@ try {
   await page.getByRole('button', { name: 'Copy enquiry', exact: true }).click();
   await page.getByRole('status').filter({ hasText: 'Enquiry copied' }).waitFor();
   assert.equal((await page.evaluate(() => navigator.clipboard.readText())).replace(/\r\n/g, '\n'), prepared);
+  assert.equal(await page.locator('#enquiry-result a').getAttribute('href'), 'https://www.instagram.com/adamcrestfarms/');
+  assert.equal(await page.locator('#enquiry-result a').getAttribute('target'), '_blank');
   report.interactions.push('All four category links preselect their product; enquiry text and clipboard output match.');
   await page.screenshot({ path: path.join(output, 'mobile-enquiry.png'), fullPage: true });
   await page.locator('#details').fill('A different question');
@@ -88,9 +93,19 @@ try {
   report.interactions.push('Editing invalidates the prepared message; clipboard failure exposes manual-copy instructions.');
   assert.equal(await page.locator('a[href^="https://wa.me"]').count(), 0);
   assert.equal(await page.locator('#whatsapp-pending').count(), 0);
-  await page.getByText('Can I arrange collection or delivery?', { exact: false }).click();
-  assert.ok(await page.getByText('Include your location when you enquire.', { exact: false }).isVisible());
-  report.interactions.push('Removed WhatsApp notice stays absent, with no dummy outbound link; FAQ disclosure opens.');
+  assert.equal(await page.locator('.photo-placeholder').count(), 2);
+  assert.ok(await page.getByText('Breeds and sale options to be confirmed.', { exact: true }).isVisible());
+  assert.ok(await page.locator('.arrangements-pending').isVisible());
+  assert.match(await page.locator('#offerings').innerText(), /Fertilised eggs/);
+  assert.match(await page.locator('#offerings').innerText(), /Chicks aged 4–8 weeks/);
+  assert.match(await page.locator('#offerings').innerText(), /Green and coloured bell peppers/);
+  assert.equal(JSON.parse(await page.locator('script[type="application/ld+json"]').textContent()).foundingDate, '2026');
+  report.interactions.push('Confirmed product details render, photo/goat/arrangement gaps are explicit, and no dummy WhatsApp link exists.');
+  await page.locator('#journal').getByRole('link', { name: 'View all articles' }).click();
+  assert.equal(await page.locator('h1').innerText(), 'Farm journal.');
+  await page.getByRole('link', { name: 'Read article: Why do ostriches eat stones?' }).click();
+  assert.ok(await page.locator('.prose').isVisible());
+  report.interactions.push('Homepage journal link opens the card index, and its Read article link opens the full post.');
   await context.close();
 
   const noJs = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
@@ -100,7 +115,7 @@ try {
   assert.ok(await fallback.locator('noscript').isVisible());
   assert.equal(await fallback.locator('#composer-fields').isVisible(), false);
   await noJs.close();
-  report.interactions.push('Navigation, native FAQ, contact link and explanatory fallback remain available without JavaScript.');
+  report.interactions.push('Navigation, product details, contact link and fallback remain available without JavaScript.');
 
   const fileContext = await browser.newContext();
   const filePage = await fileContext.newPage();

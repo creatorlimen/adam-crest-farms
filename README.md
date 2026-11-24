@@ -1,8 +1,10 @@
 # Adam Crest Farms website
 
-A self-contained Astro website with a Markdown farm journal, responsive farm introduction and product-enquiry composer. The supplied logo, Option C mascot and reviewed home-page design are retained.
+A self-contained Astro website with a Markdown farm journal, a photograph-led farm introduction and a product-enquiry composer. The supplied logo, Option C mascot and established forest/cream/gold palette are retained.
 
-**Status, 15 November 2026:** local preview only. One researched journal draft is available for review. Post previews now follow the owner's rounded image-card reference, with four columns on desktop, two on tablet and one on mobile. Nothing is published or deployed, no remote is configured, and WhatsApp remains hidden until an owner-confirmed number is supplied. The footer includes Instagram, TikTok and the confirmed Facebook page.
+**Status, 24 November 2026:** local preview only. The homepage has been rebuilt from the completed owner questionnaire, with four actual farm photographs, specific product lists and the 2026 founding story. Repeated introductions and the generic FAQ have been removed. Missing sheep/goat photos, goat product details and collection/delivery/visit arrangements are clearly marked. WhatsApp remains hidden until a confirmed number is supplied; Instagram is the interim enquiry route. Nothing is published or deployed, and no remote is configured.
+
+The homepage now features the latest eligible journal article. The full journal keeps the owner's rounded image-card reference: four columns on desktop, two on tablet and one on mobile. One researched draft remains available for local review. The footer retains Instagram, TikTok and the confirmed Facebook page.
 
 ## Setup and preview
 
@@ -24,13 +26,19 @@ npm run test:build     # Publication lifecycle checks; restores the local previe
 
 The built preview also opens directly: [Home](dist/index.html), [Farm journal](dist/blog/index.html), [Example article](dist/blog/why-do-ostriches-eat-stones/index.html). Links/assets in preview builds are relative and work from disk. dist/ is generated and ignored by Git; build it after cloning. The old public/index.html has moved to src/pages/index.astro.
 
+## Owner content questionnaire
+
+The editable [website questionnaire](docs/owner-questionnaire/Adam-Crest-Farms-Website-Questionnaire.docx) gathers the farm story, specific products, buying arrangements, common questions and permissioned photographs. It contains three pages of core questions plus a photo checklist and final checks. This blank master is preserved. The partly completed response received on 24 November stays outside the repository/public output; its confirmed business details are recorded in [BRAND_BRIEF.md](docs/BRAND_BRIEF.md).
+
+See [CONTENT_REBUILD.md](docs/CONTENT_REBUILD.md) for the copy decisions, source limits and remaining gaps. Final contact details, ordering steps, collection/delivery/visit policy, goat details and sheep/goat photographs still need owner input. No prices, guarantees, testimonials or credentials have been invented.
+
 ## Blog editing
 
 Read [BLOG_WORKFLOW.md](docs/BLOG_WORKFLOW.md) for research, drafting and updates. Copy the [post template](docs/templates/blog-post.md) into src/content/blog/<slug>.md and replace every example value. The filename determines the stable URL /blog/<slug>/.
 
 The schema validates metadata, category, dates, sources and image information. Each post has its own HTML page, search title/description, canonical and sharing metadata, BlogPosting/breadcrumb JSON-LD, contents links and source list. Categories, related posts and the sitemap derive from eligible articles. Full article text and navigation work without JavaScript.
 
-The journal index at /blog/ previews all eligible posts as cards with an image, category, title, excerpt, date and reading time. Images, titles and the Read article buttons open the full post. Topic archives and related posts reuse the same card design. New eligible Markdown articles populate the grid automatically.
+The journal index at /blog/ previews all eligible posts as cards with an image, category, title, excerpt, date and reading time. Images, titles and the Read article buttons open the full post. Topic archives and related posts reuse the same card design. New eligible Markdown articles populate the grid automatically. The homepage selects the latest article from the same collection, labels local drafts and omits the feature if no post is eligible in production.
 
 Default local builds show labelled drafts and carry noindex/nofollow plus a blocking robots.txt and empty sitemap. Published posts need a genuine publishedAt date. Future-dated posts are omitted from production builds. There is no automatic publishing scheduler. Research dates and substantive update dates have separate meanings.
 
@@ -53,7 +61,7 @@ See [QA.md](docs/QA.md), [journal screenshot](docs/review/desktop-journal-openin
 
 | Path | Purpose |
 |---|---|
-| src/pages/index.astro | Existing farm home page |
+| src/pages/index.astro | Questionnaire-based homepage and product data |
 | src/pages/blog/ | Journal index, topic, article and editorial-policy pages |
 | src/content/blog/ | Markdown articles and metadata |
 | src/content.config.ts | Article schema |
@@ -62,11 +70,13 @@ See [QA.md](docs/QA.md), [journal screenshot](docs/review/desktop-journal-openin
 | public/styles.css and public/journal.css | Home and journal presentation |
 | public/app.js and public/enquiry.js | Navigation and local enquiry composer |
 | public/site-config.js | Public contact configuration |
-| public/assets/ | Selected site media, copied unchanged |
+| public/assets/ | Unchanged brand masters and selected farm-photo WebP derivatives |
 | scripts/ | Build, loopback server and verification |
 | docs/ | Brief, provenance, research, workflow and review evidence |
 
 Dependencies are pinned in package-lock.json. Astro is used at build time; the result is static HTML/CSS/JavaScript. There are no runtime CDNs, remote fonts, analytics, databases or server submissions. Visitors prepare an enquiry locally and send it themselves through Instagram. Social/source links only open when followed.
+
+Photo provenance and hashes are recorded in [ASSETS.md](docs/ASSETS.md) and its manifest. The four WebP derivatives are committed and require no processing to build the site. Optional `python scripts/prepare-farm-photos.py PATH_TO_OWNER_IMAGES` recreates them with Pillow; it is an asset-maintenance utility, not a build dependency. The parent workspace is not needed after cloning.
 
 To enable WhatsApp later, put the owner-confirmed international digits-only number in public/site-config.js and review the Instagram-first instructions. Never use a made-up number or put credentials in public files.
 

@@ -10,9 +10,9 @@ const { route } = Astro.props;
       </a>
       <button class="menu-toggle" aria-expanded="false" aria-controls="navigation" hidden><span>Menu</span><span class="menu-bars" aria-hidden="true"></span></button>
       <nav id="navigation" aria-label="Main navigation">
-        <a href={route === "/" ? "#offerings" : href(route, "/#offerings")}>What we offer</a><a href={route === "/" ? "#our-farm" : href(route, "/#our-farm")}>Our farm</a><a href={route === "/" ? "#questions" : href(route, "/#questions")}>Good to know</a>
+        <a href={route === "/" ? "#offerings" : href(route, "/#offerings")}>Our products</a><a href={route === "/" ? "#our-farm" : href(route, "/#our-farm")}>Our farm</a>
         <a href={href(route, "/blog/")} aria-current={route.startsWith("/blog/") ? "page" : undefined}>Farm journal</a>
-        <a class="button button-small button-light" href={route === "/" ? "#enquire" : href(route, "/#enquire")}>Make an enquiry <svg class="icon" aria-hidden="true" focusable="false"><use href="#external"/></svg></a>
+        <a class="button button-small button-light" href={route === "/" ? "#enquire" : href(route, "/#enquire")}>Request a quote <svg class="icon" aria-hidden="true" focusable="false"><use href="#external"/></svg></a>
       </nav>
     </header>
 </div>

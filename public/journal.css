@@ -71,6 +71,7 @@
 .article-enquiry { background:var(--soft); border-radius:4px 48px 4px 4px; padding:32px; margin-top:40px; }
 .article-enquiry .eyebrow { font-size:10px; margin-bottom:14px; }
 .article-enquiry h2 { font-size:36px; }
+.article-enquiry>.button { margin-top:22px; }
 .article-enquiry p:not(.eyebrow) { margin:15px 0 22px; font-size:15px; color:var(--muted); }
 .related-posts { margin-top:60px; }
 .related-posts>h2 { font-size:38px; }

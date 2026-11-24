@@ -13,9 +13,9 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE = Path(sys.argv[1])
 SELECTED = [
     ("WhatsApp Image 2026-11-19 at 20.15.35.jpeg", "greenhouses", "Homepage lead photograph"),
-    ("WhatsApp Image 2026-11-17 at 20.04.43.jpeg", "cucumbers", "Crops product card"),
-    ("WhatsApp Image 2026-11-19 at 20.15.32.jpeg", "ostrich-paddock", "Ostrich product card; adult birds pictured, not a claim of adult stock for sale"),
-    ("WhatsApp Image 2026-11-19 at 20.15.33.jpeg", "nursery", "Farm story photograph"),
+    ("WhatsApp Image 2026-11-17 at 20.04.43.jpeg", "cucumbers", "Crops catalogue and detail page"),
+    ("WhatsApp Image 2026-11-19 at 20.15.32.jpeg", "ostrich-paddock", "Ostrich catalogue and detail page; adult birds pictured, not a claim of adult stock for sale"),
+    ("WhatsApp Image 2026-11-19 at 20.15.33.jpeg", "nursery", "About page photograph"),
 ]
 manifest_path = ROOT / "docs/asset-manifest.json"
 manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
@@ -42,5 +42,5 @@ for filename, stem, placement in SELECTED:
     })
     print(f"{stem}: {width}x{height}, {destination.stat().st_size:,} bytes")
 manifest["updated_on"] = "2026-11-24"
-manifest["assets"][1]["placement"] = "Small farm-story illustration, homepage journal feature, journal card/article and article sharing metadata; proportional and explicitly illustrative"
+manifest["assets"][1]["placement"] = "About page illustration, homepage journal feature, journal card/article and article sharing metadata; proportional and explicitly illustrative"
 manifest_path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")

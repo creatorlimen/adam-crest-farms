@@ -1,4 +1,5 @@
 import path from 'node:path';
+import { products, productRoute } from './products.mjs';
 
 export const production = process.env.SITE_ENV === 'production';
 const configuredOrigin = process.env.SITE_URL || 'https://adamcrestfarms.com';
@@ -34,5 +35,5 @@ export function visiblePosts(posts, { live = production, date = today } = {}) {
 export function sitemapEntries(posts, { live = production, date = today } = {}) {
   if (!live) return [];
   const eligible = visiblePosts(posts, { live, date });
-  return ['/', '/blog/', '/blog/about/', ...new Set(eligible.map(p => categoryRoute(p.data.category))), ...eligible.map(articleRoute)];
+  return ['/', '/about/', '/contact/', '/products/', ...products.map(productRoute), '/blog/', '/blog/about/', ...new Set(eligible.map(p => categoryRoute(p.data.category))), ...eligible.map(articleRoute)];
 }

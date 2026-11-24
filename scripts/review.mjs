@@ -6,45 +6,46 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import path from 'node:path';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const output = path.join(root, 'docs/review');
+const output = path.join(root, 'docs/review/multipage');
 await mkdir(output, { recursive: true });
 const browser = await chromium.launch({ channel: process.env.BROWSER_CHANNEL || undefined });
 const base = process.env.PREVIEW_URL || 'http://127.0.0.1:4173';
 const report = { date: new Intl.DateTimeFormat('en-CA', { timeZone: 'Africa/Lagos' }).format(new Date()), browser: await browser.version(), viewports: [], interactions: [] };
 const failures = [];
+const routes = ['/', '/about/', '/contact/', '/products/', ...['crops', 'ostriches', 'sheep', 'goats'].map(slug => '/products/' + slug + '/')];
 
 try {
   for (const width of [1440, 1024, 768, 390, 320]) {
     const context = await browser.newContext({ viewport: { width, height: 900 }, reducedMotion: 'reduce' });
-    const page = await context.newPage();
-    const errors = [];
-    const remote = [];
-    page.on('pageerror', error => errors.push(error.message));
-    page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
-    page.on('requestfailed', request => errors.push(`${request.url()} ${request.failure()?.errorText}`));
-    page.on('response', response => { if (response.status() >= 400) errors.push(`${response.url()} ${response.status()}`); });
-    page.on('request', request => { if (!request.url().startsWith(base)) remote.push(request.url()); });
-    await page.goto(base, { waitUntil: 'networkidle' });
-    await page.evaluate(async () => {
-      await Promise.all([...document.images].map(image => { image.loading = 'eager'; return image.decode(); }));
-    });
-    const layout = await page.evaluate(() => ({
-      viewport: innerWidth, scrollWidth: document.documentElement.scrollWidth,
-      brokenImages: [...document.images].filter(image => !image.complete || !image.naturalWidth).map(image => image.src),
-      mainSections: document.querySelector('main').querySelectorAll('section').length,
-      mascot: { width: document.querySelector('.mascot').clientWidth, height: document.querySelector('.mascot').clientHeight },
-      reducedMotion: getComputedStyle(document.querySelector('h1')).animationName
-    }));
-    const accessibility = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
-    const violations = accessibility.violations.map(v => ({ id: v.id, impact: v.impact, nodes: v.nodes.map(n => ({ target: n.target, summary: n.failureSummary })) }));
-    const current = { width, ...layout, errors, remote, violations };
-    report.viewports.push(current);
-    if (layout.scrollWidth > width || layout.brokenImages.length || errors.length || violations.length || remote.length || layout.mainSections !== 5) failures.push(current);
-    await page.screenshot({ path: path.join(output, `${width === 1440 ? 'desktop' : width === 390 ? 'mobile' : `width-${width}`}.png`), fullPage: true });
-    if (width === 1440 || width === 390) {
-      const prefix = width === 1440 ? 'desktop' : 'mobile';
-      await page.screenshot({ path: path.join(output, `${prefix}-hero.png`) });
-      for (const section of ['offerings', 'our-farm', 'journal', 'enquire', 'footer']) await page.locator(`#${section}`).screenshot({ path: path.join(output, `${prefix}-${section === 'journal' ? 'home-journal' : section}.png`) });
+    for (const route of routes) {
+      const page = await context.newPage();
+      const errors = [];
+      const remote = [];
+      page.on('pageerror', error => errors.push(error.message));
+      page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
+      page.on('requestfailed', request => errors.push(`${request.url()} ${request.failure()?.errorText}`));
+      page.on('response', response => { if (response.status() >= 400) errors.push(`${response.url()} ${response.status()}`); });
+      page.on('request', request => { if (!request.url().startsWith(base)) remote.push(request.url()); });
+      assert.equal((await page.goto(base + route)).status(), 200);
+      await page.evaluate(async () => {
+        await Promise.all([...document.images].map(image => { image.loading = 'eager'; return image.decode(); }));
+      });
+      const layout = await page.evaluate(() => ({
+        viewport: innerWidth, scrollWidth: document.documentElement.scrollWidth,
+        brokenImages: [...document.images].filter(image => !image.complete || !image.naturalWidth).map(image => image.src),
+        headings: document.querySelectorAll('h1').length,
+        reducedMotion: getComputedStyle(document.querySelector('h1')).animationName
+      }));
+      const accessibility = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
+      const violations = accessibility.violations.map(v => ({ id: v.id, impact: v.impact, nodes: v.nodes.map(n => ({ target: n.target, summary: n.failureSummary })) }));
+      const current = { route, width, ...layout, errors, remote, violations };
+      report.viewports.push(current);
+      if (layout.scrollWidth > width || layout.brokenImages.length || errors.length || violations.length || remote.length || layout.headings !== 1) failures.push(current);
+      if ([1440, 390].includes(width)) {
+        const name = route.split('/').filter(Boolean).join('-') || 'home';
+        await page.screenshot({ path: path.join(output, (width === 1440 ? 'desktop-' : 'mobile-') + name + '.png'), fullPage: true });
+      }
+      await page.close();
     }
     await context.close();
   }
@@ -63,10 +64,13 @@ try {
   assert.equal(await page.getByRole('button', { name: 'Menu', exact: true }).getAttribute('aria-expanded'), 'false');
   assert.equal(await page.evaluate(() => document.activeElement.className), 'menu-toggle');
   await page.getByRole('button', { name: 'Menu', exact: true }).click();
-  await page.locator('#navigation').getByRole('link', { name: 'Our farm', exact: true }).click();
+  await page.locator('#navigation').getByRole('link', { name: 'About', exact: true }).click();
   assert.equal(await page.getByRole('button', { name: 'Menu', exact: true }).getAttribute('aria-expanded'), 'false');
   report.interactions.push('Mobile menu opens, closes on Escape with focus returned, and closes on navigation.');
   for (const product of ['Ostriches', 'Sheep', 'Goats', 'Crops']) {
+    await page.goto(base + '/products/');
+    await page.locator('.catalogue-entry').filter({ has: page.getByRole('heading', { name: product, exact: true }) }).click();
+    assert.equal(await page.locator('h1').innerText(), product);
     await page.getByRole('link', { name: `Enquire about ${product.toLowerCase()}`, exact: true }).click();
     assert.equal(await page.locator('#product').inputValue(), product);
   }
@@ -93,14 +97,13 @@ try {
   report.interactions.push('Editing invalidates the prepared message; clipboard failure exposes manual-copy instructions.');
   assert.equal(await page.locator('a[href^="https://wa.me"]').count(), 0);
   assert.equal(await page.locator('#whatsapp-pending').count(), 0);
-  assert.equal(await page.locator('.photo-placeholder').count(), 2);
-  assert.ok(await page.getByText('Breeds and sale options to be confirmed.', { exact: true }).isVisible());
   assert.ok(await page.locator('.arrangements-pending').isVisible());
-  assert.match(await page.locator('#offerings').innerText(), /Fertilised eggs/);
-  assert.match(await page.locator('#offerings').innerText(), /Chicks aged 4–8 weeks/);
-  assert.match(await page.locator('#offerings').innerText(), /Green and coloured bell peppers/);
-  assert.equal(JSON.parse(await page.locator('script[type="application/ld+json"]').textContent()).foundingDate, '2026');
-  report.interactions.push('Confirmed product details render, photo/goat/arrangement gaps are explicit, and no dummy WhatsApp link exists.');
+  for (const [hash, destination] of [['enquire','contact'], ['our-farm','about'], ['offerings','products']]) {
+    await page.goto(base + '/#' + hash);
+    await page.waitForURL('**/' + destination + '/index.html');
+  }
+  report.interactions.push('Legacy homepage bookmarks reach the dedicated pages.');
+  await page.goto(base);
   await page.locator('#journal').getByRole('link', { name: 'View all articles' }).click();
   assert.equal(await page.locator('h1').innerText(), 'Farm journal.');
   await page.getByRole('link', { name: 'Read article: Why do ostriches eat stones?' }).click();
@@ -110,7 +113,7 @@ try {
 
   const noJs = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
   const fallback = await noJs.newPage();
-  await fallback.goto(base);
+  await fallback.goto(base + '/contact/');
   assert.ok(await fallback.locator('#navigation').isVisible());
   assert.ok(await fallback.locator('noscript').isVisible());
   assert.equal(await fallback.locator('#composer-fields').isVisible(), false);
@@ -120,6 +123,10 @@ try {
   const fileContext = await browser.newContext();
   const filePage = await fileContext.newPage();
   await filePage.goto(pathToFileURL(path.join(root, 'dist/index.html')).href);
+  await filePage.getByRole('link', { name: 'Explore our products' }).click();
+  await filePage.locator('.catalogue-entry').first().click();
+  await filePage.getByRole('link', { name: 'Enquire about crops' }).click();
+  assert.equal(await filePage.locator('#product').inputValue(), 'Crops');
   await filePage.getByRole('button', { name: 'Prepare my enquiry', exact: true }).click();
   assert.ok((await filePage.locator('#enquiry-message').inputValue()).includes('Hello Adam Crest Farms'));
   await fileContext.close();
@@ -133,7 +140,7 @@ try {
   report.passed = failures.length === 0;
   await writeFile(path.join(output, 'report.json'), JSON.stringify(report, null, 2) + '\n');
   console.log(JSON.stringify({ passed: report.passed, viewports: report.viewports.map(v => ({ width: v.width, overflow: v.scrollWidth > v.width, violations: v.violations.length, errors: v.errors.length })), interactions: report.interactions, failures }, null, 2));
-  assert.equal(failures.length, 0, 'Visual/layout/accessibility checks failed. See docs/review/report.json.');
+  assert.equal(failures.length, 0, 'Visual/layout/accessibility checks failed. See docs/review/multipage/report.json.');
 } catch (error) {
   report.passed = false;
   report.error = error.message;

@@ -1,6 +1,10 @@
 ---
 import { href } from "../lib/site.mjs";
 const { route } = Astro.props;
+const links = [
+  ['/', 'Home'], ['/products/', 'Products'], ['/about/', 'About'],
+  ['/blog/', 'Farm journal'], ['/contact/', 'Contact'],
+];
 ---
 <div class="opening">
 <header class="site-header wrap">
@@ -10,9 +14,11 @@ const { route } = Astro.props;
       </a>
       <button class="menu-toggle" aria-expanded="false" aria-controls="navigation" hidden><span>Menu</span><span class="menu-bars" aria-hidden="true"></span></button>
       <nav id="navigation" aria-label="Main navigation">
-        <a href={route === "/" ? "#offerings" : href(route, "/#offerings")}>Our products</a><a href={route === "/" ? "#our-farm" : href(route, "/#our-farm")}>Our farm</a>
-        <a href={href(route, "/blog/")} aria-current={route.startsWith("/blog/") ? "page" : undefined}>Farm journal</a>
-        <a class="button button-small button-light" href={route === "/" ? "#enquire" : href(route, "/#enquire")}>Request a quote <svg class="icon" aria-hidden="true" focusable="false"><use href="#external"/></svg></a>
+        {links.map(([path, label]) => <a
+          href={href(route, path)}
+          class={path === '/contact/' ? 'button button-small button-gold' : undefined}
+          aria-current={route === path ? 'page' : path !== '/' && route.startsWith(path) ? 'location' : undefined}
+        >{label}{path === '/contact/' && <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg>}</a>)}
       </nav>
     </header>
 </div>

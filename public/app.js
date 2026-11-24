@@ -23,7 +23,12 @@
 
   for (const link of document.querySelectorAll('[data-instagram]')) link.href = window.FARM_CONFIG.instagramUrl;
   const form = document.querySelector('#enquiry-form');
-  if (!form) return;
+  if (!form) {
+    const moved = { '#enquire': 'enquire', '#offerings': 'offerings', '#our-farm': 'our-farm' };
+    const previousDestination = document.getElementById(moved[window.location.hash]);
+    if (previousDestination instanceof HTMLAnchorElement) window.location.replace(previousDestination.href);
+    return;
+  }
   const product = document.querySelector('#product');
   const result = document.querySelector('#enquiry-result');
   const message = document.querySelector('#enquiry-message');
@@ -37,14 +42,8 @@
     whatsappLink.hidden = false;
     whatsappLink.href = `https://wa.me/${whatsappNumber}`;
   }
-  for (const link of document.querySelectorAll('[data-instagram]')) link.href = window.FARM_CONFIG.instagramUrl;
-  for (const link of document.querySelectorAll('[data-product]')) {
-    link.addEventListener('click', () => {
-      product.value = link.dataset.product;
-      result.hidden = true;
-      status.textContent = '';
-    });
-  }
+  const requested = new URLSearchParams(window.location.search).get('product');
+  if ([...product.options].some(option => option.value === requested)) product.value = requested;
   form.addEventListener('input', () => {
     result.hidden = true;
     status.textContent = '';

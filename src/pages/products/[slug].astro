@@ -1,0 +1,27 @@
+---
+import Base from '../../layouts/Base.astro';
+import { href } from '../../lib/site.mjs';
+import { products, productRoute } from '../../lib/products.mjs';
+
+export function getStaticPaths() {
+  return products.map(product => ({ params: { slug: product.slug }, props: { product } }));
+}
+const { product } = Astro.props;
+const route = productRoute(product);
+const contact = href(route, '/contact/') + '?product=' + encodeURIComponent(product.name);
+---
+<Base route={route} title={product.name + ' | Adam Crest Farms'} description={product.intro} image={product.image} imageAlt={product.alt}>
+  <article class="wrap detail-page">
+    <a class="back-link" href={href(route, '/products/')}><span aria-hidden="true">←</span> All products</a>
+    <div class:list={['detail-spread', !product.image && 'no-photo']}>
+      <header class="detail-intro"><h1>{product.name}</h1><p>{product.intro}</p></header>
+      {product.image && <div class={'detail-photo ' + product.slug}><img src={href(route, product.image)} width={product.width} height={product.height} alt={product.alt} /></div>}
+      <div class="detail-facts">
+        {product.items && <><h2>{product.listTitle}</h2><ul>{product.items.map(item => <li>{item}</li>)}</ul></>}
+        {!product.image && <p class="photo-pending">{product.name === 'Sheep' ? 'Sheep' : 'Goat'} photograph to follow.</p>}
+        <p>{product.enquiry}</p>
+        <a class="button button-forest" href={contact}>Enquire about {product.name.toLowerCase()} <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></a>
+      </div>
+    </div>
+  </article>
+</Base>

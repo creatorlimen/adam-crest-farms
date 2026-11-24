@@ -5,12 +5,6 @@ import { getPosts } from '../lib/posts';
 
 const route = '/';
 const featuredPost = (await getPosts())[0];
-const products = [
-  { name: 'Crops', image: 'cucumbers', width: 1280, height: 720, alt: 'Fresh green cucumbers packed in bags at the farm', items: ['Cucumbers', 'Tomatoes', 'Green and coloured bell peppers'] },
-  { name: 'Ostriches', image: 'ostrich-paddock', width: 720, height: 1280, alt: 'Adult ostriches standing in a fenced paddock at Adam Crest Farms', items: ['Fertilised eggs', 'Chicks aged 4–8 weeks'] },
-  { name: 'Sheep', items: ['Balami', 'Saudanis', 'Koroji', 'Huda'] },
-  { name: 'Goats', note: 'Breeds and sale options to be confirmed.' },
-];
 const schema = {
   '@context': 'https://schema.org', '@type': 'Organization', name: 'Adam Crest Farms',
   url: absolute('/'), logo: absolute('/assets/brand/adam-crest-farms-logo.jpeg'), foundingDate: '2026',
@@ -19,57 +13,20 @@ const schema = {
 };
 ---
 <Base route={route} title="Adam Crest Farms | Crops & livestock in Osun State" description="Explore Adam Crest Farms in Ede South, Osun State: cucumbers, tomatoes, bell peppers, ostrich eggs and chicks, sheep and goats. Prices by quotation." image="/assets/farm/greenhouses.webp" imageAlt="Greenhouses at Adam Crest Farms" schema={schema}>
-  <section class="hero wrap" aria-labelledby="hero-title">
-    <div class="hero-heading">
-      <h1 id="hero-title">Growing crops.<br /><em>Raising livestock.</em></h1>
-      <div class="hero-intro">
-        <p>Produce and livestock for households, traders and businesses.</p>
-        <a class="button button-forest" href="#offerings">Explore our products <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></a>
+  <section class="front-cover" aria-labelledby="hero-title">
+    <div class="wrap cover-layout">
+      <div class="cover-type">
+        <h1 id="hero-title">Crops &amp;<br /> livestock <em>in Osun.</em></h1>
+        <p>We grow vegetables and raise ostriches, sheep and goats in Ologobi Village.</p>
+        <a id="offerings" class="button button-gold" href={href(route, '/products/')}>Explore our products <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></a>
       </div>
-    </div>
-    <figure class="hero-photo">
-      <img src="assets/farm/greenhouses.webp" width="1280" height="720" alt="Shade-covered greenhouse structures beside a path at Adam Crest Farms" fetchpriority="high" />
-      <figcaption>Greenhouses at Adam Crest Farms.</figcaption>
-    </figure>
-  </section>
-
-  <section id="offerings" class="section wrap" aria-labelledby="offerings-title">
-    <div class="section-heading">
-      <h2 id="offerings-title">Our products</h2>
-      <p>Prices by quotation.<br />Availability follows stock and harvest cycles.</p>
-    </div>
-    <div class="product-grid">
-      {products.map(product => <article class="product-card">
-        {product.image ? <div class:list={['product-photo', 'photo-' + product.image]}>
-          <img src={'assets/farm/' + product.image + '.webp'} width={product.width} height={product.height} alt={product.alt} loading="lazy" />
-        </div> : <div class="photo-placeholder" role="img" aria-label={product.name + ' photograph not yet supplied'}><span>Photo to follow</span></div>}
-        <div class="product-copy">
-          <h3>{product.name}</h3>
-          {product.items && <ul>{product.items.map(item => <li>{item}</li>)}</ul>}
-          {product.note && <p class="pending-detail">{product.note}</p>}
-          <a class="product-enquire" href="#enquire" data-product={product.name} aria-label={'Enquire about ' + product.name.toLowerCase()}>Enquire <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></a>
-        </div>
-      </article>)}
+      <img class="cover-photo" src={href(route, '/assets/farm/greenhouses.webp')} width="1280" height="720" alt="The greenhouses at Adam Crest Farms, with the farm sign on a tree beside the path" fetchpriority="high" />
     </div>
   </section>
-
-  <section id="our-farm" class="farm-section" aria-labelledby="farm-title">
-    <div class="wrap section farm-grid">
-      <figure class="farm-photo">
-        <img src="assets/farm/nursery.webp" width="960" height="1280" alt="Arched nursery structure with a clear covering and the farm's nursery sign" loading="lazy" />
-        <figcaption>The nursery.</figcaption>
-      </figure>
-      <div class="farm-copy">
-        <h2 id="farm-title">Established<br /> in <em>2026.</em></h2>
-        <p>Adam Crest Farms brings crop production and livestock together in Ede South. The farm was founded to produce food, create employment and build an agricultural business for the next generation.</p>
-        <div class="farm-team">
-          <p>The work is supported by farm managers, agronomists and farm staff.</p>
-          <img class="mascot" src="assets/mascot/ostrich-greeting.png" width="1024" height="1536" alt="Adam Crest Farms' illustrated ostrich mascot waving a wing" loading="lazy" />
-        </div>
-      </div>
-    </div>
-  </section>
-
+  <div class="home-directory wrap" aria-label="Explore the farm">
+    <a id="our-farm" href={href(route, '/about/')}><span>About the farm</span><svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></a>
+    <a id="enquire" href={href(route, '/contact/')}><span>Request a quote</span><svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></a>
+  </div>
   {featuredPost && <section id="journal" class="section wrap home-journal" aria-labelledby="journal-title">
     <div class="section-heading">
       <h2 id="journal-title">From the journal</h2>
@@ -88,38 +45,4 @@ const schema = {
     </article>
   </section>}
 
-  <section id="enquire" class="enquiry-section" aria-labelledby="enquiry-title">
-    <div class="wrap section enquiry-grid">
-      <div class="enquiry-copy">
-        <h2 id="enquiry-title">Request<br /> <em>a quote.</em></h2>
-        <p>Bulk orders and supply enquiries welcome.</p>
-        <p class="enquiry-instruction">Prepare an enquiry, then copy it to <a data-instagram href="https://www.instagram.com/adamcrestfarms/" target="_blank" rel="noopener noreferrer">Instagram</a>.</p>
-        <a id="whatsapp-link" class="button button-gold" href="#enquire" target="_blank" rel="noopener noreferrer" hidden>Continue on WhatsApp <svg class="icon" aria-hidden="true"><use href="#external" /></svg></a>
-        <p class="arrangements-pending">Collection, delivery and farm visits:<br />details to be confirmed.</p>
-      </div>
-      <div class="enquiry-card">
-        <form id="enquiry-form" aria-labelledby="enquiry-title">
-          <div id="composer-fields" hidden>
-            <label for="product">I’m interested in</label>
-            <select id="product" name="product"><option>General enquiry</option><option>Crops</option><option>Ostriches</option><option>Sheep</option><option>Goats</option></select>
-            <label for="location">Your location</label>
-            <input id="location" name="location" type="text" autocomplete="address-level2" maxlength="120" placeholder="Town or state" />
-            <label for="details">Your enquiry <span>(optional)</span></label>
-            <textarea id="details" name="details" rows="3" maxlength="1500" placeholder="Product details, quantity and preferred dates"></textarea>
-            <button class="button button-forest" type="submit">Prepare my enquiry <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></button>
-          </div>
-          <noscript><h3>Send an enquiry</h3><p><a href="https://www.instagram.com/adamcrestfarms/" target="_blank" rel="noopener noreferrer">Message us on Instagram</a> with the product, quantity and your location.</p></noscript>
-        </form>
-        <div id="enquiry-result" hidden>
-          <label for="enquiry-message">Your prepared message</label>
-          <textarea id="enquiry-message" rows="7" readonly></textarea>
-          <div class="result-actions">
-            <button id="copy-enquiry" class="button button-forest" type="button">Copy enquiry <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></button>
-            <a class="text-link" data-instagram href="https://www.instagram.com/adamcrestfarms/" target="_blank" rel="noopener noreferrer">Open Instagram <svg class="icon" aria-hidden="true"><use href="#external" /></svg></a>
-          </div>
-        </div>
-        <p id="copy-status" class="copy-status" role="status" aria-live="polite"></p>
-      </div>
-    </div>
-  </section>
 </Base>

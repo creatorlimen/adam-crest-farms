@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import { href } from '../lib/site.mjs';
+const route = '/about/';
+---
+<Base route={route} title="About the farm | Adam Crest Farms" description="How Adam Crest Farms began in Ologobi Village in 2026, and why its team grows vegetables alongside livestock in Ede South, Osun State." image="/assets/farm/nursery.webp" imageAlt="The farm nursery in Ologobi Village">
+  <article class="wrap story-page">
+    <header class="story-heading"><p class="place-line">Ologobi Village, Ede South</p><h1>About <em>the farm.</em></h1></header>
+    <div class="story-spread">
+      <img class="story-photo" src={href(route, '/assets/farm/nursery.webp')} width="960" height="1280" alt="The farm’s arched plant nursery in Ologobi Village" />
+      <div class="story-prose">
+        <h2>Our beginnings</h2>
+        <p>Adam Crest Farms began in 2026 with the ambition to grow food and create work in agriculture. The founder chose to develop crop production and animal husbandry together, so the business could earn from both the harvest and the livestock.</p>
+        <h2>The farm today</h2>
+        <p>Our farm managers, agronomists and farm staff work across vegetable production and livestock, including our ostrich flock. Our customers range from households and market traders to restaurants and wholesalers.</p>
+        <a class="text-link" href={href(route, '/products/')}>See what we offer <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></a>
+        <img class="mascot story-mascot" src={href(route, '/assets/mascot/ostrich-greeting.png')} width="1024" height="1536" alt="" loading="lazy" />
+      </div>
+    </div>
+  </article>
+</Base>

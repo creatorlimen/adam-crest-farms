@@ -35,7 +35,7 @@
         254
       ],
       "copied_unchanged": true,
-      "placement": "Small farm-story illustration, homepage journal feature, journal card/article and article sharing metadata; proportional and explicitly illustrative"
+      "placement": "About page illustration, homepage journal feature, journal card/article and article sharing metadata; proportional and explicitly illustrative"
     },
     {
       "file": "public/assets/farm/greenhouses.webp",
@@ -65,7 +65,7 @@
       "copied_unchanged": false,
       "processing": "WebP quality 84, maximum 1280px, EXIF orientation applied; no retouching or generative edits. Layout uses object-fit cropping.",
       "placement_status": "implemented",
-      "placement": "Crops product card"
+      "placement": "Crops catalogue and detail page"
     },
     {
       "file": "public/assets/farm/ostrich-paddock.webp",
@@ -80,7 +80,7 @@
       "copied_unchanged": false,
       "processing": "WebP quality 84, maximum 1280px, EXIF orientation applied; no retouching or generative edits. Layout uses object-fit cropping.",
       "placement_status": "implemented",
-      "placement": "Ostrich product card; adult birds pictured, not a claim of adult stock for sale"
+      "placement": "Ostrich catalogue and detail page; adult birds pictured, not a claim of adult stock for sale"
     },
     {
       "file": "public/assets/farm/nursery.webp",
@@ -95,7 +95,7 @@
       "copied_unchanged": false,
       "processing": "WebP quality 84, maximum 1280px, EXIF orientation applied; no retouching or generative edits. Layout uses object-fit cropping.",
       "placement_status": "implemented",
-      "placement": "Farm story photograph"
+      "placement": "About page photograph"
     }
   ],
   "updated_on": "2026-11-24"

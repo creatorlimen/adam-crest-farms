@@ -51,7 +51,7 @@ const schema = {
       <div>
         <div class="prose"><Content /></div>
         <section class="article-sources" id="sources" aria-labelledby="sources-title"><h2 id="sources-title">Sources &amp; further reading</h2><ol>{data.sources.map(source => <li><a href={source.url}>{source.title}</a><span>Checked {formatDate(source.accessed)}</span></li>)}</ol></section>
-        <aside class="article-enquiry"><h2>Product enquiries</h2><a class="button button-forest" href={href(route, '/#enquire')}>Request a quote <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></a></aside>
+        <aside class="article-enquiry"><h2>Product enquiries</h2><a class="button button-forest" href={href(route, '/contact/')}>Request a quote <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></a></aside>
       </div>
     </div>
     {related.length > 0 && <section class="related-posts" aria-labelledby="related-title"><h2 id="related-title">Keep exploring.</h2><div class="post-list">{related.map(p => <PostCard route={route} post={p} />)}</div></section>}

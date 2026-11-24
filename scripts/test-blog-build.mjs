@@ -32,7 +32,7 @@ try {
   assert.match(html, /"datePublished":"2026-11-01"/);
   assert.match(await read('sitemap.xml'), /seo-lifecycle-fixture/);
   assert.match(await read('sitemap.xml'), /topics\/crops/);
-  assert.doesNotMatch(await read('sitemap.xml'), /ostriches/);
+  assert.doesNotMatch(await read('sitemap.xml'), /topics\/ostriches/);
   assert.equal(await exists(path.join(root, 'dist/blog/why-do-ostriches-eat-stones/index.html')), false);
   assert.match(await read('index.html'), /\/blog\/seo-lifecycle-fixture\//);
   assert.doesNotMatch(await read('index.html'), /why-do-ostriches-eat-stones|Draft preview/);
@@ -43,7 +43,7 @@ try {
   assert.equal(await exists(path.join(root, 'dist/blog/seo-lifecycle-fixture/index.html')), false);
   assert.doesNotMatch(await read('sitemap.xml'), /seo-lifecycle-fixture/);
   assert.doesNotMatch(await read('index.html'), /seo-lifecycle-fixture|why-do-ostriches-eat-stones|id="journal"/);
-  assert.match(await read('index.html'), /class="mascot"/);
+  assert.match(await read('about/index.html'), /class="mascot story-mascot"/);
   report.checks.push('Homepage journal shares publication filtering: eligible article only, no draft/future links, and the empty feature is omitted while the mascot remains.');
   report.checks.push('A future-dated article is excluded; a clean rebuild removes its previously generated page.');
   await writeFile(fixture, sample.replace('status: draft', 'status: published'));

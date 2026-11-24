@@ -2,9 +2,9 @@
 
 A self-contained Astro website with a Markdown farm journal, a photograph-led farm introduction and a product-enquiry composer. The supplied logo, Option C mascot and established forest/cream/gold palette are retained.
 
-**Status, 24 November 2026:** local preview only. The homepage has been rebuilt from the completed owner questionnaire, with four actual farm photographs, specific product lists and the 2026 founding story. Repeated introductions and the generic FAQ have been removed. Missing sheep/goat photos, goat product details and collection/delivery/visit arrangements are clearly marked. WhatsApp remains hidden until a confirmed number is supplied; Instagram is the interim enquiry route. Nothing is published or deployed, and no remote is configured.
+**Local redesign, 24 November 2026.** Home introduces the farm. [Products](dist/products/index.html) opens a catalogue with individual crop, ostrich, sheep and goat pages. Each category links to [Contact](dist/contact/index.html) with that category selected for the enquiry. [About](dist/about/index.html) covers the founding story, location and team. Previous homepage bookmarks lead to the corresponding pages.
 
-The homepage now features the latest eligible journal article. The full journal keeps the owner's rounded image-card reference: four columns on desktop, two on tablet and one on mobile. One researched draft remains available for local review. The footer retains Instagram, TikTok and the confirmed Facebook page.
+The Farm Journal retains its article cards, topic archives and full articles. The homepage features the latest eligible post. The preview includes one labelled draft. Instagram is the available contact channel, and WhatsApp is hidden pending a confirmed number. Everything is local.
 
 ## Setup and preview
 
@@ -55,13 +55,15 @@ npm run test:browser
 
 On other platforms, install the Playwright Chromium browser with npx playwright install chromium and omit BROWSER_CHANNEL. Optional PREVIEW_URL changes the local address used by checks; optional PORT changes the server port. Screenshots and reports are written to docs/review/. Browser checks cover 320 to 1440px layouts, keyboard navigation, no-JavaScript reading, enquiry/copy behaviour, internal links, 404 recovery and common WCAG A/AA issues. Automated scans are not accessibility certification.
 
-See [QA.md](docs/QA.md), [journal screenshot](docs/review/desktop-journal-opening.png) and [article screenshot](docs/review/mobile-article-opening.png).
+The redesign's [desktop homepage](docs/review/multipage/desktop-home.png) and [mobile contact page](docs/review/multipage/mobile-contact.png) show the current layout. See [QA.md](docs/QA.md), [journal screenshot](docs/review/desktop-journal-opening.png) and [article screenshot](docs/review/mobile-article-opening.png).
 
 ## Repository map
 
 | Path | Purpose |
 |---|---|
-| src/pages/index.astro | Questionnaire-based homepage and product data |
+| src/pages/index.astro | Farm homepage and latest journal feature |
+| src/pages/products/, about.astro, contact.astro | Catalogue, category details, farm story and enquiries |
+| src/lib/products.mjs | Product facts and stable category routes |
 | src/pages/blog/ | Journal index, topic, article and editorial-policy pages |
 | src/content/blog/ | Markdown articles and metadata |
 | src/content.config.ts | Article schema |

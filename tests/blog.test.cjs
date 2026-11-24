@@ -13,7 +13,7 @@ test('sitemap excludes draft-only categories, future articles and all preview UR
   const { sitemapEntries } = await blog;
   const posts = [post('draft', 'draft', undefined, 'goats'), post('future', 'published', '2026-11-13', 'crops'), post('story', 'published', '2026-11-12')];
   assert.deepEqual(sitemapEntries(posts, { live: false }), []);
-  assert.deepEqual(sitemapEntries(posts, { live: true, date: '2026-11-12' }), ['/', '/blog/', '/blog/about/', '/blog/topics/ostriches/', '/blog/story/']);
+  assert.deepEqual(sitemapEntries(posts, { live: true, date: '2026-11-12' }), ['/', '/about/', '/contact/', '/products/', '/products/crops/', '/products/ostriches/', '/products/sheep/', '/products/goats/', '/blog/', '/blog/about/', '/blog/topics/ostriches/', '/blog/story/']);
 });
 test('local links work from nested article pages and preserve enquiry anchors', async () => {
   const { href } = await blog;

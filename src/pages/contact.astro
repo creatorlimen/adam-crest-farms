@@ -1,0 +1,41 @@
+---
+import Base from '../layouts/Base.astro';
+const route = '/contact/';
+---
+<Base route={route} title="Contact & product enquiries | Adam Crest Farms" description="Ask Adam Crest Farms about produce, livestock and bulk supply in Ede South. Prepare a product enquiry or contact the farm through Instagram.">
+  <div class="wrap contact-layout">
+    <div class="contact-copy">
+      <h1>Contact <em>the farm.</em></h1>
+      <p>For prices, availability or bulk supply, message us on Instagram. You can prepare and copy your enquiry here.</p>
+      <a class="contact-handle" data-instagram href="https://www.instagram.com/adamcrestfarms/" target="_blank" rel="noopener noreferrer">@adamcrestfarms <svg class="icon" aria-hidden="true"><use href="#external"/></svg></a>
+      <a id="whatsapp-link" class="button button-gold" href="#form-title" target="_blank" rel="noopener noreferrer" hidden>Continue on WhatsApp</a>
+      <address>Ologobi Village, Ede South<br />Osun State, Nigeria</address>
+      <p class="arrangements-pending">Please enquire about collection, delivery or a visit before making plans.</p>
+    </div>
+      <div class="enquiry-card">
+        <h2 id="form-title">Request a quote</h2>
+        <form id="enquiry-form" aria-labelledby="form-title">
+          <div id="composer-fields" hidden>
+            <label for="product">I’m interested in</label>
+            <select id="product" name="product"><option>General enquiry</option><option>Crops</option><option>Ostriches</option><option>Sheep</option><option>Goats</option></select>
+            <label for="location">Your location</label>
+            <input id="location" name="location" type="text" autocomplete="address-level2" maxlength="120" placeholder="Town or state" />
+            <label for="details">Your enquiry <span>(optional)</span></label>
+            <textarea id="details" name="details" rows="3" maxlength="1500" placeholder="Product details, quantity and preferred dates"></textarea>
+            <button class="button button-forest" type="submit">Prepare my enquiry <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></button>
+          </div>
+          <noscript><h3>Send an enquiry</h3><p><a href="https://www.instagram.com/adamcrestfarms/" target="_blank" rel="noopener noreferrer">Message us on Instagram</a> with the product, quantity and your location.</p></noscript>
+        </form>
+        <div id="enquiry-result" hidden>
+          <label for="enquiry-message">Your prepared message</label>
+          <textarea id="enquiry-message" rows="7" readonly></textarea>
+          <div class="result-actions">
+            <button id="copy-enquiry" class="button button-forest" type="button">Copy enquiry <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></button>
+            <a class="text-link" data-instagram href="https://www.instagram.com/adamcrestfarms/" target="_blank" rel="noopener noreferrer">Open Instagram <svg class="icon" aria-hidden="true"><use href="#external" /></svg></a>
+          </div>
+        </div>
+        <p id="copy-status" class="copy-status" role="status" aria-live="polite"></p>
+      </div>
+
+  </div>
+</Base>

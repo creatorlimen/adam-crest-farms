@@ -19,7 +19,7 @@ const topics = [...new Set(posts.map(post => post.data.category))];
     </nav>
     <div class="post-list">
       {posts.map(post => <PostCard post={post} route={route} />)}
-      {!posts.length && <p class="empty-journal">Our first stories are being prepared. In the meantime, <a href={href(route, '/#offerings')}>explore the farm</a>.</p>}
+      {!posts.length && <p class="empty-journal">Our first stories are being prepared. In the meantime, <a href={href(route, '/products/')}>explore the farm</a>.</p>}
     </div>
     <div class="journal-note"><a href={href(route, '/blog/about/')} class="text-link">Our editorial approach <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></a></div>
   </div>

@@ -1,6 +1,17 @@
 # Local website verification
 
-Latest complete review: 24 November 2026 with Microsoft Edge 158.0.4370.33 via local Playwright. The website and journal remain local and unpublished. Earlier review notes are retained below; shared screenshot filenames now show the latest rebuild, and earlier versions remain in Git history.
+## Multipage redesign, 24 November 2026
+
+The main navigation now opens Home, Products, About, Farm journal and Contact. The catalogue has four dedicated product pages. Product enquiries pass the selected category to Contact through the URL, including in the direct-file preview.
+
+- All eight unit tests and the publication lifecycle checks passed with the expanded sitemap. Draft and future articles remain filtered in production.
+- Local Edge browser checks covered eight farm routes and four journal routes at 320, 390, 768, 1024 and 1440 pixels. The scans reported zero overflow, broken images, external runtime requests or automated WCAG violations.
+- All four catalogue-to-contact journeys, copy and manual-copy fallback, keyboard navigation, JavaScript-disabled navigation, old homepage bookmarks, article-to-enquiry navigation and the 404 recovery path passed.
+- Desktop and phone screenshots were reviewed. The arched homepage photograph echoes the nursery roof, and the desktop crop was adjusted to show the farm sign. Sheep and goats use compact text entries in the catalogue and photo placeholders on their individual pages.
+
+[Farm page checks and screenshots](review/multipage/report.json) · [Journal checks](review/blog-browser-report.json) · [Publication checks](review/blog-build-report.json)
+
+Earlier questionnaire-based homepage review: 24 November 2026 with Microsoft Edge 158.0.4370.33 via local Playwright. The website and journal remain local and unpublished. Earlier review notes are retained below; shared screenshot filenames now show the latest rebuild, and earlier versions remain in Git history.
 
 ## Owner questionnaire rebuild, 24 November 2026
 

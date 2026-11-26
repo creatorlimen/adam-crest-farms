@@ -1,11 +1,14 @@
 import path from 'node:path';
 import { products, productRoute } from './products.mjs';
 
-export const production = process.env.SITE_ENV === 'production';
-const configuredOrigin = process.env.SITE_URL || 'https://adamcrestfarms.com';
-const parsedOrigin = new URL(configuredOrigin);
-if (production && (!process.env.SITE_URL || parsedOrigin.protocol !== 'https:' || parsedOrigin.pathname !== '/' || parsedOrigin.search || parsedOrigin.hash || parsedOrigin.username || parsedOrigin.password)) {
-  throw new Error('Production builds require SITE_URL as the confirmed HTTPS origin, e.g. https://adamcrestfarms.com');
+const hosted = process.env.SITE_ENV === 'hosted';
+export const production = process.env.SITE_ENV === 'production' || (hosted && process.env.VERCEL_ENV === 'production');
+const publishedOnly = hosted || production;
+const vercelDomain = hosted && process.env.VERCEL_PROJECT_PRODUCTION_URL;
+const configuredOrigin = process.env.SITE_URL || (vercelDomain && 'https://' + vercelDomain);
+const parsedOrigin = new URL(configuredOrigin || 'https://adamcrestfarms.com');
+if (publishedOnly && (!configuredOrigin || parsedOrigin.protocol !== 'https:' || parsedOrigin.pathname !== '/' || parsedOrigin.search || parsedOrigin.hash || parsedOrigin.username || parsedOrigin.password)) {
+  throw new Error('Hosted and production builds require an HTTPS origin from SITE_URL or Vercel’s project production domain.');
 }
 export const siteUrl = parsedOrigin.origin;
 export const siteName = 'Adam Crest Farms';
@@ -14,7 +17,7 @@ export const today = process.env.BUILD_DATE || new Intl.DateTimeFormat('en-CA', 
 
 // Preview links also work when dist/index.html is opened directly from disk.
 export function href(from, target) {
-  if (production) return target;
+  if (publishedOnly) return target;
   const [pathname, hash] = target.split('#');
   const file = pathname.endsWith('/') ? pathname + 'index.html' : pathname;
   const relative = path.posix.relative(from, file) || 'index.html';
@@ -28,7 +31,7 @@ export const readingMinutes = body => Math.max(1, Math.ceil((body || '').split(/
 export const serializeJson = data => JSON.stringify(data).replace(/</g, '\\u003c');
 export const escapeXml = value => String(value).replace(/[<>&"']/g, c => ({ '<':'&lt;', '>':'&gt;', '&':'&amp;', '"':'&quot;', "'":'&apos;' }[c]));
 
-export function visiblePosts(posts, { live = production, date = today } = {}) {
+export function visiblePosts(posts, { live = publishedOnly, date = today } = {}) {
   return posts.filter(post => !live || (post.data.status === 'published' && post.data.publishedAt <= date))
     .sort((a, b) => (b.data.publishedAt || b.data.researchedAt).localeCompare(a.data.publishedAt || a.data.researchedAt) || a.id.localeCompare(b.id));
 }

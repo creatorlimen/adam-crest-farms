@@ -82,9 +82,15 @@ Photo provenance and hashes are recorded in [ASSETS.md](docs/ASSETS.md) and its 
 
 To enable WhatsApp later, put the owner-confirmed international digits-only number in public/site-config.js and review the Instagram-first instructions. Never use a made-up number or put credentials in public files.
 
-## Later production build and launch
+## Vercel hosting
 
-Publication remains a separate instruction. First confirm domain access, the final HTTPS origin and contact journey, and which drafts are approved. On the actual publication date, set approved articles to published with that genuine date. Then, for example in PowerShell:
+Import `creatorlimen/adam-crest-farms` into Vercel, using `main` and the repository root. The checked-in `vercel.json` selects Astro, runs the hosted build and serves `dist/`. Leave Vercel's system environment variables enabled. Production uses the project's assigned HTTPS domain for canonical links and the sitemap. To choose a specific connected custom domain, set `SITE_URL` to its HTTPS origin and redeploy.
+
+Both production and Vercel preview deployments omit drafts and future-dated articles. Production is indexable. Vercel previews block indexing. Local builds continue to include labelled drafts.
+
+## Local production build
+
+To inspect production output locally, set the confirmed HTTPS origin before building. Set an approved article to published with its genuine publication date when it is ready.
 
 ```powershell
 $env:SITE_ENV = 'production'

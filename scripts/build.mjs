@@ -14,4 +14,4 @@ try {
 const build = spawnSync(process.execPath, [path.join(root, 'node_modules/astro/bin/astro.mjs'), 'build'], { cwd: root, stdio: 'inherit', env: { ...process.env, ASTRO_TELEMETRY_DISABLED: '1' } });
 if (build.error) throw build.error;
 if (build.status !== 0) process.exit(build.status || 1);
-console.log(`Static ${process.env.SITE_ENV === 'production' ? 'production' : 'local preview'} built in dist/. No publication performed.`);
+console.log(`Static ${process.env.SITE_ENV || 'local preview'} build written to dist/.`);

@@ -1,0 +1,6 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "astro",
+  "buildCommand": "SITE_ENV=hosted npm run build",
+  "outputDirectory": "dist"
+}

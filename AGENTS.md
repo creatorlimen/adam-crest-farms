@@ -4,6 +4,8 @@ This directory is an independent Git repository. Read README.md, docs/BRAND_BRIE
 
 ## Scope and continuity
 
+The primary Website checkout is the local-only `local-authoring` branch. Keep editorial drafts, the questionnaire, research, tests and review captures here. The separate `main` checkout at `.local/hosting-source/` is the GitHub/Vercel source. For a release, transfer the intended website changes into that checkout, inspect its staged filenames and run its hosted build. Stage a journal Markdown file there only after approval and with its genuine publication date. Keep the history of the authoring branch local. Subsequent hosting updates use normal commits and pushes to `main`.
+
 - Work inside this repository. Use Git history for revisions; do not create vNN copies of the website.
 - Keep the repository independently usable after cloning. The parent Adam Crest Farms workspace is an optional source library, not a build/runtime dependency.
 - Use public/assets for media actually used by the site. Keep research, provenance and internal implementation notes under docs, outside public.

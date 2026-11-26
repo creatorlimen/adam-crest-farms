@@ -84,6 +84,8 @@ To enable WhatsApp later, put the owner-confirmed international digits-only numb
 
 ## Vercel hosting
 
+This local working copy keeps the full editorial and review workflow on `local-authoring`. GitHub's `main` contains the build and website sources in a separate worktree at `.local/hosting-source/`. Make public releases from that worktree, transferring only the approved changes. Approved articles can be added there with `git add -f -- src/content/blog/ARTICLE.md`. Future releases use ordinary commits and pushes. The original complete history was backed up in `.local/backups/website-before-github-cleanup-bf07456.bundle`.
+
 Import `creatorlimen/adam-crest-farms` into Vercel, using `main` and the repository root. The checked-in `vercel.json` selects Astro, runs the hosted build and serves `dist/`. Leave Vercel's system environment variables enabled. Production uses the project's assigned HTTPS domain for canonical links and the sitemap. To choose a specific connected custom domain, set `SITE_URL` to its HTTPS origin and redeploy.
 
 Both production and Vercel preview deployments omit drafts and future-dated articles. Production is indexable. Vercel previews block indexing. Local builds continue to include labelled drafts.

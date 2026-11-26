@@ -1,11 +1,18 @@
 ---
 import Base from '../layouts/Base.astro';
+import FarmCover from '../components/FarmCover.astro';
+import { products } from '../lib/products.mjs';
 import EnquiryForm from '../components/EnquiryForm.astro';
 import ProductGrid from '../components/ProductGrid.astro';
 import { absolute, href, articleRoute, categories, readingMinutes } from '../lib/site.mjs';
 import { getPosts } from '../lib/posts';
 
 const route = '/';
+const places = [
+  { title: 'The greenhouses', image: 'greenhouses', width: 1280, height: 720, alt: 'A path past the shade-covered greenhouses at the farm', text: 'Our vegetable crops include cucumbers, tomatoes and green and coloured bell peppers.' },
+  { title: 'The nursery', image: 'nursery', width: 960, height: 1280, alt: 'The clear-roofed nursery at Adam Crest Farms', text: 'Farm managers, agronomists and farm staff support the work here in Ede South.' },
+  { title: 'The ostrich paddock', image: 'ostrich-paddock', width: 720, height: 1280, alt: 'Adult ostriches standing in the farm paddock', text: 'Our adult flock lives here. Buyers can enquire about fertilised eggs and young chicks.' }
+];
 const featuredPost = (await getPosts())[0];
 const schema = {
   '@context': 'https://schema.org', '@type': 'Organization', name: 'Adam Crest Farms',
@@ -15,33 +22,79 @@ const schema = {
 };
 ---
 <Base route={route} title="Adam Crest Farms | Crops & livestock in Osun State" description="Explore Adam Crest Farms in Ede South, Osun State: cucumbers, tomatoes, bell peppers, ostrich eggs and chicks, sheep and goats. Prices by quotation." image="/assets/farm/greenhouses.webp" imageAlt="Greenhouses at Adam Crest Farms" schema={schema}>
-  <section class="front-cover" aria-labelledby="hero-title">
-    <div class="wrap cover-layout">
-      <div class="cover-type">
-        <h1 id="hero-title">Crops &amp;<br /> livestock <em>in Osun.</em></h1>
-        <p>We grow vegetables and raise ostriches, sheep and goats in Ologobi Village.</p>
-        <a class="button button-gold" href="#offerings">Explore our products <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></a>
+  <FarmCover />
+  <section class="section wrap" aria-labelledby="range-title">
+    <h2 id="range-title" class="market-title">What we grow <em>and raise.</em></h2>
+    <div class="feature-row">
+      <article class="feature-tile harvest-tile">
+        <h3>The vegetable harvest</h3>
+        <p>Ask what’s ready for your kitchen or market stall.</p>
+        <img src={href(route, '/assets/farm/cucumbers.webp')} width="1280" height="720" alt="Bags of freshly harvested cucumbers at Adam Crest Farms" loading="lazy" />
+      </article>
+      <article class="feature-tile chick-tile">
+        <h3>Young ostriches</h3>
+        <p>Looking to start or grow a flock? Ask about chicks at this age.</p>
+        <div class="age-sample"><strong>4–8</strong><span>weeks old</span></div>
+      </article>
+      <article class="feature-tile breed-tile">
+        <h3>Our sheep breeds</h3>
+        <p>Tell us which breed you have in mind when you enquire.</p>
+        <ul class="breed-tags">{products.find(product => product.slug === 'sheep').items.map(breed => <li>{breed}</li>)}</ul>
+      </article>
+    </div>
+  </section>
+  <section id="offerings" class="market-offerings" aria-labelledby="products-title">
+    <div class="section wrap">
+      <div class="section-heading"><h2 id="products-title" class="market-title">Farm <em>products.</em></h2>
+        <a class="button button-forest" href={href(route, '/products/')}>All products <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
       </div>
-      <img class="cover-photo" src={href(route, '/assets/farm/greenhouses.webp')} width="1280" height="720" alt="The greenhouses at Adam Crest Farms, with the farm sign on a tree beside the path" fetchpriority="high" />
+      <ProductGrid route={route} heading="h3" />
     </div>
   </section>
-  <section id="offerings" class="section wrap" aria-labelledby="products-title">
-    <div class="section-heading">
-      <h2 id="products-title">Our products</h2>
-      <p>Prices by quotation. Availability varies with stock and harvest.</p>
+  <section id="our-farm" class="farm-statement" aria-labelledby="story-title">
+    <img class="statement-image" src={href(route, '/assets/farm/greenhouses.webp')} width="1280" height="720" alt="" loading="lazy" />
+    <div class="wrap statement-copy">
+      <p>Adam Crest Farms began in 2026.</p>
+      <h2 id="story-title">We started this farm to grow food and create work <em>for the next generation.</em></h2>
+      <a class="text-link" href={href(route, '/about/')}>About the farm <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
     </div>
-    <ProductGrid route={route} heading="h3" />
   </section>
-  <section id="our-farm" class="home-story" aria-labelledby="story-title">
-    <div class="section wrap story-spread">
-      <img class="story-photo" src={href(route, '/assets/farm/nursery.webp')} width="960" height="1280" alt="The clear-roofed plant nursery at Adam Crest Farms" loading="lazy" />
-      <div class="home-story-copy">
-        <h2 id="story-title">Why we started <em>the farm.</em></h2>
-        <p>We started Adam Crest Farms in 2026 to grow food and create work in agriculture. Today, farm managers, agronomists and farm staff look after our vegetables and livestock.</p>
-        <div class="story-signoff">
-          <a class="text-link" href={href(route, '/about/')}>About the farm <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></a>
-          <img src={href(route, '/assets/mascot/ostrich-greeting.png')} width="1024" height="1536" alt="" loading="lazy" />
-        </div>
+  <section class="section wrap" aria-labelledby="buying-title">
+    <div class="buyer-strip">
+      <h2 id="buying-title">Buying from the farm</h2>
+      <div class="buying-grid">
+        <div><h3>Prices by quotation</h3><p>Tell us the product and quantity so we can quote for your request.</p></div>
+        <div><h3>Stock and season</h3><p>What’s available depends on the harvest and the animals on hand.</p></div>
+        <div><h3>Collection and delivery</h3><p>Confirm arrangements with the farm before making travel plans.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="category-path" aria-labelledby="quick-title">
+    <div class="section wrap">
+      <h2 id="quick-title" class="market-title">Pick a category. <em>Start an enquiry.</em></h2>
+      <div class="category-links">{products.map(product => (
+        <a href={href(route, '/contact/') + '?product=' + encodeURIComponent(product.name)} aria-label={'Start a ' + product.name.toLowerCase() + ' enquiry'}>
+          <span>{product.name}</span><svg class="icon" aria-hidden="true"><use href="#arrow"/></svg>
+        </a>
+      ))}</div>
+    </div>
+  </section>
+  <section class="section wrap farm-walk" aria-labelledby="walk-title">
+    <div class="section-heading"><h2 id="walk-title" class="market-title">Inside <em>the farm.</em></h2><p>Photographs from Ologobi Village</p></div>
+    <div class="farm-places">{places.map((place, index) => (
+      <article class="farm-place">
+        <img src={href(route, '/assets/farm/' + place.image + '.webp')} width={place.width} height={place.height} alt={place.alt} loading="lazy" />
+        <div class="place-caption"><span class="place-count">0{index + 1} / 03</span><h3>{place.title}</h3><p>{place.text}</p></div>
+      </article>
+    ))}</div>
+  </section>
+  <section class="buyer-profiles" aria-labelledby="buyers-title">
+    <div class="section wrap">
+      <div class="buyer-heading"><h2 id="buyers-title" class="market-title">Who we <em>supply.</em></h2><img src={href(route, '/assets/mascot/ostrich-greeting.png')} width="1024" height="1536" alt="" loading="lazy" /></div>
+      <div class="buyer-row">
+        <article><h3>Households</h3><p>Choose the vegetables you cook with and ask what’s available for your next shop.</p></article>
+        <article><h3>Restaurants</h3><p>Send your ingredient list, quantities and the date you need them.</p></article>
+        <article><h3>Traders &amp; wholesalers</h3><p>For bulk supply, tell us the volumes and products you’re looking for.</p></article>
       </div>
     </div>
   </section>
@@ -63,11 +116,11 @@ const schema = {
     </article>
   </section>}
 
-  <section id="enquire" class="home-enquiry" aria-labelledby="form-title">
-    <div class="section wrap contact-layout">
+  <section id="enquire" class="home-enquiry wrap" aria-labelledby="form-title">
+    <div class="section contact-layout">
       <div class="home-enquiry-copy">
-        <h2 id="form-title">Request a quote</h2>
-        <p>Tell us what you need and how much. Copy your enquiry and send it to the farm on Instagram.</p>
+        <h2 id="form-title">Ready to <em>enquire?</em></h2>
+        <p>Need multiple items? List them in one enquiry, then copy your message and send it to us on Instagram.</p>
         <a class="text-link" href={href(route, '/contact/')}>Contact details <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></a>
         <a id="whatsapp-link" class="button button-gold" href="#form-title" target="_blank" rel="noopener noreferrer" hidden>Continue on WhatsApp</a>
       </div>

@@ -1,11 +1,19 @@
 ---
 import Base from '../../layouts/Base.astro';
 import ProductGrid from '../../components/ProductGrid.astro';
+import { products } from '../../lib/products.mjs';
+import { href } from '../../lib/site.mjs';
 const route = '/products/';
+const groups = ['All products', ...new Set(products.map(product => product.group))];
 ---
 <Base route={route} title="Farm products | Adam Crest Farms" description="Browse crops, ostrich eggs and chicks, sheep and goats at Adam Crest Farms in Osun State. Select a product for details and a quotation.">
   <div class="wrap catalogue">
     <header class="catalogue-heading"><h1>Our <em>products.</em></h1><p>Prices are available by quotation.<br />Bulk supply enquiries are welcome.</p></header>
+    <div class="catalogue-filters" role="group" aria-label="Filter products" hidden>
+      {groups.map((group, index) => <button type="button" data-filter={group} aria-pressed={index === 0 ? 'true' : 'false'}>{group}</button>)}
+    </div>
+    <p id="catalogue-count" class="visually-hidden" role="status"></p>
     <ProductGrid route={route} />
   </div>
+  <script is:inline src={href(route, '/catalogue.js')} defer></script>
 </Base>

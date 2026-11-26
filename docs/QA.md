@@ -1,5 +1,13 @@
 # Local website verification
 
+## EuniqueFarmé reference redesign, 26 November 2026
+
+Reviewed the cover and product grid at desktop and phone sizes, plus the feature cards, story, farm tour, quote form and individual product layout. The homepage follows the reference sequence and adds the existing journal before the quote form. Buyer groups occupy the reference's testimonial section. Farm photographs and generated product illustrations have distinct uses and provenance.
+
+All eight unit tests, production and preview publication checks, and browser tests passed. Edge checks covered eight farm pages and four journal pages from 320 to 1440 pixels. The slideshow advanced automatically, stayed paused after pausing and supported manual selection. Catalogue filters worked on reload, browser Back and the direct-file preview. Product links, related products, preselected enquiries, clipboard and JavaScript-disabled fallbacks were checked.
+
+[Desktop](review/multipage/desktop-home.png) · [Mobile](review/multipage/mobile-home.png) · [Browser results](review/multipage/report.json)
+
 ## Homepage restoration, 25 November 2026
 
 The hero now jumps to four product entries. The nursery photograph and founding story link to About. Home and Contact share the enquiry form. The three original homepage bookmarks now land directly on their sections.

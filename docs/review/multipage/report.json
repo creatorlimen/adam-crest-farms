@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-25",
+  "date": "2026-11-26",
   "browser": "158.0.4370.33",
   "viewports": [
     {
@@ -485,7 +485,9 @@
   ],
   "interactions": [
     "Keyboard Tab exposes the skip link and Enter moves focus to the main content.",
+    "The product cover supports manual selection and play/pause.",
     "Mobile menu opens, closes on Escape with focus returned, and closes on navigation.",
+    "Catalogue filters survive reload and browser Back. Related links open the corresponding products.",
     "All four category links preselect their product; enquiry text and clipboard output match.",
     "Editing invalidates the prepared message; clipboard failure exposes manual-copy instructions.",
     "All three historic homepage bookmarks land on their restored sections.",

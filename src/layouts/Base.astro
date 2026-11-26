@@ -32,6 +32,8 @@ const canonical = absolute(route);
     <link rel="icon" type="image/jpeg" href={href(route, '/assets/brand/adam-crest-farms-logo.jpeg')} />
     <link rel="stylesheet" href={href(route, '/styles.css')} />
     <link rel="stylesheet" href={href(route, '/journal.css')} />
+    {(route === '/' || route.startsWith('/products/')) && <link rel="stylesheet" href={href(route, '/market.css')} />}
+    {route === '/' && <script is:inline src={href(route, '/cover.js')} defer></script>}
     {schema && <script type="application/ld+json" set:html={serializeJson(schema)} />}
     <script is:inline src={href(route, '/site-config.js')} defer></script>
     <script is:inline src={href(route, '/enquiry.js')} defer></script>

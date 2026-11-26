@@ -75,4 +75,6 @@ The 24 November rebuild replaces the generic farm/product copy and repetitive FA
 
 ## Source context
 
+The November 2026 EuniqueFarmé redesign uses owner-authorised generated product pictures. Label these as product illustrations. Use the four owner photographs for depictions of the farm itself. The reference's short labels and shopping prompts can be adapted for product enquiries and quotes. The owner's existing contact and availability decisions still apply.
+
 Business details came from the owner's intake answers retained in the farm workspace's launch-video brief. Instagram was supplied separately in chat. Visual preferences came from the approved carousel SOP. The current mascot selection and kit records were read on 8 November 2026; see MASCOT_GUIDE.md and asset-manifest.json.

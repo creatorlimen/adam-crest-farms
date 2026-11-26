@@ -35,7 +35,7 @@
         254
       ],
       "copied_unchanged": true,
-      "placement": "About page illustration, homepage journal feature, journal card/article and article sharing metadata; proportional and explicitly illustrative"
+      "placement": "About page, homepage buyer section and journal feature, article and journal cards"
     },
     {
       "file": "public/assets/farm/greenhouses.webp",
@@ -50,7 +50,7 @@
       "copied_unchanged": false,
       "processing": "WebP quality 84, maximum 1280px, EXIF orientation applied; no retouching or generative edits. Layout uses object-fit cropping.",
       "placement_status": "implemented",
-      "placement": "Homepage lead photograph"
+      "placement": "Homepage sharing image, founding story and photo tour"
     },
     {
       "file": "public/assets/farm/cucumbers.webp",
@@ -65,7 +65,7 @@
       "copied_unchanged": false,
       "processing": "WebP quality 84, maximum 1280px, EXIF orientation applied; no retouching or generative edits. Layout uses object-fit cropping.",
       "placement_status": "implemented",
-      "placement": "Crops catalogue and detail page"
+      "placement": "Homepage harvest feature and crops detail page"
     },
     {
       "file": "public/assets/farm/ostrich-paddock.webp",
@@ -80,7 +80,7 @@
       "copied_unchanged": false,
       "processing": "WebP quality 84, maximum 1280px, EXIF orientation applied; no retouching or generative edits. Layout uses object-fit cropping.",
       "placement_status": "implemented",
-      "placement": "Ostrich catalogue and detail page; adult birds pictured, not a claim of adult stock for sale"
+      "placement": "Homepage photo tour and ostrich detail page"
     },
     {
       "file": "public/assets/farm/nursery.webp",
@@ -95,8 +95,56 @@
       "copied_unchanged": false,
       "processing": "WebP quality 84, maximum 1280px, EXIF orientation applied; no retouching or generative edits. Layout uses object-fit cropping.",
       "placement_status": "implemented",
-      "placement": "About page photograph"
+      "placement": "Homepage photo tour and About page"
+    },
+    {
+      "file": "public/assets/products/market-vegetables.webp",
+      "provenance": "AI-generated with OpenAI ImageGen",
+      "generation_brief": "Produce still life with tomatoes, cucumbers and bell peppers, side-lit on a forest-green table, with space on the left for a headline.",
+      "source_id": "4eb2d054-5f93-4c01-b22c-69ba9dafd71e",
+      "placement": "Homepage slideshow and product cards, related-product links",
+      "width": 1600,
+      "height": 900,
+      "bytes": 120264,
+      "sha256": "273b33a117c0010a021b8542cc802d6eaa6872c2bc25437d87ab75ea8c373b95",
+      "prompt": "Create a premium, true-to-life editorial food photograph in a wide landscape 16:9 composition for the homepage of a Nigerian produce farm. An extremely tactile close-up of scarlet sun-ripened tomatoes on the vine, emerald cucumbers with natural bloom, a gold and a red bell pepper, loosely arranged on a dark, worn forest-green produce table. Warm low sidelight, tiny natural imperfections, palpable texture, no artificial gloss. Vegetables occupy the right two thirds, some extend beyond the right frame; the left third has very dark textured negative space suitable for website headline overlay. A few out-of-focus vegetables at back add depth. This is a studio product still life, not a farm scene. No human, lettering, graphics, logos, crates with markings, or text. Landscape single photograph."
+    },
+    {
+      "file": "public/assets/products/ostrich-eggs.webp",
+      "provenance": "AI-generated with OpenAI ImageGen",
+      "generation_brief": "Two ivory ostrich eggs on straw, photographed as a close, warm studio still life.",
+      "source_id": "0fc9b800-a111-42e3-bc93-a891caa79a2c",
+      "placement": "Homepage slideshow and product cards, related-product links",
+      "width": 1200,
+      "height": 800,
+      "bytes": 98914,
+      "sha256": "b7a5a2a92215192cfff3fa731b21fee615b566f12088e9313e43b382bcdea770",
+      "prompt": "Editorial product still life for an agricultural catalogue. Two large ivory ostrich eggs with anatomically correct rounded oval form and fine stippled thick shells, resting together on a shallow nest of dry golden straw on a matte olive-brown studio tabletop. Close, tactile side view, softly lit from the left, restrained colours, one egg slightly forward. Center the subjects with space for cropping to a square. Individually huge, not a group of chicken eggs. Landscape 3:2 single photograph. No labels, text, people, hatchling, packing boxes, farm buildings or branding."
+    },
+    {
+      "file": "public/assets/products/sheep.webp",
+      "provenance": "AI-generated with OpenAI ImageGen",
+      "generation_brief": "Cream short-haired sheep with long ears in three-quarter view against a muted khaki studio backdrop.",
+      "source_id": "459c6078-7880-451a-8279-3cd03ca4d6f0",
+      "placement": "Homepage slideshow and product cards, product detail page, related-product links",
+      "width": 1200,
+      "height": 800,
+      "bytes": 40882,
+      "sha256": "7032a98f8015401665dcb773a5a2c1fb7ff9382e8379746d556553b8d1f21002",
+      "prompt": "Single editorial livestock portrait for an agricultural catalogue. One healthy West African hair sheep, adult, cream-white short hair, long floppy ears, unmistakable sheep features, three-quarter profile looking gently toward the camera, neck and upper body visible. Natural hornless ewe, accurate anatomy. Soft muted khaki studio backdrop, warm indirect daylight, highly photographic fur detail, understated magazine art direction, substantial negative space above and to sides for crops, eye line around middle. Landscape 3:2 single photograph. No stockyard, no fencing, no location cues, no other animals, no humans, no text, no logos."
+    },
+    {
+      "file": "public/assets/products/goats.webp",
+      "provenance": "AI-generated with OpenAI ImageGen",
+      "generation_brief": "Brown and black goat with swept-back horns in soft daylight, three-quarter view against muted olive.",
+      "source_id": "3275a5c4-b4d8-4cc6-820c-5fe5bc8fe28d",
+      "placement": "Homepage slideshow and product cards, product detail page, related-product links",
+      "width": 1200,
+      "height": 800,
+      "bytes": 52878,
+      "sha256": "32f503b7b0c21accd0e0b27119f4e0f6e8a8efda702398092e5c65098282e564",
+      "prompt": "Single editorial livestock portrait for an agricultural catalogue. One brown-and-black short-haired adult domestic goat in a gentle three-quarter side view, alert horizontal ears, two small swept-back horns and fine muzzle, recognizable goat anatomy. Head and front shoulders isolated against a muted warm olive studio backdrop. Warm indirect daylight, subtle natural texture, earthy colours, sharp animal, plenty of space above horns and around head for square or horizontal crops. Landscape 3:2 single photograph. No reference to a specific breed or real farm, no fencing, no humans, no other animals, no logo, no text."
     }
   ],
-  "updated_on": "2026-11-24"
+  "updated_on": "2026-11-26"
 }

@@ -2,7 +2,7 @@
 
 A self-contained Astro website with a Markdown farm journal, a photograph-led farm introduction and a product-enquiry composer. The supplied logo, Option C mascot and established forest/cream/gold palette are retained.
 
-**Local homepage revision, 25 November 2026.** Home introduces the farm, links directly to all four product groups, tells the founding story beside the nursery photograph and lets visitors prepare a quote request. The historical `#offerings`, `#our-farm` and `#enquire` bookmarks open those sections. [Products](dist/products/index.html) shares the homepage product entries. Each detail page links to [Contact](dist/contact/index.html) with the product preselected. [About](dist/about/index.html) covers the founding story, location and team.
+**Local redesign, 26 November 2026.** The homepage follows the supplied EuniqueFarmé reference through the rotating cover, three feature cards, featured products, farm story, buying information, category shortcuts, photo tour, buyer groups and final enquiry. The Farm Journal sits before the enquiry. [Products](dist/products/index.html) supports shareable category filters, individual product pages and related products. Each category can open [Contact](dist/contact/index.html) with the product selected. The historical `#offerings`, `#our-farm` and `#enquire` bookmarks open the corresponding homepage sections.
 
 The Farm Journal retains its article cards, topic archives and full articles. The homepage features the latest eligible post. The preview includes one labelled draft. Instagram is the available contact channel, and WhatsApp is hidden pending a confirmed number. Everything is local.
 
@@ -78,7 +78,7 @@ The [desktop homepage](docs/review/multipage/desktop-home.png) and [mobile homep
 
 Dependencies are pinned in package-lock.json. Astro is used at build time; the result is static HTML/CSS/JavaScript. There are no runtime CDNs, remote fonts, analytics, databases or server submissions. Visitors prepare an enquiry locally and send it themselves through Instagram. Social/source links only open when followed.
 
-Photo provenance and hashes are recorded in [ASSETS.md](docs/ASSETS.md) and its manifest. The four WebP derivatives are committed and require no processing to build the site. Optional `python scripts/prepare-farm-photos.py PATH_TO_OWNER_IMAGES` recreates them with Pillow; it is an asset-maintenance utility, not a build dependency. The parent workspace is not needed after cloning.
+Photo provenance and hashes are recorded in [ASSETS.md](docs/ASSETS.md) and its manifest. The four owner-photo derivatives and four generated product illustrations are committed and require no processing to build the site. Optional `python scripts/prepare-farm-photos.py PATH_TO_OWNER_IMAGES` recreates them with Pillow; it is an asset-maintenance utility, not a build dependency. The parent workspace is not needed after cloning.
 
 To enable WhatsApp later, put the owner-confirmed international digits-only number in public/site-config.js and review the Instagram-first instructions. Never use a made-up number or put credentials in public files.
 

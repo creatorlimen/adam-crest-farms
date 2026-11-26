@@ -6,7 +6,7 @@ const links = [
   ['/blog/', 'Farm journal'], ['/contact/', 'Contact'],
 ];
 ---
-<div class="opening">
+<div class:list={['opening', { 'cover-masthead': route === '/' }]}>
 <header class="site-header wrap">
       <a class="brand" href={href(route, "/")} aria-label="Adam Crest Farms home">
         <img src={href(route, "/assets/brand/adam-crest-farms-logo.jpeg")} width="70" height="70" alt="Adam Crest Farms logo">

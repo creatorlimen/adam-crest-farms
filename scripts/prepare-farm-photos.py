@@ -3,6 +3,7 @@
 Usage: python scripts/prepare-farm-photos.py PATH_TO_OWNER_IMAGES
 Requires Pillow. Only the selected source photographs are read; originals stay intact.
 """
+from datetime import date
 import hashlib
 import json
 from pathlib import Path
@@ -12,10 +13,10 @@ from PIL import Image, ImageOps
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = Path(sys.argv[1])
 SELECTED = [
-    ("WhatsApp Image 2026-11-19 at 20.15.35.jpeg", "greenhouses", "Homepage lead photograph"),
-    ("WhatsApp Image 2026-11-17 at 20.04.43.jpeg", "cucumbers", "Crops catalogue and detail page"),
-    ("WhatsApp Image 2026-11-19 at 20.15.32.jpeg", "ostrich-paddock", "Ostrich catalogue and detail page; adult birds pictured, not a claim of adult stock for sale"),
-    ("WhatsApp Image 2026-11-19 at 20.15.33.jpeg", "nursery", "About page photograph"),
+    ("WhatsApp Image 2026-11-19 at 20.15.35.jpeg", "greenhouses", "Homepage sharing image, founding story and photo tour"),
+    ("WhatsApp Image 2026-11-17 at 20.04.43.jpeg", "cucumbers", "Homepage harvest feature and crops detail page"),
+    ("WhatsApp Image 2026-11-19 at 20.15.32.jpeg", "ostrich-paddock", "Homepage photo tour and ostrich detail page"),
+    ("WhatsApp Image 2026-11-19 at 20.15.33.jpeg", "nursery", "Homepage photo tour and About page"),
 ]
 manifest_path = ROOT / "docs/asset-manifest.json"
 manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
@@ -41,6 +42,5 @@ for filename, stem, placement in SELECTED:
         "placement_status": "implemented", "placement": placement,
     })
     print(f"{stem}: {width}x{height}, {destination.stat().st_size:,} bytes")
-manifest["updated_on"] = "2026-11-24"
-manifest["assets"][1]["placement"] = "About page illustration, homepage journal feature, journal card/article and article sharing metadata; proportional and explicitly illustrative"
+manifest["updated_on"] = date.today().isoformat()
 manifest_path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")

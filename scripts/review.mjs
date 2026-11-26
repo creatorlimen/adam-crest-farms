@@ -58,6 +58,14 @@ try {
   await page.keyboard.press('Enter');
   assert.equal(await page.evaluate(() => document.activeElement.id), 'main');
   report.interactions.push('Keyboard Tab exposes the skip link and Enter moves focus to the main content.');
+  const cover = page.locator('[data-cover]');
+  await cover.getByRole('button', { name: 'Show goats', exact: true }).click();
+  assert.equal(await cover.locator('[data-slide][aria-pressed="true"]').getAttribute('aria-label'), 'Show goats');
+  await cover.getByRole('button', { name: 'Play slideshow', exact: true }).click();
+  await cover.getByRole('button', { name: 'Pause slideshow', exact: true }).click();
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  assert.equal(await cover.locator('.cover-frame.is-current').count(), 1);
+  report.interactions.push('The product cover supports manual selection and play/pause.');
   await page.getByRole('button', { name: 'Menu', exact: true }).click();
   assert.equal(await page.getByRole('button', { name: 'Menu', exact: true }).getAttribute('aria-expanded'), 'true');
   await page.keyboard.press('Escape');
@@ -67,6 +75,20 @@ try {
   await page.locator('#navigation').getByRole('link', { name: 'About', exact: true }).click();
   assert.equal(await page.getByRole('button', { name: 'Menu', exact: true }).getAttribute('aria-expanded'), 'false');
   report.interactions.push('Mobile menu opens, closes on Escape with focus returned, and closes on navigation.');
+  await page.goto(base + '/products/');
+  await page.getByRole('button', { name: 'Livestock', exact: true }).click();
+  assert.equal(await page.locator('.market-card:visible').count(), 2);
+  assert.equal(new URL(page.url()).searchParams.get('category'), 'Livestock');
+  await page.reload();
+  assert.equal(await page.locator('.market-card:visible').count(), 2);
+  await page.getByRole('button', { name: 'Eggs & chicks', exact: true }).click();
+  assert.equal(await page.locator('.market-card:visible').count(), 1);
+  await page.goBack();
+  await page.locator('button[data-filter="Livestock"][aria-pressed="true"]').waitFor();
+  await page.getByRole('link', { name: 'View product: Sheep' }).click();
+  await page.getByRole('navigation', { name: 'Other farm products' }).getByRole('link', { name: 'Goats' }).click();
+  assert.equal(await page.locator('h1').innerText(), 'Goats');
+  report.interactions.push('Catalogue filters survive reload and browser Back. Related links open the corresponding products.');
   for (const product of ['Ostriches', 'Sheep', 'Goats', 'Crops']) {
     await page.goto(base + '/products/');
     await page.locator('.catalogue-entry').filter({ has: page.getByRole('heading', { name: product, exact: true }) }).click();
@@ -113,6 +135,9 @@ try {
   }
   await page.locator('#our-farm').getByRole('link', { name: 'About the farm' }).click();
   assert.ok(new URL(page.url()).pathname.startsWith('/about/'));
+  await page.goBack();
+  await page.locator('.category-links').getByRole('link', { name: 'Start a sheep enquiry' }).click();
+  assert.equal(await page.locator('#product').inputValue(), 'Sheep');
   await page.goBack();
   await page.locator('#product').selectOption('Ostriches');
   await page.locator('#details').fill('Please quote for four chicks.');

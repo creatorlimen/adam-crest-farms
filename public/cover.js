@@ -22,7 +22,7 @@
     play.setAttribute('aria-label', playing ? 'Pause slideshow' : 'Play slideshow');
     play.firstElementChild.textContent = playing ? 'Ⅱ' : '▶';
     if (playing && visible && !document.hidden) {
-      timer = setInterval(() => show((index + 1) % frames.length), 7000);
+      timer = setInterval(() => show((index + 1) % frames.length), 4000);
     }
   }
   function pause() { playing = false; schedule(); }

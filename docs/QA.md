@@ -1,5 +1,9 @@
 # Local website verification
 
+## Homepage copy and section order, 26 November 2026
+
+Checked the revised hero copy and the homepage section order at 320, 390, 768, 1024 and 1440 pixels. About follows the hero, Inside the farm follows Farm products, and the enquiry form precedes the journal. The slideshow controls, product jump link and quote composer passed at each width. The checks found no horizontal overflow, browser errors or automated accessibility violations.
+
 ## EuniqueFarmé reference redesign, 26 November 2026
 
 Reviewed the cover and product grid at desktop and phone sizes, plus the feature cards, story, farm tour, quote form and individual product layout. The homepage follows the reference sequence and adds the existing journal before the quote form. Buyer groups occupy the reference's testimonial section. Farm photographs and generated product illustrations have distinct uses and provenance.

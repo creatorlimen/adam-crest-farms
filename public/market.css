@@ -18,9 +18,7 @@ body:has(.field-cover) :is(section[id],main[id]) { scroll-margin-top:86px; }
 .field-cover-copy h1 { font:700 clamp(35px,4.7vw,73px)/1.02 Arial,Helvetica,sans-serif; letter-spacing:-.06em; }
 .field-cover-copy h1 em { display:block; color:var(--cream); font:italic 400 clamp(78px,10vw,156px)/.97 Georgia,serif; letter-spacing:-.07em; }
 .field-cover-copy p { max-width:40ch; margin:24px 0; font-size:clamp(16px,1.3vw,20px); line-height:1.55; }
-.cover-selector { flex-shrink:0; text-align:right; }
-.cover-selector small { color:#fff; font-size:12px; }
-.cover-controls { display:flex; align-items:center; justify-content:flex-end; }
+.cover-controls { display:flex; flex-shrink:0; align-items:center; justify-content:flex-end; }
 .cover-controls button { display:grid; place-items:center; min-width:28px; height:44px; padding:0 5px; color:white; background:transparent; }
 .cover-controls [data-slide] span { width:8px; height:8px; border:1px solid white; border-radius:8px; background:#182619; }
 .cover-controls [aria-pressed="true"] span { width:22px; background:var(--highlight); border-color:var(--highlight); }
@@ -111,7 +109,6 @@ body:has(.field-cover) :is(section[id],main[id]) { scroll-margin-top:86px; }
   .field-cover-copy h1 { font-size:clamp(36px,8vw,54px); }
   .field-cover-copy h1 em { font-size:clamp(76px,17vw,110px); }
   .field-cover-copy p { margin:18px 0; max-width:34ch; }
-  .cover-selector { display:flex; align-items:center; justify-content:space-between; text-align:left; }
   .cover-controls button { min-width:30px; }
   .feature-row,.buying-grid,.buyer-row { grid-template-columns:1fr; }
   .harvest-tile img,.age-sample,.breed-tags { height:96px; }

@@ -2,7 +2,7 @@
 
 A self-contained Astro website with a Markdown farm journal, a photograph-led farm introduction and a product-enquiry composer. The supplied logo, Option C mascot and established forest/cream/gold palette are retained.
 
-**Local redesign, 26 November 2026.** The homepage follows the supplied EuniqueFarmé reference through the rotating cover, three feature cards, featured products, farm story, buying information, category shortcuts, photo tour, buyer groups and final enquiry. The Farm Journal sits before the enquiry. [Products](dist/products/index.html) supports shareable category filters, individual product pages and related products. Each category can open [Contact](dist/contact/index.html) with the product selected. The historical `#offerings`, `#our-farm` and `#enquire` bookmarks open the corresponding homepage sections.
+**Local redesign, 26 November 2026.** About the farm follows the rotating cover. The product features and catalogue lead into the farm photo tour, buying information, category shortcuts and buyer groups. The enquiry form comes before the journal, which closes the homepage when an article is eligible. [Products](dist/products/index.html) supports shareable category filters, individual product pages and related products. Each category can open [Contact](dist/contact/index.html) with the product selected. The historical `#offerings`, `#our-farm` and `#enquire` bookmarks open the corresponding homepage sections.
 
 The Farm Journal retains its article cards, topic archives and full articles. The homepage features the latest eligible post. The preview includes one labelled draft. Instagram is the available contact channel, and WhatsApp is hidden pending a confirmed number. Everything is local.
 

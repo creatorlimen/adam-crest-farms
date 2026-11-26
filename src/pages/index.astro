@@ -23,6 +23,14 @@ const schema = {
 ---
 <Base route={route} title="Adam Crest Farms | Crops & livestock in Osun State" description="Explore Adam Crest Farms in Ede South, Osun State: cucumbers, tomatoes, bell peppers, ostrich eggs and chicks, sheep and goats. Prices by quotation." image="/assets/farm/greenhouses.webp" imageAlt="Greenhouses at Adam Crest Farms" schema={schema}>
   <FarmCover />
+  <section id="our-farm" class="farm-statement" aria-labelledby="story-title">
+    <img class="statement-image" src={href(route, '/assets/farm/greenhouses.webp')} width="1280" height="720" alt="" loading="lazy" />
+    <div class="wrap statement-copy">
+      <p>Adam Crest Farms began in 2026.</p>
+      <h2 id="story-title">We started this farm to grow food and create work <em>for the next generation.</em></h2>
+      <a class="text-link" href={href(route, '/about/')}>About the farm <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
+    </div>
+  </section>
   <section class="section wrap" aria-labelledby="range-title">
     <h2 id="range-title" class="market-title">What we grow <em>and raise.</em></h2>
     <div class="feature-row">
@@ -51,13 +59,14 @@ const schema = {
       <ProductGrid route={route} heading="h3" />
     </div>
   </section>
-  <section id="our-farm" class="farm-statement" aria-labelledby="story-title">
-    <img class="statement-image" src={href(route, '/assets/farm/greenhouses.webp')} width="1280" height="720" alt="" loading="lazy" />
-    <div class="wrap statement-copy">
-      <p>Adam Crest Farms began in 2026.</p>
-      <h2 id="story-title">We started this farm to grow food and create work <em>for the next generation.</em></h2>
-      <a class="text-link" href={href(route, '/about/')}>About the farm <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
-    </div>
+  <section class="section wrap farm-walk" aria-labelledby="walk-title">
+    <div class="section-heading"><h2 id="walk-title" class="market-title">Inside <em>the farm.</em></h2></div>
+    <div class="farm-places">{places.map((place, index) => (
+      <article class="farm-place">
+        <img src={href(route, '/assets/farm/' + place.image + '.webp')} width={place.width} height={place.height} alt={place.alt} loading="lazy" />
+        <div class="place-caption"><span class="place-count">0{index + 1} / 03</span><h3>{place.title}</h3><p>{place.text}</p></div>
+      </article>
+    ))}</div>
   </section>
   <section class="section wrap" aria-labelledby="buying-title">
     <div class="buyer-strip">
@@ -79,15 +88,6 @@ const schema = {
       ))}</div>
     </div>
   </section>
-  <section class="section wrap farm-walk" aria-labelledby="walk-title">
-    <div class="section-heading"><h2 id="walk-title" class="market-title">Inside <em>the farm.</em></h2><p>Photographs from Ologobi Village</p></div>
-    <div class="farm-places">{places.map((place, index) => (
-      <article class="farm-place">
-        <img src={href(route, '/assets/farm/' + place.image + '.webp')} width={place.width} height={place.height} alt={place.alt} loading="lazy" />
-        <div class="place-caption"><span class="place-count">0{index + 1} / 03</span><h3>{place.title}</h3><p>{place.text}</p></div>
-      </article>
-    ))}</div>
-  </section>
   <section class="buyer-profiles" aria-labelledby="buyers-title">
     <div class="section wrap">
       <div class="buyer-heading"><h2 id="buyers-title" class="market-title">Who we <em>supply.</em></h2><img src={href(route, '/assets/mascot/ostrich-greeting.png')} width="1024" height="1536" alt="" loading="lazy" /></div>
@@ -96,6 +96,17 @@ const schema = {
         <article><h3>Restaurants</h3><p>Send your ingredient list, quantities and the date you need them.</p></article>
         <article><h3>Traders &amp; wholesalers</h3><p>For bulk supply, tell us the volumes and products you’re looking for.</p></article>
       </div>
+    </div>
+  </section>
+  <section id="enquire" class="home-enquiry wrap" aria-labelledby="form-title">
+    <div class="section contact-layout">
+      <div class="home-enquiry-copy">
+        <h2 id="form-title">Ready to <em>enquire?</em></h2>
+        <p>Need multiple items? List them in one enquiry, then copy your message and send it to us on Instagram.</p>
+        <a class="text-link" href={href(route, '/contact/')}>Contact details <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></a>
+        <a id="whatsapp-link" class="button button-gold" href="#form-title" target="_blank" rel="noopener noreferrer" hidden>Continue on WhatsApp</a>
+      </div>
+      <div class="enquiry-card"><EnquiryForm /></div>
     </div>
   </section>
   {featuredPost && <section id="journal" class="section wrap home-journal" aria-labelledby="journal-title">
@@ -115,16 +126,4 @@ const schema = {
       </div>
     </article>
   </section>}
-
-  <section id="enquire" class="home-enquiry wrap" aria-labelledby="form-title">
-    <div class="section contact-layout">
-      <div class="home-enquiry-copy">
-        <h2 id="form-title">Ready to <em>enquire?</em></h2>
-        <p>Need multiple items? List them in one enquiry, then copy your message and send it to us on Instagram.</p>
-        <a class="text-link" href={href(route, '/contact/')}>Contact details <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></a>
-        <a id="whatsapp-link" class="button button-gold" href="#form-title" target="_blank" rel="noopener noreferrer" hidden>Continue on WhatsApp</a>
-      </div>
-      <div class="enquiry-card"><EnquiryForm /></div>
-    </div>
-  </section>
 </Base>

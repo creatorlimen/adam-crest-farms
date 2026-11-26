@@ -14,6 +14,7 @@ const groups = ['All products', ...new Set(products.map(product => product.group
     </div>
     <p id="catalogue-count" class="visually-hidden" role="status"></p>
     <ProductGrid route={route} />
+    <p class="art-note">Product images are AI illustrations. Ask the farm about current stock.</p>
   </div>
   <script is:inline src={href(route, '/catalogue.js')} defer></script>
 </Base>

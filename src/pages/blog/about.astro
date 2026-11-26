@@ -1,0 +1,23 @@
+---
+import Base from '../../layouts/Base.astro';
+import { href } from '../../lib/site.mjs';
+const route = '/blog/about/';
+---
+<Base route={route} title="About the farm journal | Adam Crest Farms" description="How Adam Crest Farms researches its journal: original sources, clear explanations, honest dates and a distinction between general knowledge and farm details.">
+  <div class="journal wrap">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href={href(route, '/')}>Home</a><span aria-hidden="true">/</span><a href={href(route, '/blog/')}>Farm journal</a></nav>
+    <header class="journal-heading"><p class="eyebrow">ABOUT THE JOURNAL</p><h1>Curiosity.<br /><em>With sources.</em></h1></header>
+    <div class="prose policy-copy">
+      <p>The Adam Crest Farms journal explores questions about ostriches, sheep, goats and crops. Our aim is to make useful agricultural knowledge easier to understand.</p>
+      <h2>How the articles are made</h2>
+      <p>Articles are prepared with AI assistance for research, drafting and editing. We link to the sources behind factual claims so you can read further and judge the evidence. The Adam Crest Farms byline identifies the journal; it does not claim that a veterinarian or named specialist has reviewed an article.</p>
+      <h2>What we check</h2>
+      <p>We look for original research, university and agricultural guidance, and institutions with relevant expertise. We retain qualifications and limits, and keep general information separate from confirmed details about our own farm.</p>
+      <h2>Dates and updates</h2>
+      <p>Publication dates reflect when an article first goes live. An updated date records a substantive revision. A research-check date tells you when we last consulted the cited material. Drafts are labelled during local review.</p>
+      <h2>Questions and corrections</h2>
+      <p>If something needs a closer look, contact <a href="https://www.instagram.com/adamcrestfarms/" target="_blank" rel="noopener noreferrer">@adamcrestfarms on Instagram</a> with the article title and the point you want us to review.</p>
+      <p>For product availability and arrangements, <a href={href(route, '/contact/')}>contact the farm directly</a>.</p>
+    </div>
+  </div>
+</Base>

@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import EnquiryForm from '../components/EnquiryForm.astro';
+const route = '/contact/';
+---
+<Base route={route} title="Contact & product enquiries | Adam Crest Farms" description="Ask Adam Crest Farms about produce, livestock and bulk supply in Ede South. Prepare a product enquiry or contact the farm through Instagram.">
+  <div class="wrap contact-layout">
+    <div class="contact-copy">
+      <h1>Contact <em>the farm.</em></h1>
+      <p>For prices, availability or bulk supply, message us on Instagram. You can prepare and copy your enquiry here.</p>
+      <a class="contact-handle" data-instagram href="https://www.instagram.com/adamcrestfarms/" target="_blank" rel="noopener noreferrer">@adamcrestfarms <svg class="icon" aria-hidden="true"><use href="#external"/></svg></a>
+      <a id="whatsapp-link" class="button button-gold" href="#form-title" target="_blank" rel="noopener noreferrer" hidden>Continue on WhatsApp</a>
+      <address>Ologobi Village, Ede South<br />Osun State, Nigeria</address>
+      <p class="arrangements-pending">Please enquire about collection, delivery or a visit before making plans.</p>
+    </div>
+    <div class="enquiry-card">
+      <h2 id="form-title">Request a quote</h2>
+      <EnquiryForm />
+    </div>
+  </div>
+</Base>

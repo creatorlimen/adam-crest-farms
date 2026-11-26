@@ -1,0 +1,22 @@
+---
+import { href } from '../lib/site.mjs';
+import { products } from '../lib/products.mjs';
+const route = '/';
+const slides = products;
+---
+<section class="field-cover" aria-labelledby="hero-title" data-cover>
+  <div class="cover-pictures" aria-hidden="true">
+    {slides.map((product, index) => <img class:list={['cover-frame', 'art-' + product.slug, { 'is-current': index === 0 }]} src={href(route, product.art)} alt="" width={product.artWidth} height={product.artHeight} loading={index === 0 ? 'eager' : 'lazy'} fetchpriority={index === 0 ? 'high' : 'low'} />)}
+  </div>
+  <div class="wrap field-cover-inner">
+    <div class="field-cover-copy">
+      <h1 id="hero-title">Grown and raised <em>in Osun.</em></h1>
+      <p>Vegetables from our fields. Ostrich eggs, chicks, sheep and goats from our farm.</p>
+      <a class="button button-gold" href="#offerings">Explore our products <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></a>
+    </div>
+    <div class="cover-controls" hidden role="group" aria-label="Product slideshow">
+      {slides.map((product, index) => <button type="button" data-slide={index} aria-label={'Show ' + product.name.toLowerCase()} aria-pressed={index === 0 ? 'true' : 'false'}><span></span></button>)}
+      <button type="button" data-play aria-label="Pause slideshow"><span aria-hidden="true">Ⅱ</span></button>
+    </div>
+  </div>
+</section>

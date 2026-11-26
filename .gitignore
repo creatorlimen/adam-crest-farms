@@ -1,0 +1,17 @@
+# Track only the build and website sources.
+/*
+!/.gitignore
+!/.gitattributes
+!/package.json
+!/package-lock.json
+!/astro.config.mjs
+!/tsconfig.json
+!/vercel.json
+!/public/
+!/src/
+!/scripts/
+/scripts/*
+!/scripts/build.mjs
+
+# Stage approved journal articles explicitly after their publication date is set.
+/src/content/blog/*.md

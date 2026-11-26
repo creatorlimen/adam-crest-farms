@@ -1,0 +1,24 @@
+---
+import { href } from "../lib/site.mjs";
+const { route } = Astro.props;
+const links = [
+  ['/', 'Home'], ['/products/', 'Products'], ['/about/', 'About'],
+  ['/blog/', 'Farm journal'], ['/contact/', 'Contact'],
+];
+---
+<div class:list={['opening', { 'cover-masthead': route === '/' }]}>
+<header class="site-header wrap">
+      <a class="brand" href={href(route, "/")} aria-label="Adam Crest Farms home">
+        <img src={href(route, "/assets/brand/adam-crest-farms-logo.jpeg")} width="70" height="70" alt="Adam Crest Farms logo">
+        <span aria-hidden="true">ADAM CREST<span class="brand-small">F A R M S</span></span>
+      </a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="navigation" hidden><span>Menu</span><span class="menu-bars" aria-hidden="true"></span></button>
+      <nav id="navigation" aria-label="Main navigation">
+        {links.map(([path, label]) => <a
+          href={href(route, path)}
+          class={path === '/contact/' ? 'button button-small button-gold' : undefined}
+          aria-current={route === path ? 'page' : path !== '/' && route.startsWith(path) ? 'location' : undefined}
+        >{label}{path === '/contact/' && <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg>}</a>)}
+      </nav>
+    </header>
+</div>

@@ -1,0 +1,15 @@
+{
+  "name": "adam-crest-farms",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Adam Crest Farms website",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs"
+  },
+  "devDependencies": {
+    "astro": "6.4.8"
+  }
+}

@@ -1,0 +1,36 @@
+---
+import Base from '../../layouts/Base.astro';
+import { href } from '../../lib/site.mjs';
+import { products, productRoute } from '../../lib/products.mjs';
+
+export function getStaticPaths() {
+  return products.map(product => ({ params: { slug: product.slug }, props: { product } }));
+}
+const { product } = Astro.props;
+const route = productRoute(product);
+const contact = href(route, '/contact/') + '?product=' + encodeURIComponent(product.name);
+---
+<Base route={route} title={product.name + ' | Adam Crest Farms'} description={product.intro} image={product.image ?? product.art} imageAlt={product.alt ?? product.artAlt}>
+  <article class="wrap detail-page">
+    <a class="back-link" href={href(route, '/products/')}><span aria-hidden="true">←</span> All products</a>
+    <div class="detail-spread">
+      <header class="detail-intro"><h1>{product.name}</h1><p>{product.intro}</p></header>
+      <figure class={'detail-photo ' + product.slug}>
+        <img src={href(route, product.image ?? product.art)} width={product.width ?? product.artWidth} height={product.height ?? product.artHeight} alt={product.alt ?? product.artAlt} />
+        {!product.image && <figcaption class="art-note">AI product illustration</figcaption>}
+      </figure>
+      <div class="detail-facts">
+        {product.items && <><h2>{product.listTitle}</h2><ul>{product.items.map(item => <li>{item}</li>)}</ul></>}
+        <p>{product.enquiry}</p>
+        <a class="button button-forest" href={contact}>Enquire about {product.name.toLowerCase()} <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></a>
+      </div>
+    </div>
+    <nav class="related-groups" aria-label="Other farm products">
+      <h2>Other farm products</h2>
+      <div>{products.filter(item => item.slug !== product.slug).map(item => <a href={href(route, productRoute(item))}>
+        <img src={href(route, item.art)} width={item.artWidth} height={item.artHeight} alt="" loading="lazy" />
+        <span>{item.name}</span><svg class="icon" aria-hidden="true"><use href="#arrow"/></svg>
+      </a>)}</div>
+    </nav>
+  </article>
+</Base>

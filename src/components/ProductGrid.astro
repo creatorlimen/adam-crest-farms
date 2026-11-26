@@ -1,0 +1,21 @@
+---
+import { href } from '../lib/site.mjs';
+import { products, productRoute } from '../lib/products.mjs';
+const { route, heading: Heading = 'h2' } = Astro.props;
+---
+<div class="catalogue-grid market-grid">
+  {products.map(product => (
+    <a class="catalogue-entry market-card" data-group={product.group} href={href(route, productRoute(product))} aria-label={'View product: ' + product.name}>
+      <div class={'market-art art-' + product.slug}>
+        <img src={href(route, product.art)} width={product.artWidth} height={product.artHeight} alt={product.artAlt} loading="lazy" />
+        <span>{product.group}</span>
+      </div>
+      <div class="market-copy">
+        <Heading>{product.name}</Heading>
+        <p>{product.teaser}</p>
+        <span class="market-action">View product <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg></span>
+      </div>
+    </a>
+  ))}
+</div>
+<p class="art-note">Product images are AI illustrations. Ask the farm about current stock.</p>
